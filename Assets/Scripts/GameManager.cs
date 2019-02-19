@@ -11,10 +11,10 @@ public class GameManager : BaseGameManager
     // Start is called before the first frame update
     void Start()
     {
-        OnPointsReceived.AddListener((points) => {
-            FindPlayer();
-            player.Score = player.Score + points;
-        });   
+        // OnPointsReceived.AddListener((points) => {
+        //     FindPlayer();
+        //     player.Score = player.Score + points;
+        // });   
     }
 
     void FindPlayer()

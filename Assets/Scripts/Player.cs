@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     Vector2 maxPos;
 
+    [SerializeField]
+    Rigidbody2D rigidbody;
+
     int score = 0;
 
     public int Score
@@ -48,6 +51,7 @@ public class Player : MonoBehaviour
         set
         {
             score = value;
+            BaseGameManager.Manager.OnScoreUpdated.Invoke(score);
         }
     }
 
@@ -75,12 +79,17 @@ public class Player : MonoBehaviour
     void Start()
     {
         startSpeed = speed;
-        BaseGameManager.Manager.OnPointsReceived.AddListener((points) => score += points);
+        BaseGameManager.Manager.OnPointsReceived.AddListener((points) => Score += points);
     }
 
     void Update()
     {
-        MoveCharacter();
+        MoveCharacter2();
+    }
+
+    void FixedUpdate()
+    {
+        ChangeTransform2();
     }
 
     /// <summary>
@@ -123,9 +132,53 @@ public class Player : MonoBehaviour
         {
             movingRight = false;
         }
-
-        ChangeTransform();
     }
+
+    void MoveCharacter2()
+    {
+        if (Input.GetButtonDown("Down"))
+        {
+            movingUp = false;
+            movingDown = true;
+            movingLeft = false;
+            movingRight = false;
+        }
+        else if (Input.GetButtonDown("Up"))
+        {
+            movingUp = true;
+            movingDown = false;
+            movingLeft = false;
+            movingRight = false;
+        }
+        else if (Input.GetButtonDown("Left"))
+        {
+            movingUp = false;
+            movingDown = false;
+            movingLeft = true;
+            movingRight = false;
+        }
+        else if (Input.GetButtonDown("Right"))
+        {
+            movingUp = false;
+            movingDown = false;
+            movingLeft = false;
+            movingRight = true;
+        }
+    }
+
+    void ChangeTransform2()
+    {
+        Vector2 newPos = gameObject.transform.position;
+
+        float newX = newPos.x + (movingLeft ? -1.0f * speed : (movingRight ? speed : 0));
+        newPos.x = newX;
+
+        float newY = newPos.y + (movingDown ? -1.0f * speed : (movingUp ? speed : 0));
+        newPos.y = newY;
+
+        rigidbody.MovePosition(newPos);
+    }
+
 
     void ChangeTransform()
     {
@@ -167,7 +220,6 @@ public class Player : MonoBehaviour
             newPos.y = newY;
         }
 
-
-        gameObject.transform.position = newPos;
+        rigidbody.MovePosition(newPos);
     }
 }

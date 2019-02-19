@@ -17,10 +17,10 @@ public class Point : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.LogWarning("Trigger entered");
         if(string.Compare(other.gameObject.tag, "Player", true) == 0)
         {
             BaseGameManager.Manager.OnPointsReceived.Invoke(pointsAwarded);
+            BaseGameManager.Manager.OnPointsReceivedAtPosition.Invoke(transform.position);
             gameObject.SetActive(false);
         }
     }

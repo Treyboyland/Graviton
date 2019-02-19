@@ -29,6 +29,12 @@ public abstract class BaseGameManager : MonoBehaviour
         /// </summary>
         [Serializable]
         public class PlayerHitWall : UnityEvent { }
+
+        [Serializable]
+        public class PointsReceivedAtPosition : UnityEvent<Vector3> { }
+
+        [Serializable]
+        public class ScoreUpdated : UnityEvent<int> { }
     }
 
     /// <summary>
@@ -41,9 +47,19 @@ public abstract class BaseGameManager : MonoBehaviour
     /// </summary>
     public Events.PlayerHitWall OnPlayerHitWall;
 
+    /// <summary>
+    /// Event that should be sent with the position at which the player received points
+    /// </summary>
+    public Events.PointsReceivedAtPosition OnPointsReceivedAtPosition;
+
+    /// <summary>
+    /// Event sent when the player's score has been updated
+    /// </summary>
+    public Events.ScoreUpdated OnScoreUpdated;
+
     void Awake()
     {
-        if(_instance != null && this != _instance)
+        if (_instance != null && this != _instance)
         {
             Destroy(this.gameObject);
             return;
