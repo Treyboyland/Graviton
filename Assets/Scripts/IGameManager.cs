@@ -28,13 +28,17 @@ public abstract class BaseGameManager : MonoBehaviour
         /// Event fired when the player hits a wall
         /// </summary>
         [Serializable]
-        public class PlayerHitWall : UnityEvent { }
+        public class PlayerHitWall : UnityEvent<bool> { }
 
         [Serializable]
         public class PointsReceivedAtPosition : UnityEvent<Vector3> { }
 
         [Serializable]
         public class ScoreUpdated : UnityEvent<int> { }
+
+        [Serializable]
+        public class GrantInvincibility : UnityEvent<float> { }
+
     }
 
     /// <summary>
@@ -56,6 +60,11 @@ public abstract class BaseGameManager : MonoBehaviour
     /// Event sent when the player's score has been updated
     /// </summary>
     public Events.ScoreUpdated OnScoreUpdated;
+
+    /// <summary>
+    /// Event fired when the player should be granted invincibility
+    /// </summary>
+    public Events.GrantInvincibility OnGrantPlayerInvincibility;
 
     void Awake()
     {

@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     Rigidbody2D rigidbody;
 
+    [SerializeField]
+    Animator animator;
+
     int score = 0;
 
     public int Score
@@ -80,6 +83,7 @@ public class Player : MonoBehaviour
     {
         startSpeed = speed;
         BaseGameManager.Manager.OnPointsReceived.AddListener((points) => Score += points);
+        BaseGameManager.Manager.OnGrantPlayerInvincibility.AddListener(BecomeInvincible);
     }
 
     void Update()
@@ -164,6 +168,32 @@ public class Player : MonoBehaviour
             movingLeft = false;
             movingRight = true;
         }
+    }
+
+    public bool IsInvincible()
+    {
+        return animator.GetBool("Invincible");
+    }
+
+    void BecomeInvincible(float secondsOfInvincibility)
+    {
+        Debug.LogWarning("Invincible!!!!");
+        StopAllCoroutines();
+        animator.SetBool("Invincible", false);
+        StartCoroutine(WaitForInvincibility(secondsOfInvincibility));
+    }
+
+    IEnumerator WaitForInvincibility(float secondsOfInvincibility)
+    {
+        animator.SetBool("Invincible", true);
+        System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
+        timer.Start();
+        while(timer.Elapsed.TotalSeconds < secondsOfInvincibility)
+        {
+            yield return null;
+        }
+
+        animator.SetBool("Invincible", false);
     }
 
     void ChangeTransform2()

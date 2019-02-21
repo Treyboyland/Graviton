@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : BaseGameManager
 {
-
+    [SerializeField]
+    float secondsOfInvincibility;
 
     Player player;
 
@@ -15,6 +16,7 @@ public class GameManager : BaseGameManager
         //     FindPlayer();
         //     player.Score = player.Score + points;
         // });   
+        OnPlayerHitWall.AddListener(DamagePlayer);
     }
 
     void FindPlayer()
@@ -22,6 +24,16 @@ public class GameManager : BaseGameManager
         if(player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
+    }
+
+    void DamagePlayer(bool damaging)
+    {
+        Debug.Log("We were called");
+        FindPlayer();
+        if(!player.IsInvincible() && damaging)
+        {
+            OnGrantPlayerInvincibility.Invoke(secondsOfInvincibility);
         }
     }
 }
