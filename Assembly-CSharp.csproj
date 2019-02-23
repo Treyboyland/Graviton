@@ -66,7 +66,6 @@
      <Compile Include="Assets\Scripts\PointSound.cs" />
      <Compile Include="Assets\Scripts\PointSpawner.cs" />
      <Compile Include="Assets\Scripts\PointSpawnRandomizer.cs" />
-     <Compile Include="Assets\Scripts\RNG.cs" />
      <Compile Include="Assets\Scripts\ScoreText.cs" />
      <Compile Include="Assets\Scripts\SpeedGauge.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
