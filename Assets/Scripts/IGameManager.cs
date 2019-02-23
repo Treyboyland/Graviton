@@ -39,6 +39,12 @@ public abstract class BaseGameManager : MonoBehaviour
         [Serializable]
         public class GrantInvincibility : UnityEvent<float> { }
 
+        [Serializable]
+        public class PlayerTakeDamage : UnityEvent { }
+
+        [Serializable]
+        public class PlayerSpeedUpdated : UnityEvent<float>{}
+
     }
 
     /// <summary>
@@ -65,6 +71,16 @@ public abstract class BaseGameManager : MonoBehaviour
     /// Event fired when the player should be granted invincibility
     /// </summary>
     public Events.GrantInvincibility OnGrantPlayerInvincibility;
+
+    /// <summary>
+    /// Event invoked when the player should take damage
+    /// </summary>
+    public Events.PlayerTakeDamage OnPlayerTakeDamage;
+
+/// <summary>
+/// Event invoked when the player's speed changes
+/// </summary>
+public Events.PlayerSpeedUpdated OnPlayerSpeedUpdated;
 
     void Awake()
     {

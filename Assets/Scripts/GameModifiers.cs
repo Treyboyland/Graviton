@@ -18,6 +18,10 @@ public class GameModifiers : MonoBehaviour
     int maxPointsSpawn;
 
     [SerializeField]
+    [Range(0, 1)]
+    float speedCutter;
+
+    [SerializeField]
     Player player;
     [SerializeField]
     PointSpawnRandomizer spawnRandomizer;
@@ -25,18 +29,30 @@ public class GameModifiers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BaseGameManager.Manager.OnPointsReceived.AddListener((score) => ModifyParameters());
+        BaseGameManager.Manager.OnPointsReceived.AddListener((points) => ModifyParameters(points));
+        BaseGameManager.Manager.OnPlayerTakeDamage.AddListener(SlowDownPlayer);
     }
 
-    void ModifyParameters()
+    void ModifyParameters(int points)
     {
-        UpdateGameSpeed();
+        //UpdateGameSpeed();
+        IncreasePlayerSpeed(points);
         UpdateSpawnRate();
+    }
+
+    void SlowDownPlayer()
+    {
+        player.Speed = player.Speed - (player.Speed - player.MinSpeed) * speedCutter;
     }
 
     void UpdateGameSpeed()
     {
         player.Speed = Mathf.Lerp(player.StartSpeed, endSpeed, (float)player.Score / maxPointsSpeed);
+    }
+
+    void IncreasePlayerSpeed(int points)
+    {
+        player.Speed += Mathf.Abs(player.MaxSpeed - player.MinSpeed) * points / 2000;
     }
 
     void UpdateSpawnRate()

@@ -109,4 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9513d19b2776334895f7f630afb93a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsAwarded: 1
+  maxPoints: 100
+  spriteRenderer: {fileID: 4546623665181916331}
+  secondsToStayPerfect: 3
+  secondsToFade: 5

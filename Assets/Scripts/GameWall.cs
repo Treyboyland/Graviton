@@ -30,8 +30,12 @@ public class GameWall : MonoBehaviour
     {
         if(string.Compare(other.gameObject.tag, "Player", true) == 0)
         {
-            Debug.LogWarning("Boop!");
             BaseGameManager.Manager.OnPlayerHitWall.Invoke(damaging);
         }
+    }
+
+    void OnValidate()
+    {
+        SetColor(damaging ? damagingColor : normalColor);
     }
 }

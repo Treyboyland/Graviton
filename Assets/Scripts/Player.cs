@@ -22,7 +22,30 @@ public class Player : MonoBehaviour
         }
         set
         {
-            speed = value;
+            speed = Mathf.Min(Mathf.Max(minSpeed, value), maxSpeed);
+            BaseGameManager.Manager.OnPlayerSpeedUpdated.Invoke(speed);
+        }
+    }
+
+    [SerializeField]
+    float minSpeed;
+
+    public float MinSpeed
+    {
+        get
+        {
+            return minSpeed;
+        }
+    }
+
+    [SerializeField]
+    float maxSpeed;
+
+    public float MaxSpeed
+    {
+        get
+        {
+            return maxSpeed;
         }
     }
 

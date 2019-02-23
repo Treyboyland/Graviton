@@ -29,11 +29,11 @@ public class GameManager : BaseGameManager
 
     void DamagePlayer(bool damaging)
     {
-        Debug.Log("We were called");
         FindPlayer();
         if(!player.IsInvincible() && damaging)
         {
             OnGrantPlayerInvincibility.Invoke(secondsOfInvincibility);
+            OnPlayerTakeDamage.Invoke();
         }
     }
 }

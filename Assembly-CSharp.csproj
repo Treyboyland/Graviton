@@ -60,12 +60,15 @@
      <Compile Include="Assets\Scripts\GameWall.cs" />
      <Compile Include="Assets\Scripts\IGameManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerDamagedSound.cs" />
      <Compile Include="Assets\Scripts\Point.cs" />
      <Compile Include="Assets\Scripts\PointCollectParticleController.cs" />
      <Compile Include="Assets\Scripts\PointSound.cs" />
      <Compile Include="Assets\Scripts\PointSpawner.cs" />
      <Compile Include="Assets\Scripts\PointSpawnRandomizer.cs" />
+     <Compile Include="Assets\Scripts\RNG.cs" />
      <Compile Include="Assets\Scripts\ScoreText.cs" />
+     <Compile Include="Assets\Scripts\SpeedGauge.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
