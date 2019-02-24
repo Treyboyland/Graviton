@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class PointSpawnRandomizer : MonoBehaviour
 {
+    /// <summary>
+    /// Spawns all of the points
+    /// </summary>
     [SerializeField]
     PointSpawner pointSpawner;
 
+    /// <summary>
+    /// The point that this spawner spawns
+    /// </summary>
+    [SerializeField]
+    Point pointToSpawn;
+
+    /// <summary>
+    /// Seconds that will pass before the next point can spawn
+    /// </summary>
     [SerializeField]
     float secondsBetweenSpawns;
 
+    /// <summary>
+    /// At or above this threshold, points will spawn
+    /// </summary>
+    [SerializeField]
+    int comboThreshold;
+
+    /// <summary>
+    /// Seconds that will pass before the next point can spawn
+    /// </summary>
     public float SecondsBetweenSpawns
     {
         get
@@ -46,16 +67,63 @@ public class PointSpawnRandomizer : MonoBehaviour
     [SerializeField]
     Vector2 maxSpawnLocation;
 
+    /// <summary>
+    /// True if we should only spawn the next point after the current point has been acquired
+    /// </summary>
+    [SerializeField]
+    bool spawnAfterPointAcquired;
+
     System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
 
     Point currentPoint;
+
+    /// <summary>
+    /// True if this is currently spawning points
+    /// </summary>
+    bool spawning;
+
 
     // Start is called before the first frame update
     void Start()
     {
         startSpawnDelay = secondsBetweenSpawns;
-        StartCoroutine(RandomSpawnPeriodically());
+        GameManager.Manager.OnPlayerComboUpdated.AddListener(CheckForSpawning);
+        GameManager.Manager.OnResetPlayerCombo.AddListener(StopSpawning);
+        if (comboThreshold == 0)
+        {
+            StartAppropriateSpawner();
+        }
     }
+
+    void StartAppropriateSpawner()
+    {
+        if(spawnAfterPointAcquired)
+        {
+            StartCoroutine(RandomSpawnAfterPointAcquired());
+        }
+        else
+        {
+            StartCoroutine(RandomSpawnAfterTime());
+        }
+    }
+
+    void StopSpawning()
+    {
+        if(comboThreshold != 0)
+        {
+            StopAllCoroutines();
+            spawning = false;
+        }
+    }
+
+    void CheckForSpawning(int currentCombo)
+    {
+        if(!spawning && comboThreshold <= currentCombo)
+        {
+            StartAppropriateSpawner();
+        }
+    }
+
     IEnumerator WaitForTime()
     {
         timer.Reset();
@@ -69,7 +137,7 @@ public class PointSpawnRandomizer : MonoBehaviour
 
     void SpawnPoint()
     {
-        Point p = pointSpawner.GetGamePoint();
+        Point p = pointSpawner.GetGamePoint(pointToSpawn);
         Vector2 newLoc = GetRandomLocation();
         p.transform.position = newLoc;
         p.gameObject.SetActive(true);
@@ -84,8 +152,9 @@ public class PointSpawnRandomizer : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    IEnumerator RandomSpawnPeriodically()
+    IEnumerator RandomSpawnAfterPointAcquired()
     {
+        spawning = true;
         while (true)
         {
             SpawnPoint();
@@ -97,6 +166,17 @@ public class PointSpawnRandomizer : MonoBehaviour
 
             yield return StartCoroutine(WaitForTime());
 
+        }
+    }
+
+    IEnumerator RandomSpawnAfterTime()
+    {
+        spawning = true;
+        while (true)
+        {
+            SpawnPoint();
+
+            yield return StartCoroutine(WaitForTime());
         }
     }
 }

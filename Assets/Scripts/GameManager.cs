@@ -34,6 +34,7 @@ public class GameManager : BaseGameManager
         {
             OnGrantPlayerInvincibility.Invoke(secondsOfInvincibility);
             OnPlayerTakeDamage.Invoke();
+            OnResetPlayerCombo.Invoke();
         }
     }
 }

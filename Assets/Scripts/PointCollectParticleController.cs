@@ -49,10 +49,13 @@ public class PointCollectParticleController : MonoBehaviour
     }
 
 
-    void PlaceParticle(Vector3 pos)
+    void PlaceParticle(Vector3 pos, Color c)
     {
         ParticleSystem ps = GetParticle();
         ps.transform.position = pos;
+        ParticleSystem.MainModule mm = ps.main;
+        c.a = 1;
+        mm.startColor = c;
         ps.Play();
     }
 }

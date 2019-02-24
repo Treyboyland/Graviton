@@ -1,46 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PointSpawner : MonoBehaviour
 {
     [SerializeField]
-    int initialPoolSize;
+    List<PointPoolInitializer> initializers;
 
-    [SerializeField]
-    Point pointPrefab;
+    Dictionary<Point, List<Point>> pointPools = new Dictionary<Point, List<Point>>();
 
-    List<Point> pointPool = new List<Point>();
-    
+
+    [Serializable]
+    public struct PointPoolInitializer
+    {
+        public Point pointPrefab;
+        public int initialPoolSize;
+    }
+
     void Awake()
     {
-        InitializePool();
+       InitializePool();
     }
 
     void InitializePool()
     {
-        for(int i = 0; i < initialPoolSize; i++)
+        foreach (PointPoolInitializer ppi in initializers)
         {
-            Point p = Instantiate(pointPrefab) as Point;
-            p.gameObject.SetActive(false);
-            pointPool.Add(p);
+            if (!pointPools.ContainsKey(ppi.pointPrefab))
+            {
+                pointPools.Add(ppi.pointPrefab, new List<Point>());
+            }
+
+            for (int i = 0; i < ppi.initialPoolSize; i++)
+            {
+                Point p = Instantiate(ppi.pointPrefab) as Point;
+                p.gameObject.SetActive(false);
+                pointPools[ppi.pointPrefab].Add(p);
+            }
         }
     }
 
-    public Point GetGamePoint()
+
+    public Point GetGamePoint(Point point)
     {
-        for(int i =0; i < pointPool.Count; i++)
+        if(!pointPools.ContainsKey(point))
         {
-            if(!pointPool[i].gameObject.activeInHierarchy)
+            pointPools.Add(point, new List<Point>());
+        }
+        for (int i = 0; i < pointPools[point].Count; i++)
+        {
+            if (!pointPools[point][i].gameObject.activeInHierarchy)
             {
-                return pointPool[i];
+                return pointPools[point][i];
             }
         }
 
-        Point p = Instantiate(pointPrefab) as Point;
+        Point p = Instantiate(point) as Point;
         p.gameObject.SetActive(false);
-        pointPool.Add(p);
+        pointPools[point].Add(p);
 
         return p;
     }
 }
+
+

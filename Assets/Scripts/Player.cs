@@ -102,11 +102,35 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Current combo level for the player
+    /// </summary>
+    int combo;
+
+    /// <summary>
+    /// Player's current combo level
+    /// </summary>
+    /// <value></value>
+    public int Combo
+    {
+        get
+        {
+            return combo;
+        }
+        set
+        {
+            combo = value;
+            BaseGameManager.Manager.OnPlayerComboUpdated.Invoke(combo);
+        }
+    }
+
     void Start()
     {
         startSpeed = speed;
         BaseGameManager.Manager.OnPointsReceived.AddListener((points) => Score += points);
         BaseGameManager.Manager.OnGrantPlayerInvincibility.AddListener(BecomeInvincible);
+        BaseGameManager.Manager.OnResetPlayerCombo.AddListener(() => Combo = 0);
+        BaseGameManager.Manager.OnIncreasePlayerCombo.AddListener(() => Combo++);
     }
 
     void Update()

@@ -18,20 +18,18 @@ public class Point : MonoBehaviour
     [SerializeField]
     float secondsToFade;
 
-    public int PointsAwarded
-    {
-        get
-        {
-            return pointsAwarded;
-        }
-    }
+    bool perfect = true;
     
     void OnTriggerEnter2D(Collider2D other)
     {
         if(string.Compare(other.gameObject.tag, "Player", true) == 0)
         {
-            BaseGameManager.Manager.OnPointsReceived.Invoke(pointsAwarded);
-            BaseGameManager.Manager.OnPointsReceivedAtPosition.Invoke(transform.position);
+            BaseGameManager.Manager.OnPointsReceived.Invoke(GetPoints());
+            BaseGameManager.Manager.OnPointsReceivedAtPosition.Invoke(transform.position, spriteRenderer.color);
+            if(perfect)
+            {
+                BaseGameManager.Manager.OnIncreasePlayerCombo.Invoke();
+            }
             gameObject.SetActive(false);
         }
     }
@@ -52,11 +50,37 @@ public class Point : MonoBehaviour
         spriteRenderer.color = c;        
     }
 
+    int GetPoints()
+    {
+        if(perfect)
+        {
+            return maxPoints;
+        }
+
+        float alpha = spriteRenderer.color.a;
+
+        if(alpha <= .25f)
+        {
+            return maxPoints / 4;
+        }
+        else if(alpha <= .50f)
+        {
+            return maxPoints / 2;
+        }
+        else if(alpha <= .75f)
+        {
+            return 3 * maxPoints / 4;
+        }
+
+        return maxPoints;
+
+    }
+
 
     IEnumerator WaitThenFade()
     {
+        perfect = true;
         SetAlpha(1);
-        pointsAwarded = maxPoints;
         System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
         timer.Start();
 
@@ -68,13 +92,15 @@ public class Point : MonoBehaviour
         timer.Reset();
         timer.Start();
 
+        perfect = false;
+
         while(timer.Elapsed.TotalSeconds < secondsToFade)
         {
-            pointsAwarded = (int)Mathf.Lerp(maxPoints, 0, (float)timer.Elapsed.TotalSeconds / secondsToFade);
-            SetAlpha((1.0f) * pointsAwarded / maxPoints);
+            SetAlpha(Mathf.Lerp(1, 0,(float)timer.Elapsed.TotalSeconds / secondsToFade));
             yield return null;
         }
 
+        BaseGameManager.Manager.OnResetPlayerCombo.Invoke();
         gameObject.SetActive(false);
     }
 }

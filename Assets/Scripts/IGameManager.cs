@@ -31,7 +31,7 @@ public abstract class BaseGameManager : MonoBehaviour
         public class PlayerHitWall : UnityEvent<bool> { }
 
         [Serializable]
-        public class PointsReceivedAtPosition : UnityEvent<Vector3> { }
+        public class PointsReceivedAtPosition : UnityEvent<Vector3, Color> { }
 
         [Serializable]
         public class ScoreUpdated : UnityEvent<int> { }
@@ -43,8 +43,16 @@ public abstract class BaseGameManager : MonoBehaviour
         public class PlayerTakeDamage : UnityEvent { }
 
         [Serializable]
-        public class PlayerSpeedUpdated : UnityEvent<float>{}
+        public class PlayerSpeedUpdated : UnityEvent<float> { }
 
+        [Serializable]
+        public class ResetPlayerCombo : UnityEvent { }
+
+        [Serializable]
+        public class IncreasePlayerCombo : UnityEvent { }
+
+        [Serializable]
+        public class PlayerComboUpdated : UnityEvent<int> { }
     }
 
     /// <summary>
@@ -77,10 +85,25 @@ public abstract class BaseGameManager : MonoBehaviour
     /// </summary>
     public Events.PlayerTakeDamage OnPlayerTakeDamage;
 
-/// <summary>
-/// Event invoked when the player's speed changes
-/// </summary>
-public Events.PlayerSpeedUpdated OnPlayerSpeedUpdated;
+    /// <summary>
+    /// Event invoked when the player's speed changes
+    /// </summary>
+    public Events.PlayerSpeedUpdated OnPlayerSpeedUpdated;
+
+    /// <summary>
+    /// Event fired when the player's combo level should be reset
+    /// </summary>
+    public Events.ResetPlayerCombo OnResetPlayerCombo;
+
+    /// <summary>
+    /// Event fired when the player's combo level should be increased
+    /// </summary>
+    public Events.IncreasePlayerCombo OnIncreasePlayerCombo;
+
+    /// <summary>
+    /// Event fired when the player combo has been updated
+    /// </summary>
+    public Events.PlayerComboUpdated OnPlayerComboUpdated;
 
     void Awake()
     {
