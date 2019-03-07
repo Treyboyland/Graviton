@@ -17,6 +17,7 @@ public class GameManager : BaseGameManager
         //     player.Score = player.Score + points;
         // });   
         OnPlayerHitWall.AddListener(DamagePlayer);
+        SceneLoader.Loader.OnSceneChanged.AddListener(DestroyIfOnMain);
     }
 
     void FindPlayer()
@@ -35,6 +36,17 @@ public class GameManager : BaseGameManager
             OnGrantPlayerInvincibility.Invoke(secondsOfInvincibility);
             OnPlayerTakeDamage.Invoke();
             OnResetPlayerCombo.Invoke();
+        }
+    }
+
+    /// <summary>
+    /// Destroys the game object it is on the main screen
+    /// </summary>
+    void DestroyIfOnMain()
+    {
+        if(SceneLoader.Loader != null && SceneLoader.Loader.IsLoadingSceneLoaded())
+        {
+            Destroy(gameObject);
         }
     }
 }

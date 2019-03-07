@@ -25,10 +25,11 @@ public class Point : MonoBehaviour
         if(string.Compare(other.gameObject.tag, "Player", true) == 0)
         {
             BaseGameManager.Manager.OnPointsReceived.Invoke(GetPoints());
-            BaseGameManager.Manager.OnPointsReceivedAtPosition.Invoke(transform.position, spriteRenderer.color);
+            
             if(perfect)
             {
                 BaseGameManager.Manager.OnIncreasePlayerCombo.Invoke();
+                BaseGameManager.Manager.OnPointsReceivedAtPosition.Invoke(transform.position, spriteRenderer.color);
             }
             gameObject.SetActive(false);
         }
@@ -77,12 +78,15 @@ public class Point : MonoBehaviour
     }
 
 
+
     IEnumerator WaitThenFade()
     {
         perfect = true;
         SetAlpha(1);
         System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
         timer.Start();
+
+        BaseGameManager.Manager.OnGamePaused.AddListener((paused) => TimerHelper.ToggleTimer(timer, paused));
 
         while(timer.Elapsed.TotalSeconds < secondsToStayPerfect)
         {
@@ -99,6 +103,8 @@ public class Point : MonoBehaviour
             SetAlpha(Mathf.Lerp(1, 0,(float)timer.Elapsed.TotalSeconds / secondsToFade));
             yield return null;
         }
+
+        BaseGameManager.Manager.OnGamePaused.RemoveListener((paused) => TimerHelper.ToggleTimer(timer, paused));
 
         BaseGameManager.Manager.OnResetPlayerCombo.Invoke();
         gameObject.SetActive(false);

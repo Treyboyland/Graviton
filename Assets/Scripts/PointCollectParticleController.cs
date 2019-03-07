@@ -35,7 +35,7 @@ public class PointCollectParticleController : MonoBehaviour
     {
         for(int i = 0; i < collectParticles.Count; i++)
         {
-            if(!collectParticles[i].isPlaying)
+            if(!collectParticles[i].isPlaying && !collectParticles[i].isPaused)
             {
                 return collectParticles[i];
             }

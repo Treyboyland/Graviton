@@ -89,6 +89,7 @@ public class PointSpawnRandomizer : MonoBehaviour
         startSpawnDelay = secondsBetweenSpawns;
         GameManager.Manager.OnPlayerComboUpdated.AddListener(CheckForSpawning);
         GameManager.Manager.OnResetPlayerCombo.AddListener(StopSpawning);
+        GameManager.Manager.OnGamePaused.AddListener((paused) => TimerHelper.ToggleTimer(timer, paused));
         if (comboThreshold == 0)
         {
             StartAppropriateSpawner();

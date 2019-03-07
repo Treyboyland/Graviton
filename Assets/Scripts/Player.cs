@@ -124,6 +124,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    bool acceptingInput = true;
+
+    public bool AcceptingInput
+    {
+        get
+        {
+            return acceptingInput;
+        }
+        set
+        {
+            acceptingInput = value;
+        }
+    }
+
     void Start()
     {
         startSpeed = speed;
@@ -131,17 +145,29 @@ public class Player : MonoBehaviour
         BaseGameManager.Manager.OnGrantPlayerInvincibility.AddListener(BecomeInvincible);
         BaseGameManager.Manager.OnResetPlayerCombo.AddListener(() => Combo = 0);
         BaseGameManager.Manager.OnIncreasePlayerCombo.AddListener(() => Combo++);
+        BaseGameManager.Manager.OnGamePaused.AddListener((paused) =>
+        {
+            acceptingInput = !paused;
+        });
     }
 
     void Update()
     {
-        MoveCharacter2();
+        if (acceptingInput)
+        {
+            MoveCharacter2();
+        }
     }
 
     void FixedUpdate()
     {
-        ChangeTransform2();
+        if (acceptingInput)
+        {
+            ChangeTransform2();
+        }
     }
+
+
 
     /// <summary>
     /// Moves the player
@@ -233,12 +259,15 @@ public class Player : MonoBehaviour
     IEnumerator WaitForInvincibility(float secondsOfInvincibility)
     {
         animator.SetBool("Invincible", true);
+
         System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
+        BaseGameManager.Manager.OnGamePaused.AddListener((paused) => TimerHelper.ToggleTimer(timer, paused));
         timer.Start();
-        while(timer.Elapsed.TotalSeconds < secondsOfInvincibility)
+        while (timer.Elapsed.TotalSeconds < secondsOfInvincibility)
         {
             yield return null;
         }
+        BaseGameManager.Manager.OnGamePaused.RemoveListener((paused) => TimerHelper.ToggleTimer(timer, paused));
 
         animator.SetBool("Invincible", false);
     }

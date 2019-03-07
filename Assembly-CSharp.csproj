@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BaseGameManager.cs" />
      <Compile Include="Assets\Scripts\CloseGameButton.cs" />
      <Compile Include="Assets\Scripts\ComboCounter.cs" />
      <Compile Include="Assets\Scripts\CreditsCanvasController.cs" />
@@ -62,7 +63,10 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameModifiers.cs" />
      <Compile Include="Assets\Scripts\GameWall.cs" />
-     <Compile Include="Assets\Scripts\IGameManager.cs" />
+     <Compile Include="Assets\Scripts\LoadGameButton.cs" />
+     <Compile Include="Assets\Scripts\LoadMainButton.cs" />
+     <Compile Include="Assets\Scripts\PauseController.cs" />
+     <Compile Include="Assets\Scripts\PauseParticleOnPause.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerDamagedSound.cs" />
      <Compile Include="Assets\Scripts\Point.cs" />
@@ -70,8 +74,11 @@
      <Compile Include="Assets\Scripts\PointSound.cs" />
      <Compile Include="Assets\Scripts\PointSpawner.cs" />
      <Compile Include="Assets\Scripts\PointSpawnRandomizer.cs" />
+     <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\ScoreText.cs" />
+     <Compile Include="Assets\Scripts\SelectOnEnable.cs" />
      <Compile Include="Assets\Scripts\SpeedGauge.cs" />
+     <Compile Include="Assets\Scripts\TimerHelper.cs" />
      <Compile Include="Assets\Scripts\TitleColorShift.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

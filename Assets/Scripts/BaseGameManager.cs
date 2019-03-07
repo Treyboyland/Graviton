@@ -53,6 +53,9 @@ public abstract class BaseGameManager : MonoBehaviour
 
         [Serializable]
         public class PlayerComboUpdated : UnityEvent<int> { }
+
+        [Serializable]
+        public class GamePaused : UnityEvent<bool> { }
     }
 
     /// <summary>
@@ -104,6 +107,11 @@ public abstract class BaseGameManager : MonoBehaviour
     /// Event fired when the player combo has been updated
     /// </summary>
     public Events.PlayerComboUpdated OnPlayerComboUpdated;
+
+    /// <summary>
+    /// Event invoked when the game has been paused
+    /// </summary>
+    public Events.GamePaused OnGamePaused;
 
     void Awake()
     {
