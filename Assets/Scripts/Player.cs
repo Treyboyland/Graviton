@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
         BaseGameManager.Manager.OnGamePaused.AddListener((paused) =>
         {
             acceptingInput = !paused;
+            animator.speed = paused ? 0 : 1;
         });
     }
 
@@ -262,12 +263,14 @@ public class Player : MonoBehaviour
 
         System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
         BaseGameManager.Manager.OnGamePaused.AddListener((paused) => TimerHelper.ToggleTimer(timer, paused));
+        Coroutine co = StartCoroutine(TimerHelper.DisableIfPaused(timer));
         timer.Start();
         while (timer.Elapsed.TotalSeconds < secondsOfInvincibility)
         {
             yield return null;
         }
         BaseGameManager.Manager.OnGamePaused.RemoveListener((paused) => TimerHelper.ToggleTimer(timer, paused));
+        StopCoroutine(co);
 
         animator.SetBool("Invincible", false);
     }

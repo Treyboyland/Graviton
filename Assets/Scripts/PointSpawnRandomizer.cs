@@ -82,6 +82,8 @@ public class PointSpawnRandomizer : MonoBehaviour
     /// </summary>
     bool spawning;
 
+    Coroutine pauseCoroutine;
+
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +92,7 @@ public class PointSpawnRandomizer : MonoBehaviour
         GameManager.Manager.OnPlayerComboUpdated.AddListener(CheckForSpawning);
         GameManager.Manager.OnResetPlayerCombo.AddListener(StopSpawning);
         GameManager.Manager.OnGamePaused.AddListener((paused) => TimerHelper.ToggleTimer(timer, paused));
+        pauseCoroutine = StartCoroutine(TimerHelper.DisableIfPaused(timer));
         if (comboThreshold == 0)
         {
             StartAppropriateSpawner();

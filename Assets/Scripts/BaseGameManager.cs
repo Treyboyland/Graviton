@@ -113,6 +113,17 @@ public abstract class BaseGameManager : MonoBehaviour
     /// </summary>
     public Events.GamePaused OnGamePaused;
 
+    bool paused = false;
+
+
+    public bool IsPaused
+    {
+        get
+        {
+            return paused;
+        }
+    }
+
     void Awake()
     {
         if (_instance != null && this != _instance)
@@ -122,5 +133,6 @@ public abstract class BaseGameManager : MonoBehaviour
         }
 
         _instance = this;
+        OnGamePaused.AddListener(state => paused = state);
     }
 }
