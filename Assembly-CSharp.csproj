@@ -58,11 +58,13 @@
      <Compile Include="Assets\Scripts\ComboCounter.cs" />
      <Compile Include="Assets\Scripts\CreditsCanvasController.cs" />
      <Compile Include="Assets\Scripts\CustomInputModule.cs" />
+     <Compile Include="Assets\Scripts\DistanceChecker.cs" />
      <Compile Include="Assets\Scripts\GameDifficulty.cs" />
      <Compile Include="Assets\Scripts\GameEvents.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameModifiers.cs" />
      <Compile Include="Assets\Scripts\GameWall.cs" />
+     <Compile Include="Assets\Scripts\GameWallHolder.cs" />
      <Compile Include="Assets\Scripts\LoadGameButton.cs" />
      <Compile Include="Assets\Scripts\LoadMainButton.cs" />
      <Compile Include="Assets\Scripts\PauseController.cs" />
@@ -77,9 +79,11 @@
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\ScoreText.cs" />
      <Compile Include="Assets\Scripts\SelectOnEnable.cs" />
+     <Compile Include="Assets\Scripts\SpawnLocation.cs" />
      <Compile Include="Assets\Scripts\SpeedGauge.cs" />
      <Compile Include="Assets\Scripts\TimerHelper.cs" />
      <Compile Include="Assets\Scripts\TitleColorShift.cs" />
+     <Compile Include="Assets\Scripts\ValidSpawnTester.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -115,6 +119,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\Spawns\Spawns-Blank.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />

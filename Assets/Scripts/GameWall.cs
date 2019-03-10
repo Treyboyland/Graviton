@@ -16,6 +16,17 @@ public class GameWall : MonoBehaviour
     [SerializeField]
     Color normalColor;
 
+    [SerializeField]
+    new Collider2D collider;
+
+    public Collider2D Collider
+    {
+        get
+        {
+            return collider;
+        }
+    }
+
     void Start()
     {
         SetColor(damaging ? damagingColor : normalColor);

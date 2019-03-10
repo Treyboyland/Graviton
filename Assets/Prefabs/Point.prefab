@@ -113,3 +113,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4546623665181916331}
   secondsToStayPerfect: 3
   secondsToFade: 5
+  collider: {fileID: 4546623665181916329}

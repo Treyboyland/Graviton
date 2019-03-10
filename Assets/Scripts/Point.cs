@@ -20,6 +20,17 @@ public class Point : MonoBehaviour
 
     bool perfect = true;
 
+    [SerializeField]
+    new Collider2D collider;
+
+    public Collider2D Collider
+    {
+        get
+        {
+            return collider;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (string.Compare(other.gameObject.tag, "Player", true) == 0)

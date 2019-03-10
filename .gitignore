@@ -50,3 +50,8 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+#Added by me
+[Ss]pawns/
+!Assets/[Ss]pawns
+

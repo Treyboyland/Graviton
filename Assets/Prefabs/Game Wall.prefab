@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3090980759218034898}
   - component: {fileID: 3090980759218034899}
   - component: {fileID: 3090980759218034897}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Game Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,3 +123,4 @@ MonoBehaviour:
   sprite: {fileID: 3090980759218034898}
   damagingColor: {r: 1, g: 0, b: 0, a: 1}
   normalColor: {r: 0, g: 1, b: 1, a: 1}
+  collider: {fileID: 3090980759218034899}
