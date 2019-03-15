@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml.Serialization;
+using System.IO;
 
 /// <summary>
 /// Holds the walls for the game
@@ -25,6 +27,13 @@ public class GameWallHolder : MonoBehaviour
     /// </summary>
     bool wallsGotten = false;
 
+    bool pointsReceived;
+
+    [SerializeField]
+    TextAsset pointXml;
+
+    SpawnLocations locations;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,5 +50,43 @@ public class GameWallHolder : MonoBehaviour
             wallsGotten = true;
             walls = GetComponentsInChildren<GameWall>();
         }
+    }
+
+    public void SetWallsDamaging(bool val)
+    {
+        if (!wallsGotten)
+        {
+            GetWalls();
+        }
+
+        foreach (GameWall wall in walls)
+        {
+            wall.IsDamaging = val;
+        }
+    }
+
+    void ParsePoints()
+    {
+        pointsReceived = true;
+
+        XmlSerializer serializer = new XmlSerializer(typeof(SpawnLocations));
+
+        using (StringReader reader = new StringReader(pointXml.text))
+        {
+            locations = (SpawnLocations)serializer.Deserialize(reader);
+        }
+
+        
+
+    }
+
+    public SpawnLocations GetSpawnLocations()
+    {
+        if (!pointsReceived)
+        {
+            ParsePoints();
+        }
+
+        return new SpawnLocations(locations);
     }
 }

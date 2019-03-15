@@ -27,6 +27,19 @@ public class GameWall : MonoBehaviour
         }
     }
 
+    public bool IsDamaging
+    {
+        get
+        {
+            return damaging;
+        }
+        set
+        {
+            damaging = value;
+            SetColor(damaging ? damagingColor : normalColor);    
+        }
+    }
+
     void Start()
     {
         SetColor(damaging ? damagingColor : normalColor);

@@ -52,5 +52,6 @@ public struct SpawnLocation
 [XmlRootAttribute("SpawnLocations")]
 public class SpawnLocations : List<SpawnLocation>
 {
-
+    public SpawnLocations() : base() { }
+    public SpawnLocations(List<SpawnLocation> loc) : base(loc) { }
 }

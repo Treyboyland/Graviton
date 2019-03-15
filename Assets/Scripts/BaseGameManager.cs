@@ -56,6 +56,9 @@ public abstract class BaseGameManager : MonoBehaviour
 
         [Serializable]
         public class GamePaused : UnityEvent<bool> { }
+
+        [Serializable]
+        public class GameOver : UnityEvent { }
     }
 
     /// <summary>
@@ -113,6 +116,11 @@ public abstract class BaseGameManager : MonoBehaviour
     /// </summary>
     public Events.GamePaused OnGamePaused;
 
+    /// <summary>
+    /// Event invoked when the game is over
+    /// </summary>
+    public Events.GameOver OnGameOver;
+
     bool paused = false;
 
 
@@ -121,6 +129,20 @@ public abstract class BaseGameManager : MonoBehaviour
         get
         {
             return paused;
+        }
+    }
+
+    /// <summary>
+    /// How long, in seconds, a game should last
+    /// </summary>
+    [SerializeField]
+    float gameTime;
+
+    public float GameTime
+    {
+        get
+        {
+            return gameTime;
         }
     }
 

@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\GameEvents.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameModifiers.cs" />
+     <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\GameWall.cs" />
      <Compile Include="Assets\Scripts\GameWallHolder.cs" />
      <Compile Include="Assets\Scripts\LoadGameButton.cs" />
