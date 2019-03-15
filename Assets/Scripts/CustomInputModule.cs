@@ -27,6 +27,7 @@ using UnityEngine.Serialization;
 
 
 //Shamelessy copied from https://bitbucket.org/Unity-Technologies/ui/src/0155c39e05ca5d7dcc97d9974256ef83bc122586/UnityEngine.UI/EventSystem/InputModules/StandaloneInputModule.cs?at=5.2&fileviewer=file-view-default
+//Modified based upon help from https://answers.unity.com/questions/1012705/unity-ui-mouse-clicks-clearing-selected-object-in.html (Commented out DeselectIfSelectionChanged)
 
 namespace UnityEngine.EventSystems
 {
