@@ -53,5 +53,6 @@ public struct SpawnLocation
 public class SpawnLocations : List<SpawnLocation>
 {
     public SpawnLocations() : base() { }
+    public SpawnLocations(int capacity) : base(capacity) { }
     public SpawnLocations(List<SpawnLocation> loc) : base(loc) { }
 }

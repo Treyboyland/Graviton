@@ -9,10 +9,13 @@ using System.IO;
 /// </summary>
 public class GameWallHolder : MonoBehaviour
 {
+    [SerializeField]
+    GameWall wallPrefab;
+
     /// <summary>
     /// An array of walls for the game
     /// </summary>
-    GameWall[] walls;
+    GameWall[] walls = new GameWall[0];
 
     public GameWall[] Walls
     {
@@ -27,17 +30,54 @@ public class GameWallHolder : MonoBehaviour
     /// </summary>
     bool wallsGotten = false;
 
-    bool pointsReceived;
+    /// <summary>
+    /// True if we have parsed the spawn point XML
+    /// </summary>
+    bool pointsReceived = false;
 
     [SerializeField]
     TextAsset pointXml;
 
-    SpawnLocations locations;
+    SpawnLocations locations = new SpawnLocations();
+
+    /// <summary>
+    /// Places where a point may spawn in this level
+    /// </summary>
+    /// <value></value>
+    public SpawnLocations Locations
+    {
+        get
+        {
+            return locations;
+        }
+        set
+        {
+            locations = value;
+        }
+    }
+
+    /// <summary>
+    /// The name that this level should have in XML
+    /// </summary>
+    [SerializeField]
+    string levelName;
+
+    /// <summary>
+    /// The name that this level should have in XML
+    /// </summary>
+    /// <value></value>
+    public string LevelName
+    {
+        get
+        {
+            return levelName;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        GetWalls();
+        //GetWalls();
     }
 
     /// <summary>
@@ -76,7 +116,7 @@ public class GameWallHolder : MonoBehaviour
             locations = (SpawnLocations)serializer.Deserialize(reader);
         }
 
-        
+
 
     }
 
@@ -88,5 +128,31 @@ public class GameWallHolder : MonoBehaviour
         }
 
         return new SpawnLocations(locations);
+    }
+
+    public void CreateLevel(LevelInfo level)
+    {
+        foreach (Wall wall in level.GameWalls)
+        {
+            GameWall childWall = Instantiate(wallPrefab, transform);
+            childWall.SetParameters(wall);
+        }
+        levelName = level.Name;
+        locations = new SpawnLocations(level.PointSpawns.Count);
+        foreach (SpawnLocation location in level.PointSpawns)
+        {
+            locations.Add(location);
+        }
+        GetWalls();
+
+    }
+
+    public void ClearGame()
+    {
+        locations.Clear();
+        foreach(GameWall wall in walls)
+        {
+            Destroy(wall.gameObject);
+        }
     }
 }

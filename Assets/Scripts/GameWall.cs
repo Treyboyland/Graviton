@@ -62,4 +62,13 @@ public class GameWall : MonoBehaviour
     {
         SetColor(damaging ? damagingColor : normalColor);
     }
+
+    public void SetParameters(Wall wallInfo)
+    {
+        Vector3 scale = new Vector3(wallInfo.ScaleX, wallInfo.ScaleY, wallInfo.ScaleZ);
+        Vector3 position = new Vector3(wallInfo.PosX, wallInfo.PosY, wallInfo.PosZ);
+        transform.localPosition = position;
+        transform.localScale = scale;
+        damaging = wallInfo.IsDamaging;
+    }
 }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7424552838091826784}
   - component: {fileID: 7424552838091826785}
+  - component: {fileID: 9213247652403626626}
   m_Layer: 0
   m_Name: Game Level Easy Blank
-  m_TagString: Untagged
+  m_TagString: GameLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +48,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e97bdd46f9ab34d95b37083dfb5441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointXml: {fileID: 0}
+  wallPrefab: {fileID: 0}
+  pointXml: {fileID: 4900000, guid: 3c6cda23f42456c49beedf8b1833ef8d, type: 3}
+  levelName: Blank
+--- !u!114 &9213247652403626626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424552838091826787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28e2c33747dce546a25351998dfa017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHolder: {fileID: 7424552838091826785}
+  point: {fileID: 7871507106293720076, guid: 6993712eeff73f944bbe9a8d2bc4b738, type: 3}
+  minPosition: {x: -4.5, y: -4}
+  maxPosition: {x: 4.5, y: 4}
+  increments: 0.15
+  distanceFromWall: 0.25
 --- !u!1001 &5614882522905353205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +136,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_Color.r
@@ -129,11 +155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
@@ -220,6 +241,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_Color.r
@@ -234,11 +260,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
@@ -315,6 +336,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_Color.r
@@ -329,11 +355,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
@@ -420,6 +441,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_Color.r
@@ -434,11 +460,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}

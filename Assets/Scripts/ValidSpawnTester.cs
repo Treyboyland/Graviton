@@ -25,13 +25,6 @@ public class ValidSpawnTester : MonoBehaviour
     [SerializeField]
     float distanceFromWall;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        wallHolder.GetWalls();
-        RunTest();
-    }
-
     bool PointToCloseToWall(Vector3 pos)
     {
         Vector2 newPos = pos;
@@ -58,7 +51,7 @@ public class ValidSpawnTester : MonoBehaviour
         {
             if (pointCollider.bounds.Intersects(wall.Collider.bounds))
             {
-                Debug.Log(point.transform.position + ": Point intersects: " + wall.name  + " (" + wall.Collider.bounds + ")");
+                Debug.Log(point.transform.position + ": Point intersects: " + wall.name + " (" + wall.Collider.bounds + ")");
                 return true;
             }
         }
@@ -66,8 +59,14 @@ public class ValidSpawnTester : MonoBehaviour
         return false;
     }
 
-    void RunTest()
+    /// <summary>
+    /// NOTE: This will modify the internal spawn list for the GameWallHolder this
+    /// is associated with
+    /// </summary>
+    /// <returns></returns>
+    public SpawnLocations GetValidSpawnLocations()
     {
+        wallHolder.GetWalls();
         SpawnLocations spawnLocations = new SpawnLocations();
         float xCheck = minPosition.x;
         float yCheck = maxPosition.y;
@@ -90,6 +89,24 @@ public class ValidSpawnTester : MonoBehaviour
             }
         }
 
+        return spawnLocations;
+    }
+
+    public void CreateLevel()
+    {
+        SpawnLocations spawnLocations = GetValidSpawnLocations();
+        wallHolder.Locations = spawnLocations;
+
+        LevelInfo info = new LevelInfo(wallHolder);
+
+        SaveXml(info);
+
+    }
+
+    public void RunTest()
+    {
+        SpawnLocations spawnLocations = GetValidSpawnLocations();
+
         Debug.Log("Valid Locations: " + spawnLocations.Count);
         if (spawnLocations.Count != 0)
         {
@@ -107,13 +124,41 @@ public class ValidSpawnTester : MonoBehaviour
         return dirString + "\\Spawns-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss-fff") + ".xml";
     }
 
+    string GetLevelFileName(string name)
+    {
+        string dirString = Application.dataPath + "\\..\\Spawns";
+        if (!Directory.Exists(dirString))
+        {
+            Directory.CreateDirectory(dirString);
+        }
+        return dirString + "\\Level-" + name + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss-fff") + ".xml";
+    }
+
     void SaveXml(SpawnLocations locations)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(SpawnLocations));
 
-        using (TextWriter tw = new StreamWriter(GetFileName()))
+        string filename = GetFileName();
+
+        using (TextWriter tw = new StreamWriter(filename))
         {
             serializer.Serialize(tw, locations);
+            Debug.LogWarning("Spawns Saved to file: \"" + filename + "\"");
         }
     }
+
+    void SaveXml(LevelInfo level)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(LevelInfo));
+
+        string filename = GetLevelFileName(level.Name);
+
+        using (TextWriter tw = new StreamWriter(filename))
+        {
+            serializer.Serialize(tw, level);
+            Debug.LogWarning("Level Saved to file: \"" + filename + "\"");
+        }
+    }
+
+
 }
