@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     Vector2 maxPos;
 
     [SerializeField]
-    Rigidbody2D rigidbody;
+    Rigidbody2D playerbody;
 
     [SerializeField]
     Animator animator;
@@ -285,7 +285,7 @@ public class Player : MonoBehaviour
         float newY = newPos.y + (movingDown ? -1.0f * speed : (movingUp ? speed : 0));
         newPos.y = newY;
 
-        rigidbody.MovePosition(newPos);
+        playerbody.MovePosition(newPos);
     }
 
 
@@ -329,6 +329,6 @@ public class Player : MonoBehaviour
             newPos.y = newY;
         }
 
-        rigidbody.MovePosition(newPos);
+        playerbody.MovePosition(newPos);
     }
 }
