@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BaseGameManager.cs" />
+     <Compile Include="Assets\Scripts\ChooseLevelBackButton.cs" />
+     <Compile Include="Assets\Scripts\ChooseLevelController.cs" />
      <Compile Include="Assets\Scripts\CloseGameButton.cs" />
      <Compile Include="Assets\Scripts\ComboCounter.cs" />
      <Compile Include="Assets\Scripts\CreditsCanvasController.cs" />
@@ -125,11 +127,13 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <None Include="Assets\Levels\Level-Blank-2019-04-26-04-18-20-643.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\Spawns\Spawns-Blank.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Levels\Level-Dice-2019-03-28-01-06-57-634.xml" />
+     <None Include="Assets\Levels\Level-Cross-2019-04-26-04-17-41-983.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />

@@ -9,6 +9,14 @@ public class LevelButton : MonoBehaviour
     [SerializeField]
     Button button;
 
+    public Button ButtonObject
+    {
+        get
+        {
+            return button;
+        }
+    }
+
     [SerializeField]
     TextMeshProUGUI textBox;
 
@@ -50,5 +58,10 @@ public class LevelButton : MonoBehaviour
     void SetData()
     {
         textBox.text = buttonName;
+    }
+
+    public void Select()
+    {
+        button.Select();
     }
 }

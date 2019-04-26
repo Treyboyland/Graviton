@@ -15,7 +15,7 @@ public class LevelParser : MonoBehaviour
 
     List<LevelInfo> levels;
 
-    Dictionary<string, LevelInfo> levelDictionary;
+    Dictionary<string, LevelInfo> levelDictionary = new Dictionary<string, LevelInfo>();
 
     /// <summary>
     /// Contains all the levels loaded for the game
@@ -29,7 +29,7 @@ public class LevelParser : MonoBehaviour
         }
     }
 
-    
+
     string chosenLevel;
 
     /// <summary>
@@ -55,6 +55,23 @@ public class LevelParser : MonoBehaviour
         get
         {
             return _instance;
+        }
+    }
+
+    /// <summary>
+    /// True if the levels have been parsed
+    /// </summary>
+    bool areLevelsParsed;
+
+    /// <summary>
+    /// True if the levels have been parsed
+    /// </summary>
+    /// <value></value>
+    public bool AreLevelsParsed
+    {
+        get
+        {
+            return areLevelsParsed;
         }
     }
 
@@ -113,7 +130,7 @@ public class LevelParser : MonoBehaviour
         return name + "-01";
     }
 
-    void ParseLevels()
+    public void ParseLevels()
     {
         //TODO: Do we want to add the ability to add to this from the file system?
 
@@ -129,7 +146,12 @@ public class LevelParser : MonoBehaviour
                     name = GetNextLevelString(name);
                 }
 
+                levelDictionary.Add(name, levelInfo);
             }
         }
+
+        areLevelsParsed = true;
+
+        Debug.LogWarning("Levels successfully parsed: " + levelDictionary.Count);
     }
 }

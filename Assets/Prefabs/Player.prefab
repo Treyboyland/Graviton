@@ -49,10 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   minSpeed: 0.3
-  maxSpeed: 0.5
+  maxSpeed: 0.4
   minPos: {x: -5, y: -4}
   maxPos: {x: 5, y: 4}
-  rigidbody: {fileID: 998685029}
+  playerbody: {fileID: 998685029}
   animator: {fileID: 8945046505226835081}
 --- !u!212 &8945046505587453409
 SpriteRenderer:

@@ -81,6 +81,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Wall Left
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,26 +156,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
 --- !u!4 &7424552839282721569 stripped
@@ -175,6 +175,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -241,26 +261,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
 --- !u!4 &5614882522401454157 stripped
@@ -280,6 +280,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -336,26 +356,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
 --- !u!4 &5614882522511809599 stripped
@@ -375,6 +375,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Bottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -440,26 +460,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
