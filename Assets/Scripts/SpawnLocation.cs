@@ -47,6 +47,16 @@ public struct SpawnLocation
         y = v.y;
         z = 0;
     }
+
+    public static implicit operator Vector3(SpawnLocation x)
+    {
+        return new Vector3(x.x, x.y, x.z);
+    }
+
+    public static implicit operator SpawnLocation(Vector3 x)
+    {
+        return new SpawnLocation(x);
+    }
 }
 
 [XmlRootAttribute("SpawnLocations")]

@@ -112,6 +112,154 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &791656882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3394024517231637710, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Level Easy Cross Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637710, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394024517231637709, guid: 7b36d1d744fe32a4bb0527b4d03c9b64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b36d1d744fe32a4bb0527b4d03c9b64, type: 3}
+--- !u!1001 &1228030891
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7424552838091826787, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Level Easy Blank
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826787, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a177719293a55c4f9e90a77fe37db3c, type: 3}
 --- !u!1001 &1251738161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123,6 +271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Level Easy Dice Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290353440693580939, guid: 060fe893b5f33a5418b4f193feb10834,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8290353440693580936, guid: 060fe893b5f33a5418b4f193feb10834,
         type: 3}

@@ -14,6 +14,9 @@ public class ValidSpawnTester : MonoBehaviour
     Point point;
 
     [SerializeField]
+    Player player;
+
+    [SerializeField]
     Vector2 minPosition;
 
     [SerializeField]
@@ -92,10 +95,79 @@ public class ValidSpawnTester : MonoBehaviour
         return spawnLocations;
     }
 
+    /// <summary>
+    /// Returns the first possible valid spawn location for the player
+    /// </summary>
+    /// <returns></returns>
+    public PlayerSpawn GetPlayerSpawnLocation()
+    {
+        wallHolder.GetWalls();
+
+        //Start with (0,0,0) and work out
+        float checkXPositive = 0;
+        float checkYPositive = 0;
+
+        float checkXNegative = 0;
+        float checkYNegative = 0;
+
+        while (checkYPositive <= maxPosition.y || checkYNegative >= minPosition.y ||
+        checkXPositive <= maxPosition.x || checkXNegative >= minPosition.x)
+        {
+            if (checkXPositive <= maxPosition.x)
+            {
+                if (checkYNegative >= minPosition.y)
+                {
+                    Vector3 pos = new Vector3(checkXPositive, checkYNegative);
+                    if (!PointToCloseToWall(pos))
+                    {
+                        return pos;
+                    }
+                }
+                if (checkYPositive <= maxPosition.y)
+                {
+                    Vector3 pos = new Vector3(checkXPositive, checkYPositive);
+                    if (!PointToCloseToWall(pos))
+                    {
+                        return pos;
+                    }
+                }
+            }
+            if (checkXNegative >= minPosition.x)
+            {
+                if (checkYNegative >= minPosition.y)
+                {
+                    Vector3 pos = new Vector3(checkXNegative, checkYNegative);
+                    if (!PointToCloseToWall(pos))
+                    {
+                        return pos;
+                    }
+                }
+                if (checkYPositive <= maxPosition.y)
+                {
+                    Vector3 pos = new Vector3(checkXNegative, checkYPositive);
+                    if (!PointToCloseToWall(pos))
+                    {
+                        return pos;
+                    }
+                }
+            }
+
+            checkXNegative -= increments;
+            checkXPositive += increments;
+            checkYNegative -= increments;
+            checkYPositive += increments;
+        }
+
+        Debug.LogWarning("Warning: No valid spawn location found.");
+
+        return new Vector3();
+    }
+
     public void CreateLevel()
     {
         SpawnLocations spawnLocations = GetValidSpawnLocations();
         wallHolder.Locations = spawnLocations;
+        wallHolder.PlayerSpawn = GetPlayerSpawnLocation();
 
         LevelInfo info = new LevelInfo(wallHolder);
 

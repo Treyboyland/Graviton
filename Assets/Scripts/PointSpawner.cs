@@ -62,6 +62,17 @@ public class PointSpawner : MonoBehaviour
 
         return p;
     }
+
+    public void DisableAllPoints()
+    {
+        foreach(Point prefab in pointPools.Keys)
+        {
+            foreach(Point p in pointPools[prefab])
+            {
+                p.Disable();
+            }
+        }
+    }
 }
 
 

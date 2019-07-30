@@ -17,6 +17,8 @@ public class LevelParser : MonoBehaviour
 
     Dictionary<string, LevelInfo> levelDictionary = new Dictionary<string, LevelInfo>();
 
+    string additionalLevelsPath;
+
     /// <summary>
     /// Contains all the levels loaded for the game
     /// </summary>
@@ -90,6 +92,7 @@ public class LevelParser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        additionalLevelsPath = Application.streamingAssetsPath + "/Levels";
         ParseLevels();
     }
 
@@ -149,6 +152,43 @@ public class LevelParser : MonoBehaviour
                 levelDictionary.Add(name, levelInfo);
             }
         }
+
+        //NOTE: This won't work for mobile
+        try
+        {
+            foreach(string filePath in Directory.GetFiles(additionalLevelsPath))
+            {
+                if(string.Compare(Path.GetExtension(filePath), ".xml", true) != 0)
+                {
+                    continue;
+                }
+                try
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(LevelInfo));
+                    using(StringReader reader = new StringReader(File.ReadAllText(filePath)))
+                    {
+                        LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
+                        string name = levelInfo.Name;
+                        if(levelDictionary.ContainsKey(name))
+                        {
+                            name = GetNextLevelString(name);
+                        }
+                        levelDictionary.Add(name, levelInfo);
+                    }
+                }
+                catch(Exception e)
+                {
+                    Debug.LogWarning("Unable to parse file \"" + filePath + "\": " + e);
+                    continue;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            Debug.LogWarning("We are unable to load external files for some reason: " + e);
+        }
+
+
 
         areLevelsParsed = true;
 

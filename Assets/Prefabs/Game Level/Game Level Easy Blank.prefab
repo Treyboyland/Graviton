@@ -65,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHolder: {fileID: 7424552838091826785}
   point: {fileID: 7871507106293720076, guid: 6993712eeff73f944bbe9a8d2bc4b738, type: 3}
+  player: {fileID: 0}
   minPosition: {x: -4.5, y: -4}
   maxPosition: {x: 4.5, y: 4}
   increments: 0.15

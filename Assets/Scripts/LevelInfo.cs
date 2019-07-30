@@ -11,21 +11,26 @@ public class LevelInfo
     [XmlAttribute("Name")]
     public string Name;
 
+    public PlayerSpawn PlayerSpawn;
+
     [XmlElement("SpawnLocation")]
     public SpawnLocations PointSpawns;
 
     [XmlElement("Wall")]
     public Walls GameWalls;
 
+
+
     public LevelInfo(GameWallHolder holder)
     {
         Name = holder.LevelName;
         PointSpawns = holder.Locations;
         GameWalls = new Walls(holder.Walls.Length);
-        for(int i = 0; i < holder.Walls.Length; i++)
+        for (int i = 0; i < holder.Walls.Length; i++)
         {
             GameWalls.Add(new Wall(holder.Walls[i]));
         }
+        PlayerSpawn = holder.PlayerSpawn;
     }
 
     public LevelInfo()
@@ -40,22 +45,22 @@ public class Wall
 {
     [XmlAttribute("PosX")]
     public float PosX;
-    
+
     [XmlAttribute("PosY")]
     public float PosY;
-    
+
     [XmlAttribute("PosZ")]
     public float PosZ;
-    
+
     [XmlAttribute("ScaleX")]
     public float ScaleX;
-    
+
     [XmlAttribute("ScaleY")]
     public float ScaleY;
-    
+
     [XmlAttribute("ScaleZ")]
     public float ScaleZ;
-    
+
     [XmlAttribute("IsDamaging")]
     public bool IsDamaging;
 
@@ -75,7 +80,7 @@ public class Wall
 
     public Wall()
     {
-        
+
     }
 }
 

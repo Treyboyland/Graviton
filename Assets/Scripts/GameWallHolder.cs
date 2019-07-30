@@ -57,6 +57,23 @@ public class GameWallHolder : MonoBehaviour
     }
 
     /// <summary>
+    /// Place where the player should spawn at the start of the game
+    /// </summary>
+    PlayerSpawn playerSpawn;
+
+    public PlayerSpawn PlayerSpawn
+    {
+        get
+        {
+            return playerSpawn;
+        }
+        set
+        {
+            playerSpawn = value;
+        }
+    }
+
+    /// <summary>
     /// The name that this level should have in XML
     /// </summary>
     [SerializeField]

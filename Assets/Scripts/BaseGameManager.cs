@@ -34,6 +34,9 @@ public abstract class BaseGameManager : MonoBehaviour
         public class PointsReceivedAtPosition : UnityEvent<Vector3, Color> { }
 
         [Serializable]
+        public class PointTextAtPosition : UnityEvent<Vector3, Color, int> { }
+
+        [Serializable]
         public class ScoreUpdated : UnityEvent<int> { }
 
         [Serializable]
@@ -120,6 +123,12 @@ public abstract class BaseGameManager : MonoBehaviour
     /// Event invoked when the game is over
     /// </summary>
     public Events.GameOver OnGameOver;
+
+    /// <summary>
+    /// Event fired when the the point text position should be fired
+    /// </summary>
+    public Events.PointTextAtPosition OnPointTextAtPosition;
+
 
     bool paused = false;
 

@@ -66,6 +66,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    [SerializeField]
+    new Collider2D collider;
+
+    public Collider2D Collider
+    {
+        get
+        {
+            return collider;
+        }
+    } 
+
     int score = 0;
 
     public int Score
@@ -126,6 +137,8 @@ public class Player : MonoBehaviour
 
     bool acceptingInput = true;
 
+    bool isGameOver = false;
+
     public bool AcceptingInput
     {
         get
@@ -150,11 +163,15 @@ public class Player : MonoBehaviour
             acceptingInput = !paused;
             animator.speed = paused ? 0 : 1;
         });
+        BaseGameManager.Manager.OnGameOver.AddListener(()=>
+        {
+            isGameOver = true;
+        });
     }
 
     void Update()
     {
-        if (acceptingInput)
+        if (acceptingInput && !isGameOver)
         {
             MoveCharacter2();
         }
@@ -162,7 +179,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (acceptingInput)
+        if (acceptingInput && !isGameOver)
         {
             ChangeTransform2();
         }

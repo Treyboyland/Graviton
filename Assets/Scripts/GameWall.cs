@@ -54,6 +54,7 @@ public class GameWall : MonoBehaviour
     {
         if(string.Compare(other.gameObject.tag, "Player", true) == 0)
         {
+            //TODO: Find vector position of contact
             BaseGameManager.Manager.OnPlayerHitWall.Invoke(damaging);
         }
     }

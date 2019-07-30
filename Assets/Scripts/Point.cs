@@ -35,7 +35,9 @@ public class Point : MonoBehaviour
     {
         if (string.Compare(other.gameObject.tag, "Player", true) == 0)
         {
-            BaseGameManager.Manager.OnPointsReceived.Invoke(GetPoints());
+            int points = GetPoints();
+            BaseGameManager.Manager.OnPointsReceived.Invoke(points);
+            BaseGameManager.Manager.OnPointTextAtPosition.Invoke(transform.position, spriteRenderer.color, points);
 
             if (perfect)
             {
@@ -53,6 +55,11 @@ public class Point : MonoBehaviour
 
             StartCoroutine(WaitThenFade());
         }
+    }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
     }
 
     void SetAlpha(float a)
@@ -116,6 +123,7 @@ public class Point : MonoBehaviour
             yield return null;
         }
 
+        //TODO: What happens to this when the game ends?
         BaseGameManager.Manager.OnGamePaused.RemoveListener((paused) => TimerHelper.ToggleTimer(timer, paused));
         StopCoroutine(co);
 

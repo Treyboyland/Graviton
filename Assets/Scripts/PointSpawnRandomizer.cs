@@ -73,6 +73,17 @@ public class PointSpawnRandomizer : MonoBehaviour
     [SerializeField]
     bool spawnAfterPointAcquired;
 
+    /// <summary>
+    /// True if we should only spawn the next point after the current point has been acquired
+    /// </summary>
+    public bool SpawnAfterPointAcquired
+    {
+        get
+        {
+            return spawnAfterPointAcquired;
+        }
+    }
+
     System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
 
     Point currentPoint;
@@ -92,6 +103,7 @@ public class PointSpawnRandomizer : MonoBehaviour
         GameManager.Manager.OnPlayerComboUpdated.AddListener(CheckForSpawning);
         GameManager.Manager.OnResetPlayerCombo.AddListener(StopSpawning);
         GameManager.Manager.OnGamePaused.AddListener((paused) => TimerHelper.ToggleTimer(timer, paused));
+        GameManager.Manager.OnGameOver.AddListener(StopSpawningEndGame);
         pauseCoroutine = StartCoroutine(TimerHelper.DisableIfPaused(timer));
         if (comboThreshold == 0)
         {
@@ -101,7 +113,7 @@ public class PointSpawnRandomizer : MonoBehaviour
 
     void StartAppropriateSpawner()
     {
-        if(spawnAfterPointAcquired)
+        if (spawnAfterPointAcquired)
         {
             StartCoroutine(RandomSpawnAfterPointAcquired());
         }
@@ -113,16 +125,23 @@ public class PointSpawnRandomizer : MonoBehaviour
 
     void StopSpawning()
     {
-        if(comboThreshold != 0)
+        if (comboThreshold != 0)
         {
             StopAllCoroutines();
             spawning = false;
         }
     }
 
+    void StopSpawningEndGame()
+    {
+        StopAllCoroutines();
+        spawning = false;
+        pointSpawner.DisableAllPoints();
+    }
+
     void CheckForSpawning(int currentCombo)
     {
-        if(!spawning && comboThreshold <= currentCombo)
+        if (!spawning && comboThreshold <= currentCombo)
         {
             StartAppropriateSpawner();
         }
@@ -148,12 +167,16 @@ public class PointSpawnRandomizer : MonoBehaviour
         currentPoint = p;
     }
 
-    Vector2 GetRandomLocation()
+    Vector3 GetRandomLocation()
     {
-        float x = UnityEngine.Random.Range(minSpawnLocation.x, maxSpawnLocation.x);
-        float y = UnityEngine.Random.Range(minSpawnLocation.y, maxSpawnLocation.y);
+        // float x = UnityEngine.Random.Range(minSpawnLocation.x, maxSpawnLocation.x);
+        // float y = UnityEngine.Random.Range(minSpawnLocation.y, maxSpawnLocation.y);
 
-        return new Vector2(x, y);
+        // return new Vector2(x, y);
+
+        SpawnLocations locations = LevelParser.Parser.LevelDictionary[LevelParser.Parser.ChosenLevel].PointSpawns;
+
+        return locations[UnityEngine.Random.Range(0, locations.Count)];
     }
 
     IEnumerator RandomSpawnAfterPointAcquired()

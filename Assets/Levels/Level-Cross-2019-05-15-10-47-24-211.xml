@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Cross">
+  <PlayerSpawn X="0" Y="0" Z="0" />
   <SpawnLocation X="-1.04999864" Y="4" Z="0" />
   <SpawnLocation X="-0.899998665" Y="4" Z="0" />
   <SpawnLocation X="-0.7499987" Y="4" Z="0" />

@@ -23,14 +23,16 @@ public class GameModifiers : MonoBehaviour
 
     [SerializeField]
     Player player;
+   
     [SerializeField]
-    PointSpawnRandomizer spawnRandomizer;
+    List<PointSpawnRandomizer> spawnRandomizers;
 
     // Start is called before the first frame update
     void Start()
     {
         BaseGameManager.Manager.OnPointsReceived.AddListener((points) => ModifyParameters(points));
         BaseGameManager.Manager.OnPlayerTakeDamage.AddListener(SlowDownPlayer);
+        BaseGameManager.Manager.OnPlayerTakeDamage.AddListener(ReducePlayerScore);
     }
 
     void ModifyParameters(int points)
@@ -38,6 +40,17 @@ public class GameModifiers : MonoBehaviour
         //UpdateGameSpeed();
         IncreasePlayerSpeed(points);
         UpdateSpawnRate();
+    }
+
+    void ReducePlayerScore()
+    {
+        int newScore = Mathf.Max(player.Score - 50, 0);
+        int difference = Mathf.Abs(player.Score - newScore);
+        if(difference != 0)
+        {
+            BaseGameManager.Manager.OnPointTextAtPosition.Invoke(player.transform.position, Color.red, difference);
+        }
+        player.Score = newScore;
     }
 
     void SlowDownPlayer()
@@ -57,7 +70,13 @@ public class GameModifiers : MonoBehaviour
 
     void UpdateSpawnRate()
     {
-        spawnRandomizer.SecondsBetweenSpawns = Mathf.Lerp(spawnRandomizer.StartSpawnDelay, endSpawnDelay, (float)player.Score / maxPointsSpawn);
+        foreach (PointSpawnRandomizer spawnRandomizer in spawnRandomizers)
+        {
+            if (spawnRandomizer.SpawnAfterPointAcquired)
+            {
+                spawnRandomizer.SecondsBetweenSpawns = Mathf.Lerp(spawnRandomizer.StartSpawnDelay, endSpawnDelay, (float)player.Score / maxPointsSpawn);
+            }
+        }
     }
 
 }

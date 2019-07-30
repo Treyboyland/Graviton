@@ -52,7 +52,13 @@ public class LevelButton : MonoBehaviour
     void Start()
     {
         SetData();
-        button.onClick.AddListener(() => LevelParser.Parser.ChosenLevel = buttonName);
+        button.onClick.AddListener(LoadGame);
+    }
+
+    void LoadGame()
+    {
+        LevelParser.Parser.ChosenLevel = buttonName;
+        SceneLoader.Loader.LoadMainGameScene();
     }
 
     void SetData()

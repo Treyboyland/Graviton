@@ -299,7 +299,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 67.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 69.6
+  m_fontSize: 162.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -797,9 +797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelXmls:
-  - {fileID: 4900000, guid: d54c3370d5692f04dae510d00f9e766c, type: 3}
-  - {fileID: 4900000, guid: 240246943a152f0479b42277aa3457f4, type: 3}
-  - {fileID: 4900000, guid: f5ab2925969b0674e9d2209dfa602c6e, type: 3}
+  - {fileID: 4900000, guid: fa82b5135fb897f4fba3231f035363a0, type: 3}
+  - {fileID: 4900000, guid: 17e194a51fd780443b9c0f31df71e063, type: 3}
+  - {fileID: 4900000, guid: 1a7ecb39c4d73394baecbbff0e512daa, type: 3}
 --- !u!4 &368865303
 Transform:
   m_ObjectHideFlags: 0
@@ -2565,7 +2565,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 67.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2583,7 +2583,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3061,7 +3061,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 67.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0

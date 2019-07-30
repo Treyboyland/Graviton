@@ -12,12 +12,15 @@ public class PauseController : MonoBehaviour
     Button resumeButton;
 
     BaseGameManager manager;    
+
+    bool isGameOver = false;
     
     // Start is called before the first frame update
     void Start()
     {
         ReAddListener();
         manager.OnGamePaused.AddListener(HandlePausing);
+        manager.OnGameOver.AddListener(() => isGameOver = true);
         pauseCanvas.SetActive(false);
     }
 
@@ -31,7 +34,7 @@ public class PauseController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Pause"))
+        if(Input.GetButtonDown("Pause") && !isGameOver)
         {
             if(!pauseCanvas.activeInHierarchy)
             {
