@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Editor Reticle
+    uniqueID: 3536806297
+    locked: 0

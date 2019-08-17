@@ -17,7 +17,7 @@ public class GameManager : BaseGameManager
         //     player.Score = player.Score + points;
         // });   
         OnPlayerHitWall.AddListener(DamagePlayer);
-        SceneLoader.Loader.OnSceneChanged.AddListener(DestroyIfOnMain);
+        //SceneLoader.Loader.OnSceneChanged.AddListener(DestroyIfOnMain);
     }
 
     void FindPlayer()
@@ -31,7 +31,7 @@ public class GameManager : BaseGameManager
     void DamagePlayer(bool damaging)
     {
         FindPlayer();
-        if(!player.IsInvincible() && damaging)
+        if(player != null && !player.IsInvincible() && damaging)
         {
             OnGrantPlayerInvincibility.Invoke(secondsOfInvincibility);
             OnPlayerTakeDamage.Invoke();

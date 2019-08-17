@@ -50,6 +50,13 @@ public class GameWall : MonoBehaviour
         sprite.color = c;
     }
 
+    public void SetSpriteAlpha(float alpha)
+    {
+        Color c = sprite.color;
+        c.a = alpha;
+        sprite.color = c;
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if(string.Compare(other.gameObject.tag, "Player", true) == 0)

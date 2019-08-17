@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Level xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Cross">
+<Level xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Dice">
   <PlayerSpawn X="0" Y="0" Z="0" />
   <SpawnLocation X="-4.5" Y="4" Z="0" />
   <SpawnLocation X="-4.35" Y="4" Z="0" />
@@ -2908,8 +2908,9 @@
   <Wall PosX="5" PosY="0" PosZ="0" ScaleX="0.25" ScaleY="10" ScaleZ="1" IsDamaging="false" />
   <Wall PosX="0" PosY="4.8752" PosZ="0" ScaleX="10" ScaleY="0.25" ScaleZ="1" IsDamaging="false" />
   <Wall PosX="0" PosY="-4.8752" PosZ="0" ScaleX="10" ScaleY="0.25" ScaleZ="1" IsDamaging="false" />
-  <Wall PosX="-3.125" PosY="3" PosZ="0" ScaleX="3.5" ScaleY="3.5" ScaleZ="1" IsDamaging="true" />
-  <Wall PosX="3.125" PosY="3" PosZ="0" ScaleX="3.5" ScaleY="3.5" ScaleZ="1" IsDamaging="true" />
-  <Wall PosX="-3.125" PosY="-3" PosZ="0" ScaleX="3.5" ScaleY="3.5" ScaleZ="1" IsDamaging="true" />
-  <Wall PosX="3.125" PosY="-3" PosZ="0" ScaleX="3.5" ScaleY="3.5" ScaleZ="1" IsDamaging="true" />
+  <Wall PosX="-2.5" PosY="2.5" PosZ="0" ScaleX="1" ScaleY="1" ScaleZ="1" IsDamaging="false" />
+  <Wall PosX="2.5" PosY="2.5" PosZ="0" ScaleX="1" ScaleY="1" ScaleZ="1" IsDamaging="false" />
+  <Wall PosX="-2.5" PosY="-2.5" PosZ="0" ScaleX="1" ScaleY="1" ScaleZ="1" IsDamaging="false" />
+  <Wall PosX="2.5" PosY="-2.5" PosZ="0" ScaleX="1" ScaleY="1" ScaleZ="1" IsDamaging="false" />
+  <Wall PosX="0" PosY="0" PosZ="0" ScaleX="1" ScaleY="1" ScaleZ="1" IsDamaging="false" />
 </Level>

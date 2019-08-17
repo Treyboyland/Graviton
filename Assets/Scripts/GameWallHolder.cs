@@ -102,19 +102,15 @@ public class GameWallHolder : MonoBehaviour
     /// </summary>
     public void GetWalls()
     {
-        if (!wallsGotten)
-        {
-            wallsGotten = true;
-            walls = GetComponentsInChildren<GameWall>();
-        }
+
+        wallsGotten = true;
+        walls = GetComponentsInChildren<GameWall>();
+
     }
 
     public void SetWallsDamaging(bool val)
     {
-        if (!wallsGotten)
-        {
-            GetWalls();
-        }
+        GetWalls();
 
         foreach (GameWall wall in walls)
         {
@@ -167,7 +163,7 @@ public class GameWallHolder : MonoBehaviour
     public void ClearGame()
     {
         locations.Clear();
-        foreach(GameWall wall in walls)
+        foreach (GameWall wall in walls)
         {
             Destroy(wall.gameObject);
         }

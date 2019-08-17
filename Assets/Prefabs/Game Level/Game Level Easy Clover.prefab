@@ -92,26 +92,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Wall Bottom Center
       objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_RootOrder
@@ -152,20 +132,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!1001 &2385180310816492221
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7267584329105374706}
-    m_Modifications:
-    - target: {fileID: 3090980759218034901, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Wall Left Center
-      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: damaging
@@ -185,6 +151,20 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
+--- !u!1001 &2385180310816492221
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7267584329105374706}
+    m_Modifications:
+    - target: {fileID: 3090980759218034901, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Wall Left Center
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -226,20 +206,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!1001 &3373665997808730440
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7267584329105374706}
-    m_Modifications:
-    - target: {fileID: 3090980759218034901, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Wall Right Center
-      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: damaging
@@ -259,6 +225,20 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
+--- !u!1001 &3373665997808730440
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7267584329105374706}
+    m_Modifications:
+    - target: {fileID: 3090980759218034901, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Wall Right Center
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -300,20 +280,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!1001 &3806712590165899379
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7267584329105374706}
-    m_Modifications:
-    - target: {fileID: 3090980759218034901, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Wall Top Center
-      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: damaging
@@ -333,6 +299,20 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
+--- !u!1001 &3806712590165899379
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7267584329105374706}
+    m_Modifications:
+    - target: {fileID: 3090980759218034901, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Wall Top Center
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -373,6 +353,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}

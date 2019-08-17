@@ -131,7 +131,9 @@ public class Player : MonoBehaviour
         set
         {
             combo = value;
+            //Debug.LogWarning("Player combo: " + combo);
             BaseGameManager.Manager.OnPlayerComboUpdated.Invoke(combo);
+            MusicController.Instance.OnSetComboLevel.Invoke(combo);
         }
     }
 
