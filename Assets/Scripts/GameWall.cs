@@ -79,4 +79,10 @@ public class GameWall : MonoBehaviour
         transform.localScale = scale;
         damaging = wallInfo.IsDamaging;
     }
+
+    public bool ContainsPoint(Vector3 point)
+    {
+        Debug.LogWarning(point);
+        return collider.bounds.Contains(point);
+    }
 }

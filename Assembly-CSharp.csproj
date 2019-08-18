@@ -75,10 +75,14 @@
      <Compile Include="Assets\Scripts\GameModifiers.cs" />
      <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\GameWall.cs" />
-     <Compile Include="Assets\Scripts\GameWallAnchor.cs" />
      <Compile Include="Assets\Scripts\GameWallHolder.cs" />
      <Compile Include="Assets\Scripts\HighScoreController.cs" />
      <Compile Include="Assets\Scripts\HighScoreKeeper.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\GameWallAnchor.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\GameWallAnchorPool.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\LevelEditorController.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\ReticleController.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\ReticlePiece.cs" />
      <Compile Include="Assets\Scripts\LevelButton.cs" />
      <Compile Include="Assets\Scripts\LevelInfo.cs" />
      <Compile Include="Assets\Scripts\LevelParser.cs" />
@@ -97,7 +101,6 @@
      <Compile Include="Assets\Scripts\PointSpawner.cs" />
      <Compile Include="Assets\Scripts\PointSpawnRandomizer.cs" />
      <Compile Include="Assets\Scripts\PointTextPool.cs" />
-     <Compile Include="Assets\Scripts\ReticleController.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\ScoreText.cs" />
      <Compile Include="Assets\Scripts\SelectOnEnable.cs" />
