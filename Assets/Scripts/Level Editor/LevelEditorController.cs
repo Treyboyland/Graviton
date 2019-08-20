@@ -11,6 +11,8 @@ public class LevelEditorController : MonoBehaviour
     [SerializeField]
     GameWallAnchorPool wallAnchorPool;
 
+    GameWallAnchor currentAnchor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,14 @@ public class LevelEditorController : MonoBehaviour
                 if (walls.Count == 0)
                 {
                     //TODO: Place Wall
+                    GameWallAnchor anchor = wallAnchorPool.GetObject();
+                    anchor.ShouldScale = true;
+                    //anchor.ShouldTrack = false;
+                    anchor.transform.position = reticle.transform.position;
+                    anchor.Reticle = reticle;
+                    currentAnchor = anchor;
+                    currentAnchor.gameObject.SetActive(true);
+                    reticle.OnFlicker.Invoke();
                 }
                 else
                 {
@@ -69,6 +79,12 @@ public class LevelEditorController : MonoBehaviour
                         wall.IsDamaging = !wall.IsDamaging;
                     }
                 }
+            }
+            else
+            {
+                currentAnchor.ShouldScale = false;
+                currentAnchor.ShouldTrack = false;
+                reticle.OnStopFlickering.Invoke();   
             }
         }
     }
