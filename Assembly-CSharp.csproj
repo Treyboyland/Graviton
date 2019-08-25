@@ -78,6 +78,11 @@
      <Compile Include="Assets\Scripts\GameWallHolder.cs" />
      <Compile Include="Assets\Scripts\HighScoreController.cs" />
      <Compile Include="Assets\Scripts\HighScoreKeeper.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\Actions\ActionPlaceWall.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\Actions\ActionSetWall.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\Actions\ActionToggleWallDamagingState.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\Actions\ILevelEditorAction.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\Actions\UndoRedoLevelEditorScript.cs" />
      <Compile Include="Assets\Scripts\Level Editor\GameWallAnchor.cs" />
      <Compile Include="Assets\Scripts\Level Editor\GameWallAnchorPool.cs" />
      <Compile Include="Assets\Scripts\Level Editor\LevelEditorController.cs" />

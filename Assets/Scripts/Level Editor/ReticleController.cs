@@ -50,6 +50,25 @@ public class ReticleController : MonoBehaviour
         }
     }
 
+
+    bool shouldMove = true;
+
+    /// <summary>
+    /// True if the reticle should move
+    /// </summary>
+    /// <value></value>
+    public bool ShouldMove
+    {
+        get
+        {
+            return shouldMove;
+        }
+        set
+        {
+            shouldMove = value;
+        }
+    }
+
     [SerializeField]
     Restrictions restrictions;
 
@@ -107,12 +126,12 @@ public class ReticleController : MonoBehaviour
         if (left || right)
         {
             //If for some reason both are false and we are in here, don't move
-            distance.x = (left ? -1 : right ? 1 : 0) * speed * Time.deltaTime;
+            distance.x = (left ? -1 : (right ? 1 : 0)) * speed * Time.deltaTime;
         }
         if (up || down)
         {
             //If for some reason both are false and we are in here, don't move
-            distance.y = (down ? -1 : up ? 1 : 0) * speed * Time.deltaTime;
+            distance.y = (down ? -1 : (up ? 1 : 0)) * speed * Time.deltaTime;
         }
 
         //Bound positions

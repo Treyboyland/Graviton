@@ -10,6 +10,14 @@ public class GameWallAnchor : MonoBehaviour
     [SerializeField]
     GameWall gameWall;
 
+    public GameWall GameWall
+    {
+        get
+        {
+            return gameWall;
+        }
+    }
+
     /// <summary>
     /// Level that the game wall should be parented to on destruction
     /// </summary>
@@ -65,6 +73,16 @@ public class GameWallAnchor : MonoBehaviour
         {
             SetScale();
         }
+    }
+
+    public void ParentWallToLevel()
+    {
+        gameLevel.transform.SetParent(gameLevel.transform);
+    }
+
+    public void ParentWallToAnchor()
+    {
+        gameLevel.transform.SetParent(transform);
     }
 
     void SetScale()

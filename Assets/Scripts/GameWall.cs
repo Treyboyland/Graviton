@@ -82,7 +82,6 @@ public class GameWall : MonoBehaviour
 
     public bool ContainsPoint(Vector3 point)
     {
-        Debug.LogWarning(point);
         return collider.bounds.Contains(point);
     }
 }
