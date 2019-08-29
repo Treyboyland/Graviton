@@ -21,6 +21,14 @@ public class ReticleController : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    float fastMultiplier;
+
+    [SerializeField]
+    float slowMultiplier;
+
+    float multiplier = 1.0f;
+
     public class Events
     {
         [Serializable]
@@ -86,7 +94,31 @@ public class ReticleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetMultiplier();
         DetermineMovement();
+    }
+
+    /// <summary>
+    /// Modifies speed of reticle movement if one of the buttons is held down
+    /// </summary>
+    void SetMultiplier()
+    {
+        bool fast = Input.GetButton("SpeedUp");
+        bool slow = Input.GetButton("SlowDown");
+
+        if((!fast && !slow) || (fast && slow))
+        {
+            multiplier = 1;
+        }
+        else if(fast)
+        {
+            multiplier = 2f;
+        }
+        else
+        {
+            multiplier = 0.5f;
+        }
+        
     }
 
     void DetermineMovement()
@@ -126,12 +158,12 @@ public class ReticleController : MonoBehaviour
         if (left || right)
         {
             //If for some reason both are false and we are in here, don't move
-            distance.x = (left ? -1 : (right ? 1 : 0)) * speed * Time.deltaTime;
+            distance.x = (left ? -1 : (right ? 1 : 0)) * multiplier * speed * Time.deltaTime;
         }
         if (up || down)
         {
             //If for some reason both are false and we are in here, don't move
-            distance.y = (down ? -1 : (up ? 1 : 0)) * speed * Time.deltaTime;
+            distance.y = (down ? -1 : (up ? 1 : 0)) * multiplier * speed * Time.deltaTime;
         }
 
         //Bound positions
