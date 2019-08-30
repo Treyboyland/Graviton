@@ -94,8 +94,11 @@ public class ReticleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetMultiplier();
-        DetermineMovement();
+        if (shouldMove)
+        {
+            SetMultiplier();
+            DetermineMovement();
+        }
     }
 
     /// <summary>
@@ -106,11 +109,11 @@ public class ReticleController : MonoBehaviour
         bool fast = Input.GetButton("SpeedUp");
         bool slow = Input.GetButton("SlowDown");
 
-        if((!fast && !slow) || (fast && slow))
+        if ((!fast && !slow) || (fast && slow))
         {
             multiplier = 1;
         }
-        else if(fast)
+        else if (fast)
         {
             multiplier = 2f;
         }
@@ -118,7 +121,7 @@ public class ReticleController : MonoBehaviour
         {
             multiplier = 0.5f;
         }
-        
+
     }
 
     void DetermineMovement()

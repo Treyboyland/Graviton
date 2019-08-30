@@ -11,6 +11,21 @@ public class LevelEditorController : MonoBehaviour
     [SerializeField]
     GameWallAnchorPool wallAnchorPool;
 
+    bool shouldHandleActions = true;
+
+    public bool ShouldHandleActions
+    {
+        get
+        {
+            return shouldHandleActions;
+        }
+        set
+        {
+            shouldHandleActions = value;
+        }
+    }
+
+
     GameWallAnchor currentAnchor;
 
     // Start is called before the first frame update
@@ -22,7 +37,10 @@ public class LevelEditorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleActions();
+        if (shouldHandleActions)
+        {
+            HandleActions();
+        }
     }
 
     /// <summary>
@@ -84,7 +102,7 @@ public class LevelEditorController : MonoBehaviour
             {
                 currentAnchor.ShouldScale = false;
                 currentAnchor.ShouldTrack = false;
-                reticle.OnStopFlickering.Invoke();   
+                reticle.OnStopFlickering.Invoke();
             }
         }
     }

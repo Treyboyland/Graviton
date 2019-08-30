@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\Level Editor\Actions\ActionToggleWallDamagingState.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Actions\ILevelEditorAction.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Actions\UndoRedoLevelEditorScript.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\EditorEnablers.cs" />
      <Compile Include="Assets\Scripts\Level Editor\EditorTestSpawns.cs" />
      <Compile Include="Assets\Scripts\Level Editor\GameWallAnchor.cs" />
      <Compile Include="Assets\Scripts\Level Editor\GameWallAnchorPool.cs" />

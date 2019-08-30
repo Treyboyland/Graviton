@@ -76,6 +76,20 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         return temp;
     }
 
+    public List<T> GetActiveObjects()
+    {
+        List<T> toReturn = new List<T>();
+        foreach (T item in objectPool)
+        {
+            if (item.gameObject.activeInHierarchy)
+            {
+                toReturn.Add(item);
+            }
+        }
+
+        return toReturn;
+    }
+
     /// <summary>
     /// Initializes the pool with objects
     /// </summary>
