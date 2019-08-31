@@ -21,20 +21,20 @@ public class GameWallAnchor : MonoBehaviour
     /// <summary>
     /// Level that the game wall should be parented to on destruction
     /// </summary>
-    GameLevel gameLevel;
+    GameWallHolder wallHolder;
 
     /// <summary>
     /// Level that the game wall should be parented to on destruction
     /// </summary>
-    public GameLevel GameLevel
+    public GameWallHolder WallHolder
     {
         get
         {
-            return gameLevel;
+            return wallHolder;
         }
         set
         {
-            gameLevel = value;
+            wallHolder = value;
         }
     }
 
@@ -77,12 +77,12 @@ public class GameWallAnchor : MonoBehaviour
 
     public void ParentWallToLevel()
     {
-        gameLevel.transform.SetParent(gameLevel.transform);
+        wallHolder.transform.SetParent(wallHolder.transform);
     }
 
     public void ParentWallToAnchor()
     {
-        gameLevel.transform.SetParent(transform);
+        wallHolder.transform.SetParent(transform);
     }
 
     void SetScale()

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
+using System;
 
 public class LevelEditorController : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class LevelEditorController : MonoBehaviour
 
     [SerializeField]
     GameWallAnchorPool wallAnchorPool;
+
+    [SerializeField]
+    GameWallHolder wallHolder;
+
 
     bool shouldHandleActions = true;
 
@@ -25,6 +31,16 @@ public class LevelEditorController : MonoBehaviour
         }
     }
 
+    public class Events
+    {
+        [Serializable]
+        public class WallPlaced : UnityEvent { }
+    }
+
+    /// <summary>
+    /// Invoked when a wall has been placed or 
+    /// </summary>
+    public Events.WallPlaced OnWallPlaced;
 
     GameWallAnchor currentAnchor;
 
@@ -86,9 +102,11 @@ public class LevelEditorController : MonoBehaviour
                     //anchor.ShouldTrack = false;
                     anchor.transform.position = reticle.transform.position;
                     anchor.Reticle = reticle;
+                    anchor.WallHolder = wallHolder;
                     currentAnchor = anchor;
                     currentAnchor.gameObject.SetActive(true);
                     reticle.OnFlicker.Invoke();
+                    OnWallPlaced.Invoke();
                 }
                 else
                 {
@@ -103,6 +121,7 @@ public class LevelEditorController : MonoBehaviour
                 currentAnchor.ShouldScale = false;
                 currentAnchor.ShouldTrack = false;
                 reticle.OnStopFlickering.Invoke();
+                OnWallPlaced.Invoke();
             }
         }
     }

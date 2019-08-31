@@ -13,10 +13,32 @@ public class EditorTestSpawns : MonoBehaviour
     [SerializeField]
     PointSpawner pointSpawner;
 
+    [SerializeField]
+    Point pointPrefab;
+
+    bool shouldTest = true;
+
+    public bool ShouldTest
+    {
+        get
+        {
+            return shouldTest;
+        }  
+        set
+        {
+            shouldTest = value;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    public void RemovePoints()
+    {
+        pointSpawner.DisableAllPoints();
     }
 
     void TestSpawns()
@@ -26,7 +48,21 @@ public class EditorTestSpawns : MonoBehaviour
         var anchors = anchorPool.GetActiveObjects();
         foreach (var anchor in anchors)
         {
+            anchor.ParentWallToLevel();
+        }
 
+        var spawns = spawnTester.GetValidSpawnLocations();
+
+        foreach (var spawn in spawns)
+        {
+            Point p = pointSpawner.GetGamePoint(pointPrefab);
+            p.transform.position = spawn;
+            p.gameObject.SetActive(true);
+        }
+
+        foreach (var anchor in anchors)
+        {
+            anchor.ParentWallToAnchor();
         }
     }
 
