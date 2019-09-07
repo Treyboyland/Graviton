@@ -175,6 +175,17 @@ public class ValidSpawnTester : MonoBehaviour
 
     }
 
+    public void CreateLevel(string path)
+    {
+        SpawnLocations spawnLocations = GetValidSpawnLocations();
+        wallHolder.Locations = spawnLocations;
+        wallHolder.PlayerSpawn = GetPlayerSpawnLocation();
+
+        LevelInfo info = new LevelInfo(wallHolder);
+
+        SaveXml(info, path);
+    }
+
     public void RunTest()
     {
         SpawnLocations spawnLocations = GetValidSpawnLocations();
@@ -216,6 +227,17 @@ public class ValidSpawnTester : MonoBehaviour
         {
             serializer.Serialize(tw, locations);
             Debug.LogWarning("Spawns Saved to file: \"" + filename + "\"");
+        }
+    }
+
+    void SaveXml(LevelInfo level, string path)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(LevelInfo));
+
+        using (TextWriter tw = new StreamWriter(path))
+        {
+            serializer.Serialize(tw, level);
+            Debug.LogWarning("Level Saved to file: \"" + path + "\"");
         }
     }
 

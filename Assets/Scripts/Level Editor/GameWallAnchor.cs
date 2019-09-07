@@ -75,6 +75,11 @@ public class GameWallAnchor : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        LocalScale = new Vector3(0.5f, 0.5f, LocalScale.z);
+    }
+
     public void ParentWallToLevel()
     {
         wallHolder.transform.SetParent(wallHolder.transform);

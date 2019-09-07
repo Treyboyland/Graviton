@@ -11,7 +11,7 @@ public class LevelEditorMenuController : MonoBehaviour
     [SerializeField]
     Button backButton;
 
-    
+
     [SerializeField]
     ReticleController reticle;
 
@@ -20,6 +20,9 @@ public class LevelEditorMenuController : MonoBehaviour
 
     [SerializeField]
     EditorTestSpawns spawnTester;
+
+    [SerializeField]
+    SymmetricWallPlacer symmetricPlacer;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,7 @@ public class LevelEditorMenuController : MonoBehaviour
         reticle.ShouldMove = false;
         spawnTester.ShouldTest = false;
         levelEditor.ShouldHandleActions = false;
+        symmetricPlacer.ShouldChange = false;
         menu.SetActive(true);
         backButton.Select();
     }
@@ -49,6 +53,7 @@ public class LevelEditorMenuController : MonoBehaviour
         reticle.ShouldMove = true;
         levelEditor.ShouldHandleActions = true;
         spawnTester.ShouldTest = true;
+        symmetricPlacer.ShouldChange = true;
     }
 
     // Update is called once per frame

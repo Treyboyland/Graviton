@@ -34,7 +34,7 @@ public class LevelEditorController : MonoBehaviour
     public class Events
     {
         [Serializable]
-        public class WallPlaced : UnityEvent { }
+        public class WallPlaced : UnityEvent<GameWallAnchor> { }
     }
 
     /// <summary>
@@ -86,6 +86,8 @@ public class LevelEditorController : MonoBehaviour
         return toReturn;
     }
 
+
+
     void HandleActions()
     {
         if (Input.GetButtonDown("Submit"))
@@ -106,7 +108,7 @@ public class LevelEditorController : MonoBehaviour
                     currentAnchor = anchor;
                     currentAnchor.gameObject.SetActive(true);
                     reticle.OnFlicker.Invoke();
-                    OnWallPlaced.Invoke();
+                    OnWallPlaced.Invoke(null);
                 }
                 else
                 {
@@ -121,8 +123,25 @@ public class LevelEditorController : MonoBehaviour
                 currentAnchor.ShouldScale = false;
                 currentAnchor.ShouldTrack = false;
                 reticle.OnStopFlickering.Invoke();
-                OnWallPlaced.Invoke();
+                OnWallPlaced.Invoke(currentAnchor);
             }
+        }
+        else if (Input.GetButtonDown("Delete"))
+        {
+            foreach (GameWall wall in GetGameWallsWithPoint(reticle.transform.position))
+            {
+                if (wall.IsDeletable)
+                {
+                    //TODO: This shouldn't run while we determine 
+                    GameWallAnchor gwa = wall.GetComponentInParent<GameWallAnchor>();
+                    if (gwa != null)
+                    {
+                        gwa.gameObject.SetActive(false);
+                    }
+                }
+            }
+
+
         }
     }
 
