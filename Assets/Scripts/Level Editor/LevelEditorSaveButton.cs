@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Globalization;
 using System.IO;
+using UnityEngine.Events;
 
 public class LevelEditorSaveButton : MonoBehaviour
 {
@@ -26,21 +27,37 @@ public class LevelEditorSaveButton : MonoBehaviour
 
     List<string> nounList = new List<string>();
 
+    public class Events
+    {
+        [Serializable]
+        public class LevelCreated : UnityEvent<string> { }
+    }
+
+    public Events.LevelCreated OnLevelCreated;
+
     // Start is called before the first frame update
     void Start()
     {
         button.onClick.AddListener(SaveLevel);
+        OnLevelCreated.AddListener((unused) => button.interactable = false);
     }
 
-    void ParseFile(List<string> list, string file)
+    private void OnEnable()
+    {
+        button.interactable = true;
+    }
+
+    void ParseFile(ref List<string> list, string file)
     {
         list = new List<string>(file.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
     }
 
     void ParseTextFiles()
     {
-        ParseFile(adjectiveList, adjectivesTxt.text);
-        ParseFile(nounList, nounsTxt.text);
+        ParseFile(ref adjectiveList, adjectivesTxt.text);
+        Debug.LogWarning(adjectiveList.AsString());
+        ParseFile(ref nounList, nounsTxt.text);
+        Debug.LogWarning(nounList.AsString());
         wasTextParsed = true;
     }
 
@@ -55,7 +72,7 @@ public class LevelEditorSaveButton : MonoBehaviour
 
         return info.ToTitleCase(adjectiveList.GetRandomObject()) +
             info.ToTitleCase(adjectiveList.GetRandomObject()) +
-            info.ToTitleCase(nounList.GetRandomObject()) + ".xml";
+            info.ToTitleCase(nounList.GetRandomObject());
     }
 
     void SaveLevel()
@@ -66,8 +83,10 @@ public class LevelEditorSaveButton : MonoBehaviour
             Directory.CreateDirectory(directory);
         }
 
-        string path = directory + "/" + GetLevelFileName();
+        string levelName = GetLevelFileName();
+        string path = directory + "/" + levelName + ".xml";
+        tester.CreateLevel(path, levelName);
 
-        tester.CreateLevel(path);
+        OnLevelCreated.Invoke(levelName);
     }
 }

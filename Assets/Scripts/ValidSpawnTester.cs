@@ -175,13 +175,14 @@ public class ValidSpawnTester : MonoBehaviour
 
     }
 
-    public void CreateLevel(string path)
+    public void CreateLevel(string path, string levelName)
     {
         SpawnLocations spawnLocations = GetValidSpawnLocations();
         wallHolder.Locations = spawnLocations;
         wallHolder.PlayerSpawn = GetPlayerSpawnLocation();
 
         LevelInfo info = new LevelInfo(wallHolder);
+        info.Name = levelName;
 
         SaveXml(info, path);
     }
