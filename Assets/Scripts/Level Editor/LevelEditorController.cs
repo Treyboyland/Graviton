@@ -103,6 +103,7 @@ public class LevelEditorController : MonoBehaviour
                     anchor.ShouldScale = true;
                     //anchor.ShouldTrack = false;
                     anchor.transform.position = reticle.transform.position;
+                    anchor.LocalScale = new Vector3(0.5f, 0.5f, anchor.LocalScale.z);
                     anchor.Reticle = reticle;
                     anchor.WallHolder = wallHolder;
                     currentAnchor = anchor;

@@ -35,16 +35,24 @@ public class LevelEditorSaveButton : MonoBehaviour
 
     public Events.LevelCreated OnLevelCreated;
 
+    bool saveButtonUsed = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        button.onClick.AddListener(SaveLevel);
-        OnLevelCreated.AddListener((unused) => button.interactable = false);
+        button.onClick.AddListener(() =>
+        {
+            if (!saveButtonUsed)
+            {
+                SaveLevel();
+            }
+        });
+        OnLevelCreated.AddListener((unused) => saveButtonUsed = true);
     }
 
     private void OnEnable()
     {
-        button.interactable = true;
+        saveButtonUsed = false;
     }
 
     void ParseFile(ref List<string> list, string file)
@@ -55,9 +63,9 @@ public class LevelEditorSaveButton : MonoBehaviour
     void ParseTextFiles()
     {
         ParseFile(ref adjectiveList, adjectivesTxt.text);
-        Debug.LogWarning(adjectiveList.AsString());
+        //Debug.LogWarning(adjectiveList.AsString());
         ParseFile(ref nounList, nounsTxt.text);
-        Debug.LogWarning(nounList.AsString());
+        //Debug.LogWarning(nounList.AsString());
         wasTextParsed = true;
     }
 

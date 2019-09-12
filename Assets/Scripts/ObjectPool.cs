@@ -76,6 +76,10 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         return temp;
     }
 
+    /// <summary>
+    /// Gets all objects that are part of the pool and are currently active
+    /// </summary>
+    /// <returns></returns>
     public List<T> GetActiveObjects()
     {
         List<T> toReturn = new List<T>();
@@ -89,6 +93,18 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 
         return toReturn;
     }
+
+    /// <summary>
+    /// Disables all objects in the pool
+    /// </summary>
+    public void DisableAllObjects()
+    {
+        foreach (T item in objectPool)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+
 
     /// <summary>
     /// Initializes the pool with objects

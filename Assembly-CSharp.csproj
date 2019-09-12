@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BaseGameManager.cs" />
      <Compile Include="Assets\Scripts\ChangeColorOverTime.cs" />
+     <Compile Include="Assets\Scripts\Choose Level New\ChooseLevelControllerNew.cs" />
      <Compile Include="Assets\Scripts\ChooseLevelBackButton.cs" />
      <Compile Include="Assets\Scripts\ChooseLevelController.cs" />
      <Compile Include="Assets\Scripts\CloseGameButton.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\GameTimer.cs" />
      <Compile Include="Assets\Scripts\GameWall.cs" />
      <Compile Include="Assets\Scripts\GameWallHolder.cs" />
+     <Compile Include="Assets\Scripts\GameWallPool.cs" />
      <Compile Include="Assets\Scripts\HighScoreController.cs" />
      <Compile Include="Assets\Scripts\HighScoreKeeper.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Actions\ActionPlaceWall.cs" />
@@ -92,6 +94,7 @@
      <Compile Include="Assets\Scripts\Level Editor\LevelEditorController.cs" />
      <Compile Include="Assets\Scripts\Level Editor\LevelEditorMenuController.cs" />
      <Compile Include="Assets\Scripts\Level Editor\LevelEditorSaveButton.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\LevelEditorSaveResult.cs" />
      <Compile Include="Assets\Scripts\Level Editor\LevelEditorSettings.cs" />
      <Compile Include="Assets\Scripts\Level Editor\ReticleController.cs" />
      <Compile Include="Assets\Scripts\Level Editor\ReticlePiece.cs" />
@@ -99,6 +102,7 @@
      <Compile Include="Assets\Scripts\LevelButton.cs" />
      <Compile Include="Assets\Scripts\LevelInfo.cs" />
      <Compile Include="Assets\Scripts\LevelParser.cs" />
+     <Compile Include="Assets\Scripts\LevelPreviewer.cs" />
      <Compile Include="Assets\Scripts\LoadGameButton.cs" />
      <Compile Include="Assets\Scripts\LoadMainButton.cs" />
      <Compile Include="Assets\Scripts\MusicController.cs" />
@@ -177,11 +181,13 @@
      <None Include="Assets\Levels\Level-Dice-2019-08-08-07-35-45-418.xml" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\StreamingAssets\Levels\ColdBoredPaper.xml" />
      <None Include="Assets\Fonts\Press_Start_2P\OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\StreamingAssets\Levels\Level-Cross-2019-08-08-07-35-33-180.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\StreamingAssets\Levels\ConventionalAngryGas.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -190,7 +196,6 @@
      <None Include="Assets\StreamingAssets\Levels\Level-Dice-2019-08-08-07-35-52-296.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
      <None Include="Assets\Levels\Level-Blank-2019-08-08-07-35-09-974.xml" />
-     <None Include="Assets\StreamingAssets\Levels\SadProGpu.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\Levels\Level-Dice-2019-08-08-07-36-08-384.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
