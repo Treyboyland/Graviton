@@ -77,12 +77,12 @@ public class GameWallAnchor : MonoBehaviour
 
     public void ParentWallToLevel()
     {
-        wallHolder.transform.SetParent(wallHolder.transform);
+        gameWall.transform.SetParent(wallHolder.transform);
     }
 
     public void ParentWallToAnchor()
     {
-        wallHolder.transform.SetParent(transform);
+        gameWall.transform.SetParent(transform);
     }
 
     void SetScale()

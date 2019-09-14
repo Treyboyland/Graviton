@@ -2231,6 +2231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainGameSceneName: _Scenes/MainGame
   loadingSceneName: _Scenes/TitleScreen
+  editorSceneName: _Scenes/LevelEditor
   OnSceneChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5104,11 +5105,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7424552839282721572, guid: 0a177719293a55c4f9e90a77fe37db3c,
-        type: 3}
-      propertyPath: damaging
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7424552839282721575, guid: 0a177719293a55c4f9e90a77fe37db3c,
         type: 3}
       propertyPath: m_Color.r
@@ -5123,6 +5119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424552839282721572, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: damaging
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a177719293a55c4f9e90a77fe37db3c, type: 3}

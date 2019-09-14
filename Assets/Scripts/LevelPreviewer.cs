@@ -17,7 +17,7 @@ public class LevelPreviewer : MonoBehaviour
 
     }
 
-    void DisableCurrentWallsAndClearList()
+    public void DisableCurrentWallsAndClearList()
     {
         foreach (GameWall wall in walls)
         {
@@ -35,6 +35,7 @@ public class LevelPreviewer : MonoBehaviour
             childWall.transform.SetParent(transform);
             childWall.SetParameters(wall);
             childWall.gameObject.SetActive(true);
+            walls.Add(childWall);
         }
         levelName = level.Name;
     }

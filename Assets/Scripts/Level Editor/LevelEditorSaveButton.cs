@@ -21,6 +21,9 @@ public class LevelEditorSaveButton : MonoBehaviour
     [SerializeField]
     ValidSpawnTester tester;
 
+    [SerializeField]
+    GameWallAnchorPool anchorPool;
+
     bool wasTextParsed = false;
 
     List<string> adjectiveList = new List<string>();
@@ -93,8 +96,24 @@ public class LevelEditorSaveButton : MonoBehaviour
 
         string levelName = GetLevelFileName();
         string path = directory + "/" + levelName + ".xml";
-        tester.CreateLevel(path, levelName);
+        var anchors = anchorPool.GetActiveObjects();
+
+        foreach (var anchor in anchors)
+        {
+            anchor.ParentWallToLevel();
+        }
+
+        LevelInfo info = tester.CreateLevel(path, levelName);
 
         OnLevelCreated.Invoke(levelName);
+
+        foreach (var anchor in anchors)
+        {
+            anchor.ParentWallToAnchor();
+        }
+        if (LevelParser.Parser != null)
+        {
+            LevelParser.Parser.AddLevel(info);
+        }
     }
 }

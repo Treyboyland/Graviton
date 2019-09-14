@@ -17,6 +17,9 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     string loadingSceneName;
 
+    [SerializeField]
+    string editorSceneName;
+
     string loadNameEnd;
 
     public static SceneLoader Loader
@@ -75,6 +78,13 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    public void LoadEditorScene()
+    {
+        if(!isLoading)
+        {
+            StartCoroutine(WaitUntilLoaded(editorSceneName));
+        }
+    }
 
     IEnumerator WaitUntilLoaded(string sceneName)
     {

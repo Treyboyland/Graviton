@@ -28,7 +28,7 @@ public class ValidSpawnTester : MonoBehaviour
     [SerializeField]
     float distanceFromWall;
 
-    bool PointToCloseToWall(Vector3 pos)
+    bool PointTooCloseToWall(Vector3 pos)
     {
         Vector2 newPos = pos;
         int mask = LayerMask.GetMask("Game Wall");
@@ -38,8 +38,13 @@ public class ValidSpawnTester : MonoBehaviour
         RaycastHit2D hitWest = Physics2D.Linecast(newPos, newPos + Vector2.left * distanceFromWall, mask);
         RaycastHit2D hitEast = Physics2D.Linecast(newPos, newPos + Vector2.right * distanceFromWall, mask);
 
+        RaycastHit2D hitNorthEast = Physics2D.Linecast(newPos, newPos + (Vector2.up + Vector2.right) * distanceFromWall, mask);
+        RaycastHit2D hitNorthWest = Physics2D.Linecast(newPos, newPos + (Vector2.up + Vector2.left) * distanceFromWall, mask);
+        RaycastHit2D hitSouthEast = Physics2D.Linecast(newPos, newPos + (Vector2.down + Vector2.right) * distanceFromWall, mask);
+        RaycastHit2D hitSouthWest = Physics2D.Linecast(newPos, newPos + (Vector2.down + Vector2.left) * distanceFromWall, mask);
 
-        bool hit = hitNorth || hitSouth || hitEast || hitWest;
+
+        bool hit = hitNorth || hitSouth || hitEast || hitWest || hitNorthEast || hitNorthWest || hitSouthEast || hitSouthWest;
         //Debug.Log(pos + ": " + hit);
 
         return hit;
@@ -79,7 +84,7 @@ public class ValidSpawnTester : MonoBehaviour
             Vector3 newPos = new Vector3(xCheck, yCheck, 0);
             point.transform.position = newPos;
 
-            if (!PointToCloseToWall(newPos))
+            if (!PointTooCloseToWall(newPos))
             {
                 spawnLocations.Add(new SpawnLocation(newPos));
             }
@@ -118,7 +123,7 @@ public class ValidSpawnTester : MonoBehaviour
                 if (checkYNegative >= minPosition.y)
                 {
                     Vector3 pos = new Vector3(checkXPositive, checkYNegative);
-                    if (!PointToCloseToWall(pos))
+                    if (!PointTooCloseToWall(pos))
                     {
                         return pos;
                     }
@@ -126,7 +131,7 @@ public class ValidSpawnTester : MonoBehaviour
                 if (checkYPositive <= maxPosition.y)
                 {
                     Vector3 pos = new Vector3(checkXPositive, checkYPositive);
-                    if (!PointToCloseToWall(pos))
+                    if (!PointTooCloseToWall(pos))
                     {
                         return pos;
                     }
@@ -137,7 +142,7 @@ public class ValidSpawnTester : MonoBehaviour
                 if (checkYNegative >= minPosition.y)
                 {
                     Vector3 pos = new Vector3(checkXNegative, checkYNegative);
-                    if (!PointToCloseToWall(pos))
+                    if (!PointTooCloseToWall(pos))
                     {
                         return pos;
                     }
@@ -145,7 +150,7 @@ public class ValidSpawnTester : MonoBehaviour
                 if (checkYPositive <= maxPosition.y)
                 {
                     Vector3 pos = new Vector3(checkXNegative, checkYPositive);
-                    if (!PointToCloseToWall(pos))
+                    if (!PointTooCloseToWall(pos))
                     {
                         return pos;
                     }
@@ -175,7 +180,7 @@ public class ValidSpawnTester : MonoBehaviour
 
     }
 
-    public void CreateLevel(string path, string levelName)
+    public LevelInfo CreateLevel(string path, string levelName)
     {
         SpawnLocations spawnLocations = GetValidSpawnLocations();
         wallHolder.Locations = spawnLocations;
@@ -185,6 +190,8 @@ public class ValidSpawnTester : MonoBehaviour
         info.Name = levelName;
 
         SaveXml(info, path);
+
+        return info;
     }
 
     public void RunTest()
