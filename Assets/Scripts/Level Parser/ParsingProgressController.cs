@@ -5,35 +5,28 @@ using UnityEngine;
 public class ParsingProgressController : MonoBehaviour
 {
     [SerializeField]
-    ChooseLevelControllerNew chooseLevelNew;
-
-    [SerializeField]
     GameObject levelProgressCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        levelProgressCanvas.SetActive(false);
+        ShowParsingProgressCanvas();
     }
 
+    /// <summary>
+    /// Show loading progress
+    /// </summary>
     public void ShowParsingProgressCanvas()
     {
-        if (!LevelParser.Parser.AreLevelsParsed)
-        {
-            levelProgressCanvas.SetActive(true);
-            LevelParser.Parser.ParseLevelsAsync();
-        }
-        else
-        {
-            chooseLevelNew.ShowCanvas();
-        }
+        levelProgressCanvas.SetActive(true);
+        LevelParser.Parser.ParseLevelsAsync();
     }
 
-
-
-    public void ShowLevelSelect()
+    /// <summary>
+    /// Loads the title screen
+    /// </summary>
+    public void LoadTitleScreen()
     {
-        levelProgressCanvas.SetActive(false);
-        chooseLevelNew.ShowCanvas();
+        SceneLoader.Loader.LoadLoadingScene();
     }
 }

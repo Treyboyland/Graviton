@@ -21,7 +21,7 @@ public class LevelLoadingProgressBar : MonoBehaviour
         if (LevelParser.Parser.AreLevelsParsed && !areLevelsLoaded)
         {
             areLevelsLoaded = true;
-            progressController.ShowLevelSelect();
+            progressController.LoadTitleScreen();
         }
     }
 

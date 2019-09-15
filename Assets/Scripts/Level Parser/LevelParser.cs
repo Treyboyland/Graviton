@@ -117,11 +117,22 @@ public class LevelParser : MonoBehaviour
         //ParseLevels();
     }
 
+    /// <summary>
+    /// Returns "root-XX" where XX is the number
+    /// </summary>
+    /// <param name="root"></param>
+    /// <param name="num"></param>
+    /// <returns></returns>
     string GetName(string root, int num)
     {
         return root + "-" + string.Format("{0:D2}", num);
     }
 
+    /// <summary>
+    /// Appends a number to a level's name, if necessary
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
     string GetNextLevelString(string name)
     {
         int index = name.LastIndexOf('-');
@@ -154,12 +165,20 @@ public class LevelParser : MonoBehaviour
         return name + "-01";
     }
 
+    /// <summary>
+    /// Parses the game levels with progress updates
+    /// </summary>
     public void ParseLevelsAsync()
     {
         StopAllCoroutines();
         StartCoroutine(ParseLevelsWithProgress());
     }
 
+    /// <summary>
+    /// Parses levels with a yield statement in between each level to allow for progress updating.
+    /// This is a bit slow, but happens on launch when a player might be okay with waiting
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ParseLevelsWithProgress()
     {
         progress = 0;
@@ -247,6 +266,10 @@ public class LevelParser : MonoBehaviour
         Debug.LogWarning("Levels successfully parsed: " + levelDictionary.Count);
     }
 
+    /// <summary>
+    /// Adds a level to the level dictionary
+    /// </summary>
+    /// <param name="info"></param>
     public void AddLevel(LevelInfo info)
     {
         string name = info.Name;
@@ -257,6 +280,9 @@ public class LevelParser : MonoBehaviour
         levelDictionary.Add(name, info);
     }
 
+    /// <summary>
+    /// Parses the on board levels and all levels in the levels folder
+    /// </summary>
     public void ParseLevels()
     {
         //TODO: Do we want to add the ability to add to this from the file system?
@@ -268,13 +294,7 @@ public class LevelParser : MonoBehaviour
             using (StringReader reader = new StringReader(levelXml.text))
             {
                 LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
-                string name = levelInfo.Name;
-                while (levelDictionary.ContainsKey(name))
-                {
-                    name = GetNextLevelString(name);
-                }
-
-                levelDictionary.Add(name, levelInfo);
+                AddLevel(levelInfo);
             }
         }
 
@@ -294,14 +314,7 @@ public class LevelParser : MonoBehaviour
                     using (StringReader reader = new StringReader(File.ReadAllText(filePath)))
                     {
                         LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
-                        string name = levelInfo.Name;
-                        levelName = name;
-                        while (levelDictionary.ContainsKey(name))
-                        {
-                            name = GetNextLevelString(name);
-                            levelName = name;
-                        }
-                        levelDictionary.Add(name, levelInfo);
+                        AddLevel(levelInfo);
                     }
                 }
                 catch (Exception e)

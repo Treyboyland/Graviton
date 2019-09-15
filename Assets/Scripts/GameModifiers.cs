@@ -65,7 +65,7 @@ public class GameModifiers : MonoBehaviour
 
     void IncreasePlayerSpeed(int points)
     {
-        player.Speed += Mathf.Abs(player.MaxSpeed - player.MinSpeed) * points / 2000;
+        player.Speed += Mathf.Abs(player.MaxSpeed - player.MinSpeed) * points / 4000;
     }
 
     void UpdateSpawnRate()

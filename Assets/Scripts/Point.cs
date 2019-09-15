@@ -62,6 +62,10 @@ public class Point : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Sets the alpha of this point
+    /// </summary>
+    /// <param name="a"></param>
     void SetAlpha(float a)
     {
         Color c = spriteRenderer.color;
@@ -69,6 +73,11 @@ public class Point : MonoBehaviour
         spriteRenderer.color = c;
     }
 
+    /// <summary>
+    /// Returns the amount of points this point is worth, based
+    /// upon its condition
+    /// </summary>
+    /// <returns></returns>
     int GetPoints()
     {
         if (perfect)

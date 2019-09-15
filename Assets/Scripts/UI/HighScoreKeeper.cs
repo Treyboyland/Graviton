@@ -32,7 +32,7 @@ public class HighScoreKeeper : MonoBehaviour
 
     private void Awake()
     {
-        highScorePath = Application.persistentDataPath + "\\HighScores.xml";
+        highScorePath = Application.streamingAssetsPath + "/HighScores.xml";
 
     }
 

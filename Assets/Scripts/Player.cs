@@ -79,6 +79,10 @@ public class Player : MonoBehaviour
 
     int score = 0;
 
+    /// <summary>
+    /// Player's total score
+    /// </summary>
+    /// <value></value>
     public int Score
     {
         get
@@ -141,6 +145,10 @@ public class Player : MonoBehaviour
 
     bool isGameOver = false;
 
+    /// <summary>
+    /// True if the player is currently accepting input
+    /// </summary>
+    /// <value></value>
     public bool AcceptingInput
     {
         get
@@ -175,7 +183,7 @@ public class Player : MonoBehaviour
     {
         if (acceptingInput && !isGameOver)
         {
-            MoveCharacter2();
+            MoveCharacter();
         }
     }
 
@@ -183,55 +191,15 @@ public class Player : MonoBehaviour
     {
         if (acceptingInput && !isGameOver)
         {
-            ChangeTransform2();
+            ChangeTransform();
         }
     }
-
 
 
     /// <summary>
-    /// Moves the player
+    /// Sets the movement booleans for the player
     /// </summary>
     void MoveCharacter()
-    {
-        if (Input.GetButtonDown("Down"))
-        {
-            movingDown = true;
-        }
-        if (Input.GetButtonUp("Down"))
-        {
-            movingDown = false;
-        }
-
-        if (Input.GetButtonDown("Up"))
-        {
-            movingUp = true;
-        }
-        if (Input.GetButtonUp("Up"))
-        {
-            movingUp = false;
-        }
-
-        if (Input.GetButtonDown("Left"))
-        {
-            movingLeft = true;
-        }
-        if (Input.GetButtonUp("Left"))
-        {
-            movingLeft = false;
-        }
-
-        if (Input.GetButtonDown("Right"))
-        {
-            movingRight = true;
-        }
-        if (Input.GetButtonUp("Right"))
-        {
-            movingRight = false;
-        }
-    }
-
-    void MoveCharacter2()
     {
         if (Input.GetButtonDown("Down"))
         {
@@ -263,19 +231,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// True if the player is invincible
+    /// </summary>
+    /// <returns></returns>
     public bool IsInvincible()
     {
         return animator.GetBool("Invincible");
     }
 
+    /// <summary>
+    /// Makes the player invincible
+    /// </summary>
+    /// <param name="secondsOfInvincibility">How long the player should stay invincible</param>
     void BecomeInvincible(float secondsOfInvincibility)
     {
-        Debug.LogWarning("Invincible!!!!");
         StopAllCoroutines();
         animator.SetBool("Invincible", false);
         StartCoroutine(WaitForInvincibility(secondsOfInvincibility));
     }
 
+    /// <summary>
+    /// Makes the player vulnerable at the end of the givein time
+    /// </summary>
+    /// <param name="secondsOfInvincibility"></param>
+    /// <returns></returns>
     IEnumerator WaitForInvincibility(float secondsOfInvincibility)
     {
         animator.SetBool("Invincible", true);
@@ -294,7 +274,10 @@ public class Player : MonoBehaviour
         animator.SetBool("Invincible", false);
     }
 
-    void ChangeTransform2()
+    /// <summary>
+    /// Moves the player based upon the movement booleans
+    /// </summary>
+    void ChangeTransform()
     {
         Vector2 newPos = gameObject.transform.position;
 
@@ -303,50 +286,6 @@ public class Player : MonoBehaviour
 
         float newY = newPos.y + (movingDown ? -1.0f * speed : (movingUp ? speed : 0));
         newPos.y = newY;
-
-        playerbody.MovePosition(newPos);
-    }
-
-
-    void ChangeTransform()
-    {
-        //TODO: 4 D Input?
-        Vector2 newPos = gameObject.transform.position;
-        if (movingLeft && movingRight)
-        {
-
-        }
-        else
-        {
-            float newX = newPos.x + (movingLeft ? -1.0f * speed : (movingRight ? speed : 0));
-            if (newX < minPos.x)
-            {
-                newX = minPos.x;
-            }
-            else if (newX > maxPos.x)
-            {
-                newX = maxPos.x;
-            }
-            newPos.x = newX;
-        }
-
-        if (movingUp && movingDown)
-        {
-
-        }
-        else
-        {
-            float newY = newPos.y + (movingDown ? -1.0f * speed : (movingUp ? speed : 0));
-            if (newY < minPos.y)
-            {
-                newY = minPos.y;
-            }
-            else if (newY > maxPos.y)
-            {
-                newY = maxPos.y;
-            }
-            newPos.y = newY;
-        }
 
         playerbody.MovePosition(newPos);
     }

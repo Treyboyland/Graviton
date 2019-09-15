@@ -46,4 +46,5 @@ MonoBehaviour:
   levelXmls:
   - {fileID: 4900000, guid: 903a0e8e51aaf47468c03e724a7b8a38, type: 3}
   - {fileID: 4900000, guid: 59a5c52a9ed28234e9a6cc51c3ffcb7f, type: 3}
-  - {fileID: 4900000, guid: 2e7ab20f594dd844da74a80c33f9f241, type: 3}
+  - {fileID: 4900000, guid: e8575ddb2117d174aa2e160c732f756b, type: 3}
+  - {fileID: 4900000, guid: 8e3006a9f651a5e4588166c71ceacd9f, type: 3}

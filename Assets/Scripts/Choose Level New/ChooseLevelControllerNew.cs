@@ -30,7 +30,7 @@ public class ChooseLevelControllerNew : MonoBehaviour
 
     List<LevelInfo> levels = new List<LevelInfo>();
 
-    int currentIndex = 2;
+    int currentIndex = 0;
 
     bool levelsParsed = false;
 
@@ -95,10 +95,17 @@ public class ChooseLevelControllerNew : MonoBehaviour
         SceneLoader.Loader.LoadMainGameScene();
     }
 
+    /// <summary>
+    /// Sorts levels alphabetically
+    /// </summary>
     void ParseAndSortDictionary()
     {
         if (!levelsParsed)
         {
+            if (!LevelParser.Parser.AreLevelsParsed) //Facilitates launch from main as opposed to loading screen -- This should normally not be called
+            {
+                LevelParser.Parser.ParseLevels();
+            }
             levelsParsed = true;
             levels.Clear();
             foreach (LevelInfo info in LevelParser.Parser.LevelDictionary.Values)
@@ -110,16 +117,10 @@ public class ChooseLevelControllerNew : MonoBehaviour
         }
     }
 
-    bool IsLeftArrowActive()
-    {
-        return currentIndex != 0;
-    }
 
-    bool IsRightArrowActive()
-    {
-        return currentIndex != levels.Count - 1;
-    }
-
+    /// <summary>
+    /// Shows the level select canvas, and selects the invisible level select button
+    /// </summary>
     public void ShowCanvas()
     {
         ParseAndSortDictionary();
@@ -131,6 +132,9 @@ public class ChooseLevelControllerNew : MonoBehaviour
         levelSelectButton.Select();
     }
 
+    /// <summary>
+    /// Hides the level select canvas and selects the start button
+    /// </summary>
     public void HideCanvas()
     {
         chooseLevelCanvas.gameObject.SetActive(false);
@@ -138,6 +142,9 @@ public class ChooseLevelControllerNew : MonoBehaviour
         previewer.DisableCurrentWallsAndClearList();
     }
 
+    /// <summary>
+    /// View the next level
+    /// </summary>
     public void NextLevel()
     {
         if (currentIndex + 1 < levels.Count)
@@ -153,6 +160,9 @@ public class ChooseLevelControllerNew : MonoBehaviour
         levelNameTextBox.text = levels[currentIndex].Name;
     }
 
+    /// <summary>
+    /// View the previous level
+    /// </summary>
     public void PreviousLevel()
     {
         if (currentIndex - 1 >= 0)

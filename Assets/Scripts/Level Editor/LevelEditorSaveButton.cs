@@ -63,6 +63,9 @@ public class LevelEditorSaveButton : MonoBehaviour
         list = new List<string>(file.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
     }
 
+    /// <summary>
+    /// Parses the noun and adjective folders
+    /// </summary>
     void ParseTextFiles()
     {
         ParseFile(ref adjectiveList, adjectivesTxt.text);
@@ -72,6 +75,11 @@ public class LevelEditorSaveButton : MonoBehaviour
         wasTextParsed = true;
     }
 
+    /// <summary>
+    /// Get the file name for the level, in the form of
+    /// adjective+adjective+noun (similar to Gfycat naming)
+    /// </summary>
+    /// <returns></returns>
     string GetLevelFileName()
     {
         if (!wasTextParsed)
@@ -86,6 +94,10 @@ public class LevelEditorSaveButton : MonoBehaviour
             info.ToTitleCase(nounList.GetRandomObject());
     }
 
+    /// <summary>
+    /// Saves a level to the file system. The level should be located in the 
+    /// StreamingAssets/Levels folder
+    /// </summary>
     void SaveLevel()
     {
         string directory = Application.streamingAssetsPath + "/Levels";
