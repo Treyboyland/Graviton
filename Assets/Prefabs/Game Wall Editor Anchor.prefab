@@ -57,6 +57,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Wall Editor
       objectReference: {fileID: 0}
+    - target: {fileID: 5746054858264794137, guid: d8da6532637ac7843b6221466c1b3f77,
+        type: 3}
+      propertyPath: anchor
+      value: 
+      objectReference: {fileID: 4956800179026087294}
     - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
         type: 3}
       propertyPath: m_LocalPosition.x

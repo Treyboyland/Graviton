@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\GameWall.cs" />
      <Compile Include="Assets\Scripts\GameWallHolder.cs" />
      <Compile Include="Assets\Scripts\GameWallPool.cs" />
+     <Compile Include="Assets\Scripts\Level Editor\Actions\ActionDeleteWall.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Actions\ActionPlaceWall.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Actions\ActionSetWall.cs" />
      <Compile Include="Assets\Scripts\Level Editor\Actions\ActionToggleWallDamagingState.cs" />

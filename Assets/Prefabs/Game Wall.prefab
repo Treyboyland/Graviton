@@ -125,3 +125,4 @@ MonoBehaviour:
   normalColor: {r: 0, g: 1, b: 1, a: 1}
   collider: {fileID: 3090980759218034899}
   isDeletable: 0
+  anchor: {fileID: 0}

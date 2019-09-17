@@ -8,21 +8,16 @@ public class ActionPlaceWall : ILevelEditorAction
     Vector3 reticlePosition;
 
     GameWallAnchor wallAnchor;
-
-    GameWallAnchorPool anchorPool;
     
-    public ActionPlaceWall(ReticleController reticle, GameWallAnchor anchor, GameWallAnchorPool pool)
+    public ActionPlaceWall(ReticleController reticle, GameWallAnchor anchor)
     {
         this.reticle = reticle;
         reticlePosition = reticle.transform.position;
-
         wallAnchor = anchor;
-        anchorPool = pool; 
     }
 
     public void RedoAction()
     {
-        wallAnchor = anchorPool.GetObject();
         reticle.transform.position = reticlePosition;
         wallAnchor.transform.position = reticlePosition;
         wallAnchor.ShouldScale = true;

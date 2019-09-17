@@ -24,6 +24,9 @@ public class LevelEditorMenuController : MonoBehaviour
     [SerializeField]
     SymmetricWallPlacer symmetricPlacer;
 
+    [SerializeField]
+    UndoRedoLevelEditorScript undoController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class LevelEditorMenuController : MonoBehaviour
         spawnTester.ShouldTest = false;
         levelEditor.ShouldHandleActions = false;
         symmetricPlacer.ShouldChange = false;
+        undoController.AllowUndo = false;
         menu.SetActive(true);
         backButton.Select();
     }
@@ -54,6 +58,7 @@ public class LevelEditorMenuController : MonoBehaviour
         levelEditor.ShouldHandleActions = true;
         spawnTester.ShouldTest = true;
         symmetricPlacer.ShouldChange = true;
+        undoController.AllowUndo = true;
     }
 
     // Update is called once per frame

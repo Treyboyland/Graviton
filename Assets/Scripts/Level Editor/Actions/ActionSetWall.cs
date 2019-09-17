@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class ActionSetWall : ILevelEditorAction
 {
-    GameWallAnchor wallAnchor;
-    Vector3 wallAnchorScale;
+    GameWallAnchor playerWallAnchor;
+    Vector3 playerWallAnchorScale;
+
+    GameWallAnchor cpuWallAnchor;
+    Vector3 cpuWallAnchorScale;
 
     ReticleController reticle;
     Vector3 reticlePosition;
 
+    //TODO: THINK ABOUT THIS...WE NEED TO ACCOUNT FOR CPU PLACED WALLS AS WELL. 
 
-    public ActionSetWall(GameWallAnchor anchor, ReticleController reticle)
+    public ActionSetWall(GameWallAnchor playerAnchor, GameWallAnchor cpuAnchor, SymmetricWallPlacer.WallSymmetry symmetry, ReticleController reticle)
     {
         this.reticle = reticle;
         reticlePosition = reticle.transform.position;
 
-        wallAnchor = anchor;
-        wallAnchorScale = anchor.transform.localScale;
+        playerWallAnchor = playerAnchor;
+        playerWallAnchorScale = playerAnchor.transform.localScale;
+
+
+
         //TODO: Implement
     }
 
 
     public void RedoAction()
     {
-        wallAnchor.ShouldScale = false;
-        wallAnchor.ShouldTrack = false;
-        wallAnchor.transform.localScale = wallAnchorScale;
+        playerWallAnchor.ShouldScale = false;
+        playerWallAnchor.ShouldTrack = false;
+        playerWallAnchor.transform.localScale = playerWallAnchorScale;
 
 
         reticle.OnStopFlickering.Invoke();
@@ -39,6 +46,7 @@ public class ActionSetWall : ILevelEditorAction
         reticle.OnFlicker.Invoke();
         reticle.transform.position = reticlePosition;
 
-        wallAnchor.ShouldScale = true;
+        playerWallAnchor.ShouldScale = true;
+        cpuWallAnchor.gameObject.SetActive(false);
     }
 }

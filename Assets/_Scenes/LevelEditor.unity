@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 49.4
+  m_fontSize: 78.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1755,6 +1755,7 @@ MonoBehaviour:
   levelEditor: {fileID: 1744343783}
   spawnTester: {fileID: 99456714}
   symmetricPlacer: {fileID: 133464484}
+  undoController: {fileID: 1914247398}
 --- !u!1 &994878374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1938,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 17.05
+  m_fontSize: 28.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1983,7 +1984,7 @@ MonoBehaviour:
     spaceCount: 60
     wordCount: 54
     linkCount: 0
-    lineCount: 37
+    lineCount: 34
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -2400,7 +2401,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28.55
+  m_fontSize: 57.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2867,6 +2868,7 @@ MonoBehaviour:
   reticle: {fileID: 509110960}
   wallAnchorPool: {fileID: 1845743601}
   wallHolder: {fileID: 548185673}
+  undoController: {fileID: 1914247398}
   OnWallPlaced:
     m_PersistentCalls:
       m_Calls:
@@ -3031,6 +3033,49 @@ MonoBehaviour:
   parentObject: {fileID: 548185671}
   initialSize: 3
   shouldIncreasePoolIfEmpty: 1
+--- !u!1 &1914247397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1914247399}
+  - component: {fileID: 1914247398}
+  m_Layer: 0
+  m_Name: Undo Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1914247398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914247397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457c7b16c4316ed418acbac5a31d2d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1914247399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914247397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2471756634486636519
 PrefabInstance:
   m_ObjectHideFlags: 0

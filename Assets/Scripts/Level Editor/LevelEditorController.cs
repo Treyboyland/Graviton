@@ -16,6 +16,9 @@ public class LevelEditorController : MonoBehaviour
     [SerializeField]
     GameWallHolder wallHolder;
 
+    [SerializeField]
+    UndoRedoLevelEditorScript undoController;
+
 
     bool shouldHandleActions = true;
 
@@ -110,6 +113,9 @@ public class LevelEditorController : MonoBehaviour
                     currentAnchor.gameObject.SetActive(true);
                     reticle.OnFlicker.Invoke();
                     OnWallPlaced.Invoke(null);
+                    
+                    ActionPlaceWall actionPlaceWall = new ActionPlaceWall(reticle, anchor);
+                    undoController.OnActionDone.Invoke(actionPlaceWall);
                 }
                 else
                 {
@@ -117,6 +123,8 @@ public class LevelEditorController : MonoBehaviour
                     {
                         wall.IsDamaging = !wall.IsDamaging;
                     }
+                    ActionToggleWallDamagingState toggleWallDamagingState = new ActionToggleWallDamagingState(walls);
+                    undoController.OnActionDone.Invoke(toggleWallDamagingState);
                 }
             }
             else
@@ -127,21 +135,23 @@ public class LevelEditorController : MonoBehaviour
                 OnWallPlaced.Invoke(currentAnchor);
             }
         }
-        else if (Input.GetButtonDown("Delete"))
+        else if (Input.GetButtonDown("Delete") && !reticle.IsFlickering)
         {
+            List<GameWallAnchor> deletedAnchors = new List<GameWallAnchor>();
             foreach (GameWall wall in GetGameWallsWithPoint(reticle.transform.position))
             {
-                if (wall.IsDeletable)
+                if (wall.IsDeletable && wall.Anchor != null)
                 {
-                    //TODO: This shouldn't run while we determine 
-                    GameWallAnchor gwa = wall.GetComponentInParent<GameWallAnchor>();
-                    if (gwa != null)
-                    {
-                        gwa.gameObject.SetActive(false);
-                    }
+                    wall.Anchor.gameObject.SetActive(false);
+                    deletedAnchors.Add(wall.Anchor);
                 }
             }
 
+            if(deletedAnchors.Count != 0)
+            {
+                ActionDeleteWall actionDeleteWall = new ActionDeleteWall(deletedAnchors);
+                undoController.OnActionDone.Invoke(actionDeleteWall);
+            }
 
         }
     }

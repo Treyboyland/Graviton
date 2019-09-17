@@ -71,13 +71,27 @@ public class GameWall : MonoBehaviour
 
     /// <summary>
     /// True if this wall can be deleted in the editor
-    /// </summary>
-    
+    /// </summary>   
     public bool IsDeletable
     {
         get
         {
             return isDeletable;
+        }
+    }
+
+    [SerializeField]
+    GameWallAnchor anchor;
+
+    /// <summary>
+    /// If non null, and called within the editor, contains the anchor in control of this wall
+    /// </summary>
+    /// <value></value>
+    public GameWallAnchor Anchor
+    {
+        get
+        {
+            return anchor;
         }
     }
 

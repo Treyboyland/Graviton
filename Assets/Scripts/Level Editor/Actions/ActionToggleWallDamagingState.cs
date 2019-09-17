@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class ActionToggleWallDamagingState : ILevelEditorAction
 {
-    GameWallAnchor anchor;
+    List<GameWall> walls;
 
-    public ActionToggleWallDamagingState(GameWallAnchor anchor)
+    public ActionToggleWallDamagingState(List<GameWall> walls)
     {
-        this.anchor = anchor;
+        this.walls = walls;
     }
 
     public void RedoAction()
     {
-        anchor.GameWall.IsDamaging = !anchor.GameWall.IsDamaging;
+        foreach (GameWall wall in walls)
+        {
+            wall.IsDamaging = !wall.IsDamaging;
+        }
     }
 
 
     public void UndoAction()
     {
-        anchor.GameWall.IsDamaging = !anchor.GameWall.IsDamaging;
+        foreach (GameWall wall in walls)
+        {
+            wall.IsDamaging = !wall.IsDamaging;
+        }
     }
 }
