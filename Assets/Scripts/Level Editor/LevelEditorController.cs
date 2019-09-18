@@ -10,6 +10,14 @@ public class LevelEditorController : MonoBehaviour
     [SerializeField]
     ReticleController reticle;
 
+    public ReticleController Reticle
+    {
+        get
+        {
+            return reticle;
+        }
+    }
+
     [SerializeField]
     GameWallAnchorPool wallAnchorPool;
 
@@ -17,7 +25,7 @@ public class LevelEditorController : MonoBehaviour
     GameWallHolder wallHolder;
 
     [SerializeField]
-    UndoRedoLevelEditorScript undoController;
+    UndoController undoController;
 
 
     bool shouldHandleActions = true;
@@ -113,7 +121,7 @@ public class LevelEditorController : MonoBehaviour
                     currentAnchor.gameObject.SetActive(true);
                     reticle.OnFlicker.Invoke();
                     OnWallPlaced.Invoke(null);
-                    
+
                     ActionPlaceWall actionPlaceWall = new ActionPlaceWall(reticle, anchor);
                     undoController.OnActionDone.Invoke(actionPlaceWall);
                 }
@@ -147,7 +155,7 @@ public class LevelEditorController : MonoBehaviour
                 }
             }
 
-            if(deletedAnchors.Count != 0)
+            if (deletedAnchors.Count != 0)
             {
                 ActionDeleteWall actionDeleteWall = new ActionDeleteWall(deletedAnchors);
                 undoController.OnActionDone.Invoke(actionDeleteWall);

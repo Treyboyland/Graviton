@@ -144,7 +144,7 @@ public class GameWall : MonoBehaviour
         Vector3 position = new Vector3(wallInfo.PosX, wallInfo.PosY, wallInfo.PosZ);
         transform.localPosition = position;
         transform.localScale = scale;
-        damaging = wallInfo.IsDamaging;
+        IsDamaging = wallInfo.IsDamaging;
     }
 
     /// <summary>

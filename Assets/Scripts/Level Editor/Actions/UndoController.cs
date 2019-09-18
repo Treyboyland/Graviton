@@ -4,12 +4,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-public class UndoRedoLevelEditorScript : MonoBehaviour
+/// <summary>
+/// Controls both undo and redo operations for the level editor
+/// </summary>
+public class UndoController : MonoBehaviour
 {
+    /// <summary>
+    /// A stack of undo actions. The UndoAction method should be called with these
+    /// </summary>
+    /// <typeparam name="ILevelEditorAction"></typeparam>
+    /// <returns></returns>
     Stack<ILevelEditorAction> undoActions = new Stack<ILevelEditorAction>();
 
     /// <summary>
-    /// 
+    /// A stack of redo actions. The RedoAction method should be called with these
     /// </summary>
     Stack<ILevelEditorAction> redoActions = new Stack<ILevelEditorAction>();
 

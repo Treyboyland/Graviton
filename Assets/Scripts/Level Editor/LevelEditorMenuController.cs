@@ -25,7 +25,7 @@ public class LevelEditorMenuController : MonoBehaviour
     SymmetricWallPlacer symmetricPlacer;
 
     [SerializeField]
-    UndoRedoLevelEditorScript undoController;
+    UndoController undoController;
 
     // Start is called before the first frame update
     void Start()

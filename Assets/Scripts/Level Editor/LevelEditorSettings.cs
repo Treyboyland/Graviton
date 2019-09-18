@@ -35,9 +35,12 @@ public class LevelEditorSettings : MonoBehaviour
             case SymmetricWallPlacer.WallSymmetry.ROTATIONAL:
                 sb.Append("Rotational Symmetry Enabled\r\n");
                 break;
+            case SymmetricWallPlacer.WallSymmetry.PERFECT:
+                sb.Append("Perfect Symmetry Enabled\r\n");
+                break;
             case SymmetricWallPlacer.WallSymmetry.NONE:
             default:
-            sb.Append("\r\n");
+                sb.Append("\r\n");
                 break;
         }
 
