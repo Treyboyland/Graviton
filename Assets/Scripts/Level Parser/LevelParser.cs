@@ -31,6 +31,23 @@ public class LevelParser : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Contains levels loaded from the file system
+    /// </summary>
+    Dictionary<string, LevelInfo> directoryLevelDictionary = new Dictionary<string, LevelInfo>();
+
+    /// <summary>
+    /// Contains levels loaded from the filesystem
+    /// </summary>
+    /// <value></value>
+    public Dictionary<string, LevelInfo> DirectoryLevelDictionary
+    {
+        get
+        {
+            return directoryLevelDictionary;
+        }
+    }
+
 
     string chosenLevel;
 
@@ -97,6 +114,8 @@ public class LevelParser : MonoBehaviour
             return progress;
         }
     }
+
+    string currentLevelName = "";
 
     void Awake()
     {
@@ -206,13 +225,7 @@ public class LevelParser : MonoBehaviour
             using (StringReader reader = new StringReader(levelXml.text))
             {
                 LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
-                string name = levelInfo.Name;
-                while (levelDictionary.ContainsKey(name))
-                {
-                    name = GetNextLevelString(name);
-                }
-
-                levelDictionary.Add(name, levelInfo);
+                AddLevel(levelInfo);
             }
 
             count++;
@@ -226,7 +239,6 @@ public class LevelParser : MonoBehaviour
 
             count++;
             progress = 1.0f * count / total;
-            string levelName = "";
             if (string.Compare(Path.GetExtension(filePath), ".xml", true) != 0)
             {
                 yield return null;
@@ -238,20 +250,14 @@ public class LevelParser : MonoBehaviour
                 using (StringReader reader = new StringReader(File.ReadAllText(filePath)))
                 {
                     LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
-                    string name = levelInfo.Name;
-                    levelName = name;
-                    while (levelDictionary.ContainsKey(name))
-                    {
-                        name = GetNextLevelString(name);
-                        levelName = name;
-                    }
-                    levelDictionary.Add(name, levelInfo);
+                    AddLevel(levelInfo);
+                    directoryLevelDictionary.Add(filePath, levelInfo);
                 }
             }
             catch (Exception e)
             {
                 Debug.LogWarning("Unable to parse file \"" + filePath + "\": " + e);
-                Debug.LogWarning("Level name: " + levelName);
+                Debug.LogWarning("Level name: " + currentLevelName);
             }
 
             yield return null;
@@ -273,9 +279,11 @@ public class LevelParser : MonoBehaviour
     public void AddLevel(LevelInfo info)
     {
         string name = info.Name;
+        currentLevelName = name;
         while (levelDictionary.ContainsKey(name))
         {
             name = GetNextLevelString(name);
+            currentLevelName = name;
         }
         levelDictionary.Add(name, info);
     }
@@ -303,7 +311,6 @@ public class LevelParser : MonoBehaviour
         {
             foreach (string filePath in Directory.GetFiles(additionalLevelsPath))
             {
-                string levelName = "";
                 if (string.Compare(Path.GetExtension(filePath), ".xml", true) != 0)
                 {
                     continue;
@@ -315,12 +322,13 @@ public class LevelParser : MonoBehaviour
                     {
                         LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
                         AddLevel(levelInfo);
+                        directoryLevelDictionary.Add(filePath, levelInfo);
                     }
                 }
                 catch (Exception e)
                 {
                     Debug.LogWarning("Unable to parse file \"" + filePath + "\": " + e);
-                    Debug.LogWarning("Level name: " + levelName);
+                    Debug.LogWarning("Level name: " + currentLevelName);
                     continue;
                 }
             }

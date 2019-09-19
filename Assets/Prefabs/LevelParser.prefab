@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8190475310181000106}
   - component: {fileID: 8190475310181000107}
+  - component: {fileID: 357179995}
   m_Layer: 0
   m_Name: LevelParser
   m_TagString: Untagged
@@ -48,3 +49,25 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 59a5c52a9ed28234e9a6cc51c3ffcb7f, type: 3}
   - {fileID: 4900000, guid: e8575ddb2117d174aa2e160c732f756b, type: 3}
   - {fileID: 4900000, guid: 8e3006a9f651a5e4588166c71ceacd9f, type: 3}
+--- !u!114 &357179995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8190475310181000104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5f23ccb75fcce448fc2b2f74fb7a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration:
+    AllowLevelCreation: 0
+    AllowLevelDeletion: 0
+    AllowExiting: 0
+    IsArcadeCabinet: 0
+  defaultConfig:
+    AllowLevelCreation: 1
+    AllowLevelDeletion: 1
+    AllowExiting: 1
+    IsArcadeCabinet: 0

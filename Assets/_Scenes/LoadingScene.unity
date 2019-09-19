@@ -758,7 +758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67a1d4b5c51c6a448db1d3433067529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chooseLevelNew: {fileID: 0}
   levelProgressCanvas: {fileID: 984393651}
 --- !u!1 &2017634295
 GameObject:

@@ -58,11 +58,15 @@
      <Compile Include="Assets\Scripts\Choose Level New\ChooseLevelControllerNew.cs" />
      <Compile Include="Assets\Scripts\ColorOverTime.cs" />
      <Compile Include="Assets\Scripts\ComboCounter.cs" />
+     <Compile Include="Assets\Scripts\CreateLevelButtonController.cs" />
      <Compile Include="Assets\Scripts\CustomInputModule.cs" />
      <Compile Include="Assets\Scripts\DisableAfterTime.cs" />
      <Compile Include="Assets\Scripts\DisableOnAnimationState.cs" />
      <Compile Include="Assets\Scripts\DistanceChecker.cs" />
+     <Compile Include="Assets\Scripts\ExitButtonController.cs" />
      <Compile Include="Assets\Scripts\Extensions\ListExtensions.cs" />
+     <Compile Include="Assets\Scripts\GameConfig.cs" />
+     <Compile Include="Assets\Scripts\GameConfigReader.cs" />
      <Compile Include="Assets\Scripts\GameDifficulty.cs" />
      <Compile Include="Assets\Scripts\GameEvents.cs" />
      <Compile Include="Assets\Scripts\GameLevel.cs" />
@@ -172,6 +176,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\StreamingAssets\Config.xml" />
      <None Include="Assets\Spawns\Spawns-Blank.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Words\adjectives.txt" />
