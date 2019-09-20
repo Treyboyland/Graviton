@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         {
             return collider;
         }
-    } 
+    }
 
     int score = 0;
 
@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
             acceptingInput = !paused;
             animator.speed = paused ? 0 : 1;
         });
-        BaseGameManager.Manager.OnGameOver.AddListener(()=>
+        BaseGameManager.Manager.OnGameOver.AddListener(() =>
         {
             isGameOver = true;
         });
@@ -195,39 +195,97 @@ public class Player : MonoBehaviour
         }
     }
 
+    void SetBoolsLeft()
+    {
+        movingUp = false;
+        movingDown = false;
+        movingLeft = true;
+        movingRight = false;
+    }
+
+    void SetBoolsRight()
+    {
+        movingUp = false;
+        movingDown = false;
+        movingLeft = false;
+        movingRight = true;
+    }
+
+    void SetBoolsUp()
+    {
+        movingUp = true;
+        movingDown = false;
+        movingLeft = false;
+        movingRight = false;
+    }
+
+
+    void SetBoolsDown()
+    {
+        movingUp = false;
+        movingDown = true;
+        movingLeft = false;
+        movingRight = false;
+    }
+
 
     /// <summary>
     /// Sets the movement booleans for the player
     /// </summary>
     void MoveCharacter()
     {
+        //TODO: Determine if mouse or keyboard
         if (Input.GetButtonDown("Down"))
         {
-            movingUp = false;
-            movingDown = true;
-            movingLeft = false;
-            movingRight = false;
+            SetBoolsDown();
         }
         else if (Input.GetButtonDown("Up"))
         {
-            movingUp = true;
-            movingDown = false;
-            movingLeft = false;
-            movingRight = false;
+            SetBoolsUp();
         }
         else if (Input.GetButtonDown("Left"))
         {
-            movingUp = false;
-            movingDown = false;
-            movingLeft = true;
-            movingRight = false;
+            SetBoolsLeft();
         }
         else if (Input.GetButtonDown("Right"))
         {
-            movingUp = false;
-            movingDown = false;
-            movingLeft = false;
-            movingRight = true;
+            SetBoolsRight();
+        }
+        else
+        {
+            float x = Input.GetAxis("LeftRightJoy");
+            float y = Input.GetAxis("UpDownJoy");
+
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                y = 0;
+            }
+            else if (Mathf.Abs(y) > Mathf.Abs(x))
+            {
+                x = 0;
+            }
+            else
+            {
+                x = 0;
+                y = 0;
+            }
+
+            if (y < 0)
+            {
+                SetBoolsDown();
+            }
+            else if (y > 0)
+            {
+                SetBoolsUp();
+            }
+            else if (x < 0)
+            {
+                SetBoolsLeft();
+            }
+            else if (x > 0)
+            {
+                SetBoolsRight();
+            }
         }
     }
 

@@ -127,19 +127,19 @@ public class ReticleController : MonoBehaviour
     void DetermineMovement()
     {
         bool up = false, down = false, left = false, right = false;
-        if (Input.GetButton("Up"))
+        if (Input.GetButton("Up") || Input.GetAxis("UpDownJoy") > 0)
         {
             up = true;
         }
-        if (Input.GetButton("Down"))
+        if (Input.GetButton("Down") || Input.GetAxis("UpDownJoy") < 0)
         {
             down = true;
         }
-        if (Input.GetButton("Left"))
+        if (Input.GetButton("Left") || Input.GetAxis("LeftRightJoy") < 0)
         {
             left = true;
         }
-        if (Input.GetButton("Right"))
+        if (Input.GetButton("Right") || Input.GetAxis("LeftRightJoy") > 0)
         {
             right = true;
         }

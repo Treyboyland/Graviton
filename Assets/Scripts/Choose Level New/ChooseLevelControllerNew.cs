@@ -34,6 +34,8 @@ public class ChooseLevelControllerNew : MonoBehaviour
 
     bool levelsParsed = false;
 
+    bool joystickEventConsumed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,13 +74,20 @@ public class ChooseLevelControllerNew : MonoBehaviour
     void HandleLevelMove()
     {
         //NOTE: Arrows sort of look weird when there is only one level...but there will never be only one level
-        if (Input.GetButtonDown("Left"))
+        if (Input.GetButtonDown("Left") || (!joystickEventConsumed && Input.GetAxis("LeftRightJoy") < 0))
         {
+            joystickEventConsumed = true;
             PreviousLevel();
         }
-        else if (Input.GetButtonDown("Right"))
+        else if (Input.GetButtonDown("Right") || (!joystickEventConsumed && Input.GetAxis("LeftRightJoy") > 0))
         {
+            joystickEventConsumed = true;
             NextLevel();
+        }
+
+        if (Input.GetAxis("LeftRightJoy") == 0)
+        {
+            joystickEventConsumed = false;
         }
         // else if (Input.GetButtonDown("Submit"))
         // {

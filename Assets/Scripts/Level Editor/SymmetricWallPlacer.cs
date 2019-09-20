@@ -173,6 +173,8 @@ public class SymmetricWallPlacer : MonoBehaviour
         newAnchor.LocalScale = scale;
         newAnchor.WallHolder = wallHolder;
         newAnchor.transform.position = position;
+        newAnchor.ShouldScale = false;
+        newAnchor.ShouldTrack = false;
 
         newAnchor.gameObject.SetActive(true);
 
@@ -197,6 +199,8 @@ public class SymmetricWallPlacer : MonoBehaviour
         newAnchor.LocalScale = scale;
         newAnchor.WallHolder = wallHolder;
         newAnchor.transform.position = position;
+        newAnchor.ShouldScale = false;
+        newAnchor.ShouldTrack = false;
 
         newAnchor.gameObject.SetActive(true);
 
@@ -223,6 +227,8 @@ public class SymmetricWallPlacer : MonoBehaviour
         newAnchor.LocalScale = scale;
         newAnchor.WallHolder = wallHolder;
         newAnchor.transform.position = position;
+        newAnchor.ShouldScale = false;
+        newAnchor.ShouldTrack = false;
 
         newAnchor.gameObject.SetActive(true);
 

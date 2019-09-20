@@ -36,7 +36,6 @@ public struct GameConfig
     [Tooltip("True if this game is going on an arcade cabinet")]
     public bool IsArcadeCabinet;
 
-
     /// <summary>
     /// Saves this config to the given path
     /// </summary>

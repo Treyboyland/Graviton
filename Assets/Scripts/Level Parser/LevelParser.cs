@@ -49,6 +49,9 @@ public class LevelParser : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Name of the chosen level
+    /// </summary>
     string chosenLevel;
 
     /// <summary>
