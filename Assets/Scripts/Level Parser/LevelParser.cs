@@ -32,15 +32,48 @@ public class LevelParser : MonoBehaviour
     }
 
     /// <summary>
+    /// Contains level name and level path for a level
+    /// </summary>
+    public struct LevelStrings
+    {
+        /// <summary>
+        /// Name of the level given in game
+        /// </summary>
+        public string LevelName;
+        /// <summary>
+        /// Path of the level to the file system
+        /// </summary>
+        public string LevelPath;
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is LevelStrings))
+            {
+                return false;
+            }
+
+            LevelStrings other = (LevelStrings)obj;
+
+            return this.LevelPath.Equals(other.LevelPath) && this.LevelName.Equals(other.LevelName);
+        }
+
+        public override int GetHashCode()
+        {
+            //This is probably a bad hash algorithm
+            return LevelPath.GetHashCode();
+        }
+    }
+
+    /// <summary>
     /// Contains levels loaded from the file system
     /// </summary>
-    Dictionary<string, LevelInfo> directoryLevelDictionary = new Dictionary<string, LevelInfo>();
+    Dictionary<LevelStrings, LevelInfo> directoryLevelDictionary = new Dictionary<LevelStrings, LevelInfo>();
 
     /// <summary>
     /// Contains levels loaded from the filesystem
     /// </summary>
     /// <value></value>
-    public Dictionary<string, LevelInfo> DirectoryLevelDictionary
+    public Dictionary<LevelStrings, LevelInfo> DirectoryLevelDictionary
     {
         get
         {
@@ -239,7 +272,6 @@ public class LevelParser : MonoBehaviour
 
         foreach (string filePath in filePaths)
         {
-
             count++;
             progress = 1.0f * count / total;
             if (string.Compare(Path.GetExtension(filePath), ".xml", true) != 0)
@@ -253,8 +285,10 @@ public class LevelParser : MonoBehaviour
                 using (StringReader reader = new StringReader(File.ReadAllText(filePath)))
                 {
                     LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
-                    AddLevel(levelInfo);
-                    directoryLevelDictionary.Add(filePath, levelInfo);
+                    LevelStrings levelStrings;
+                    levelStrings.LevelPath = filePath;
+                    levelStrings.LevelName = AddLevel(levelInfo);
+                    directoryLevelDictionary.Add(levelStrings, levelInfo);
                 }
             }
             catch (Exception e)
@@ -266,20 +300,18 @@ public class LevelParser : MonoBehaviour
             yield return null;
         }
 
-
-
-
         areLevelsParsed = true;
         progress = 1;
 
-        Debug.LogWarning("Levels successfully parsed: " + levelDictionary.Count);
+        Debug.LogWarning("Levels successfully parsed Async: " + levelDictionary.Count);
     }
 
     /// <summary>
-    /// Adds a level to the level dictionary
+    /// Adds a level to the level dictionary, and returns the name in-game
     /// </summary>
     /// <param name="info"></param>
-    public void AddLevel(LevelInfo info)
+    /// <returns>The name of the level given in-game</returns>
+    public string AddLevel(LevelInfo info)
     {
         string name = info.Name;
         currentLevelName = name;
@@ -289,6 +321,8 @@ public class LevelParser : MonoBehaviour
             currentLevelName = name;
         }
         levelDictionary.Add(name, info);
+
+        return name;
     }
 
     /// <summary>
@@ -324,8 +358,10 @@ public class LevelParser : MonoBehaviour
                     using (StringReader reader = new StringReader(File.ReadAllText(filePath)))
                     {
                         LevelInfo levelInfo = (LevelInfo)serializer.Deserialize(reader);
-                        AddLevel(levelInfo);
-                        directoryLevelDictionary.Add(filePath, levelInfo);
+                        LevelStrings levelStrings;
+                        levelStrings.LevelPath = filePath;
+                        levelStrings.LevelName = AddLevel(levelInfo);
+                        directoryLevelDictionary.Add(levelStrings, levelInfo);
                     }
                 }
                 catch (Exception e)
@@ -345,6 +381,6 @@ public class LevelParser : MonoBehaviour
 
         areLevelsParsed = true;
 
-        Debug.LogWarning("Levels successfully parsed: " + levelDictionary.Count);
+        Debug.LogWarning("Levels successfully parsed Sync: " + levelDictionary.Count);
     }
 }

@@ -125,7 +125,10 @@ public class LevelEditorSaveButton : MonoBehaviour
         }
         if (LevelParser.Parser != null)
         {
-            LevelParser.Parser.AddLevel(info);
+            LevelParser.LevelStrings levelStrings;
+            levelStrings.LevelName = LevelParser.Parser.AddLevel(info);
+            levelStrings.LevelPath = path;
+            LevelParser.Parser.DirectoryLevelDictionary.Add(levelStrings, info);
         }
     }
 }

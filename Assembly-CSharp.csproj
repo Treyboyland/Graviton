@@ -60,6 +60,8 @@
      <Compile Include="Assets\Scripts\ComboCounter.cs" />
      <Compile Include="Assets\Scripts\CreateLevelButtonController.cs" />
      <Compile Include="Assets\Scripts\CustomInputModule.cs" />
+     <Compile Include="Assets\Scripts\Delete Level\DeleteLevelButtonController.cs" />
+     <Compile Include="Assets\Scripts\Delete Level\DeleteLevelController.cs" />
      <Compile Include="Assets\Scripts\DisableAfterTime.cs" />
      <Compile Include="Assets\Scripts\DisableOnAnimationState.cs" />
      <Compile Include="Assets\Scripts\DistanceChecker.cs" />
@@ -181,7 +183,6 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Words\adjectives.txt" />
      <None Include="Assets\Words\nouns.txt" />
-     <None Include="Assets\StreamingAssets\Levels\DeterminedDustyPluto.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
@@ -198,7 +199,6 @@
      <None Include="Assets\Levels\Level-Cross-2019-08-08-07-35-33-180.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets\StreamingAssets\Levels\ThoughtfulTiredBoulder.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\Spawns\Spawns-Dice.xml" />

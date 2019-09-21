@@ -1,23 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using System;
+using System.IO;
 
-public class ChooseLevelControllerNew : MonoBehaviour
+public class DeleteLevelController : MonoBehaviour
 {
     [SerializeField]
-    DeleteLevelController deleteLevelController;
+    GameObject deleteLevel;
 
     [SerializeField]
-    GameObject chooseLevelCanvas;
+    GameObject confirmation;
 
     [SerializeField]
     Button levelSelectButton;
 
     [SerializeField]
-    Button startButton;
+    Button deleteButton;
+
+    [SerializeField]
+    Button backButton;
 
     [SerializeField]
     LevelPreviewer previewer;
@@ -32,6 +38,7 @@ public class ChooseLevelControllerNew : MonoBehaviour
     TextMeshProUGUI countTextBox;
 
     List<LevelInfo> levels = new List<LevelInfo>();
+    List<LevelParser.LevelStrings> paths = new List<LevelParser.LevelStrings>();
 
     int currentIndex = 0;
 
@@ -39,28 +46,66 @@ public class ChooseLevelControllerNew : MonoBehaviour
 
     bool joystickEventConsumed = false;
 
+    bool noLevelsComplete = false;
+
+
+
+    public class Events
+    {
+        [Serializable]
+        public class LevelDeleted : UnityEvent { }
+    }
+
+    /// <summary>
+    /// Event invoked when level deleted
+    /// </summary>
+    public Events.LevelDeleted OnLevelDeleted;
+
     // Start is called before the first frame update
     void Start()
     {
-        deleteLevelController.OnLevelDeleted.AddListener(() =>
-        {
-            currentIndex = 0;
-            levelsParsed = false;
-        });
         HideCanvas();
     }
 
     void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject == levelSelectButton.gameObject)
+        if (deleteLevel.activeInHierarchy)
         {
-            EnableArrows();
-            HandleLevelMove();
+            if (levels.Count == 0)
+            {
+                if (!noLevelsComplete)
+                {
+                    ShowNoLevels();
+                }
+                return;
+            }
+            else
+            {
+                levelSelectButton.gameObject.SetActive(true);
+            }
+
+            if (EventSystem.current.currentSelectedGameObject == levelSelectButton.gameObject)
+            {
+                EnableArrows();
+                HandleLevelMove();
+            }
+            else
+            {
+                DisableArrows();
+            }
         }
-        else
-        {
-            DisableArrows();
-        }
+
+    }
+
+    void ShowNoLevels()
+    {
+        noLevelsComplete = true;
+        DisableArrows();
+        levelSelectButton.gameObject.SetActive(false);
+        backButton.Select();
+        countTextBox.text = "0/0";
+        levelNameTextBox.text = "There are no levels to delete.";
+        previewer.DisableCurrentWallsAndClearList();
     }
 
     void DisableArrows()
@@ -68,6 +113,18 @@ public class ChooseLevelControllerNew : MonoBehaviour
         foreach (GameObject arrow in arrows)
         {
             arrow.SetActive(false);
+        }
+    }
+
+    public void SelectAppropriateButton()
+    {
+        if (levels.Count == 0)
+        {
+            backButton.Select();
+        }
+        else
+        {
+            levelSelectButton.Select();
         }
     }
 
@@ -105,11 +162,36 @@ public class ChooseLevelControllerNew : MonoBehaviour
         // }
     }
 
-    public void LoadSelectedLevel()
+    public void DeleteSelectedLevel()
     {
         //TODO: Load selected level
-        LevelParser.Parser.ChosenLevel = levels[currentIndex].Name;
-        SceneLoader.Loader.LoadMainGameScene();
+        try
+        {
+            LevelParser.LevelStrings strings = paths[currentIndex];
+
+            File.Delete(strings.LevelPath);
+            LevelParser.Parser.DirectoryLevelDictionary.Remove(strings);
+            LevelParser.Parser.LevelDictionary.Remove(strings.LevelName);
+            paths.RemoveAt(currentIndex);
+            levels.RemoveAt(currentIndex);
+            OnLevelDeleted.Invoke();
+            if (levels.Count == 0)
+            {
+                ShowNoLevels();
+            }
+            else if (currentIndex < levels.Count)
+            {
+                ShowLevelData();
+            }
+            else
+            {
+                PreviousLevel();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("ERROR: While deleting " + e);
+        }
     }
 
     /// <summary>
@@ -125,18 +207,16 @@ public class ChooseLevelControllerNew : MonoBehaviour
             }
             levelsParsed = true;
             levels.Clear();
-            foreach (LevelInfo info in LevelParser.Parser.LevelDictionary.Values)
+            paths.Clear();
+            foreach (var info in LevelParser.Parser.DirectoryLevelDictionary)
             {
-                levels.Add(info);
+                levels.Add(info.Value);
+                paths.Add(info.Key);
             }
 
             levels.Sort((a, b) => a.Name.CompareTo(b.Name));
+            paths.Sort((a, b) => a.LevelName.CompareTo(b.LevelName)); //NOTE: This only works if the names are the same in each list
         }
-    }
-
-    void ShowNoLevels()
-    {
-        //TODO: Show no level notification
     }
 
 
@@ -147,9 +227,17 @@ public class ChooseLevelControllerNew : MonoBehaviour
     {
         ParseAndSortDictionary();
         EnableArrows();
-        ShowLevelData();
-        chooseLevelCanvas.gameObject.SetActive(true);
-        levelSelectButton.Select();
+        deleteLevel.gameObject.SetActive(true);
+
+        if (levels.Count == 0)
+        {
+            ShowNoLevels();
+        }
+        else
+        {
+            ShowLevelData();
+            levelSelectButton.Select();
+        }
     }
 
     /// <summary>
@@ -157,8 +245,10 @@ public class ChooseLevelControllerNew : MonoBehaviour
     /// </summary>
     public void HideCanvas()
     {
-        chooseLevelCanvas.gameObject.SetActive(false);
-        startButton.Select();
+        confirmation.gameObject.SetActive(false);
+        noLevelsComplete = false;
+        deleteLevel.gameObject.SetActive(false);
+        deleteButton.Select();
         previewer.DisableCurrentWallsAndClearList();
     }
 
@@ -188,7 +278,7 @@ public class ChooseLevelControllerNew : MonoBehaviour
         }
         else
         {
-            Debug.LogError("ERROR: " + gameObject.name + ": Out of range. Count: " + levels.Count + " Index: " + currentIndex);
+            Debug.LogError("Index out of range. Count: " + levels.Count + " Index: " + currentIndex);
         }
     }
 
@@ -207,5 +297,4 @@ public class ChooseLevelControllerNew : MonoBehaviour
         }
         ShowLevelData();
     }
-
 }
