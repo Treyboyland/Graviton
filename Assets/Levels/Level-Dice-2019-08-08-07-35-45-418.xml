@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Level xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Dice">
-  <PlayerSpawn X="0.6" Y="-0.6" Z="0" />
+  <PlayerSpawn X="0" Y="-1" Z="0" />
   <SpawnLocation X="-4.5" Y="4" Z="0" />
   <SpawnLocation X="-4.35" Y="4" Z="0" />
   <SpawnLocation X="-4.2" Y="4" Z="0" />

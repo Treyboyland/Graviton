@@ -9,6 +9,9 @@ using System;
 /// </summary>
 public class UndoController : MonoBehaviour
 {
+    [SerializeField]
+    LevelEditorSaveButton saveButton;
+
     /// <summary>
     /// A stack of undo actions. The UndoAction method should be called with these
     /// </summary>
@@ -41,6 +44,32 @@ public class UndoController : MonoBehaviour
         }
     }
 
+    bool wasLevelSaved = false;
+
+    public bool WasLevelSaved
+    {
+        get
+        {
+            return wasLevelSaved;
+        }
+        set
+        {
+            wasLevelSaved = value;
+        }
+    }
+
+    /// <summary>
+    /// True if the undo stack is empty
+    /// </summary>
+    /// <value></value>
+    public bool IsUndoEmpty
+    {
+        get
+        {
+            return undoActions.Count == 0;
+        }
+    }
+
     public class Events
     {
         [Serializable]
@@ -55,8 +84,10 @@ public class UndoController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        saveButton.OnLevelCreated.AddListener((unused) => wasLevelSaved = true);
         OnActionDone.AddListener(action =>
         {
+            wasLevelSaved = false;
             redoActions.Clear();
             undoActions.Push(action);
         });
@@ -95,6 +126,7 @@ public class UndoController : MonoBehaviour
             var action = undoActions.Pop();
             action.UndoAction();
             redoActions.Push(action);
+            wasLevelSaved = false;
         }
     }
 
@@ -108,6 +140,7 @@ public class UndoController : MonoBehaviour
             var action = redoActions.Pop();
             action.RedoAction();
             undoActions.Push(action);
+            wasLevelSaved = false;
         }
     }
 }

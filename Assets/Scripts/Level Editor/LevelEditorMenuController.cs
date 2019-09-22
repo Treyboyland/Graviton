@@ -27,6 +27,9 @@ public class LevelEditorMenuController : MonoBehaviour
     [SerializeField]
     UndoController undoController;
 
+    [SerializeField]
+    GameObject exitConfirmation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +51,7 @@ public class LevelEditorMenuController : MonoBehaviour
     {
         StopAllCoroutines();
         menu.SetActive(false);
+        exitConfirmation.SetActive(false);
         StartCoroutine(EnableMovement());
     }
 

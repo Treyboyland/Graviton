@@ -18,12 +18,14 @@ public class EditorTestSpawns : MonoBehaviour
 
     bool shouldTest = true;
 
+    bool spawnsShowing = false;
+
     public bool ShouldTest
     {
         get
         {
             return shouldTest;
-        }  
+        }
         set
         {
             shouldTest = value;
@@ -39,6 +41,7 @@ public class EditorTestSpawns : MonoBehaviour
     public void RemovePoints()
     {
         pointSpawner.DisableAllPoints();
+        spawnsShowing = false;
     }
 
     void TestSpawns()
@@ -64,14 +67,23 @@ public class EditorTestSpawns : MonoBehaviour
         {
             anchor.ParentWallToAnchor();
         }
+
+        spawnsShowing = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("TestSpawns"))
+        if (shouldTest && Input.GetButtonDown("TestSpawns"))
         {
-            TestSpawns();
+            if (!spawnsShowing)
+            {
+                TestSpawns();
+            }
+            else
+            {
+                RemovePoints();
+            }
         }
     }
 

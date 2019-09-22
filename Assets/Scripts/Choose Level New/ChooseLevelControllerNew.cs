@@ -17,6 +17,9 @@ public class ChooseLevelControllerNew : MonoBehaviour
     Button levelSelectButton;
 
     [SerializeField]
+    Button backButton;
+
+    [SerializeField]
     Button startButton;
 
     [SerializeField]
@@ -39,6 +42,10 @@ public class ChooseLevelControllerNew : MonoBehaviour
 
     bool joystickEventConsumed = false;
 
+    bool noLevelsComplete = false;
+
+    //NOTE: This class shares *a lot* of code with the delete canvas...They should probably be extensions of each other or something
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,15 +59,31 @@ public class ChooseLevelControllerNew : MonoBehaviour
 
     void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject == levelSelectButton.gameObject)
+        if (chooseLevelCanvas.activeInHierarchy)
         {
-            EnableArrows();
-            HandleLevelMove();
+            if (levels.Count == 0)
+            {
+                if (!noLevelsComplete)
+                {
+                    ShowNoLevels();
+                }
+                return;
+            }
+            else
+            {
+                levelSelectButton.gameObject.SetActive(true);
+            }
+            if (EventSystem.current.currentSelectedGameObject == levelSelectButton.gameObject)
+            {
+                EnableArrows();
+                HandleLevelMove();
+            }
+            else
+            {
+                DisableArrows();
+            }
         }
-        else
-        {
-            DisableArrows();
-        }
+
     }
 
     void DisableArrows()
@@ -137,6 +160,14 @@ public class ChooseLevelControllerNew : MonoBehaviour
     void ShowNoLevels()
     {
         //TODO: Show no level notification
+        noLevelsComplete = true;
+        DisableArrows();
+        levelSelectButton.gameObject.SetActive(false);
+        backButton.Select();
+        countTextBox.text = "0/0";
+        levelNameTextBox.text = "There are no levels to play." +
+         (GameConfigReader.ConfigReader.Configuration.AllowLevelCreation ? " Create some!" : "");
+        previewer.DisableCurrentWallsAndClearList();
     }
 
 
@@ -147,9 +178,17 @@ public class ChooseLevelControllerNew : MonoBehaviour
     {
         ParseAndSortDictionary();
         EnableArrows();
-        ShowLevelData();
         chooseLevelCanvas.gameObject.SetActive(true);
-        levelSelectButton.Select();
+
+        if (levels.Count == 0)
+        {
+            ShowNoLevels();
+        }
+        else
+        {
+            ShowLevelData();
+            levelSelectButton.Select();
+        }
     }
 
     /// <summary>
@@ -157,6 +196,7 @@ public class ChooseLevelControllerNew : MonoBehaviour
     /// </summary>
     public void HideCanvas()
     {
+        noLevelsComplete = false;
         chooseLevelCanvas.gameObject.SetActive(false);
         startButton.Select();
         previewer.DisableCurrentWallsAndClearList();
