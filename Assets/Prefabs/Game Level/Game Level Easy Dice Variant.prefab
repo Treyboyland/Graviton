@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Level Easy Dice Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9213247652403626626, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: wallHolder
+      value: 
+      objectReference: {fileID: 8290353440693580937}
     - target: {fileID: 7424552838091826784, guid: 0a177719293a55c4f9e90a77fe37db3c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,16 +72,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7424552839282721572, guid: 0a177719293a55c4f9e90a77fe37db3c,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 8290353441885000143}
-    - target: {fileID: 7424552839282721572, guid: 0a177719293a55c4f9e90a77fe37db3c,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 8290353441885000142}
     - target: {fileID: 7424552838091826785, guid: 0a177719293a55c4f9e90a77fe37db3c,
         type: 3}
       propertyPath: pointXml
@@ -87,11 +82,6 @@ PrefabInstance:
       propertyPath: levelName
       value: Dice
       objectReference: {fileID: 0}
-    - target: {fileID: 9213247652403626626, guid: 0a177719293a55c4f9e90a77fe37db3c,
-        type: 3}
-      propertyPath: wallHolder
-      value: 
-      objectReference: {fileID: 8290353440693580937}
     - target: {fileID: 5614882522401454152, guid: 0a177719293a55c4f9e90a77fe37db3c,
         type: 3}
       propertyPath: sprite
@@ -102,16 +92,6 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 6478461153191602850}
-    - target: {fileID: 5614882522511809594, guid: 0a177719293a55c4f9e90a77fe37db3c,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 6478461153838304977}
-    - target: {fileID: 5614882522511809594, guid: 0a177719293a55c4f9e90a77fe37db3c,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 6478461153838304976}
     - target: {fileID: 5614882522629118361, guid: 0a177719293a55c4f9e90a77fe37db3c,
         type: 3}
       propertyPath: sprite
@@ -122,6 +102,26 @@ PrefabInstance:
       propertyPath: collider
       value: 
       objectReference: {fileID: 6478461153955875699}
+    - target: {fileID: 5614882522511809594, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 6478461153838304977}
+    - target: {fileID: 5614882522511809594, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 6478461153838304976}
+    - target: {fileID: 7424552839282721572, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 8290353441885000143}
+    - target: {fileID: 7424552839282721572, guid: 0a177719293a55c4f9e90a77fe37db3c,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 8290353441885000142}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a177719293a55c4f9e90a77fe37db3c, type: 3}
 --- !u!4 &8290353440693580936 stripped
@@ -202,36 +202,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Wall Box Left Up
       objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 1442295372204043436}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 1442295372204043434}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,15 +267,45 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4530992174642984025}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 4530992174642984024}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!212 &1442295372204043436 stripped
+--- !u!212 &4530992174642984025 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
   m_PrefabInstance: {fileID: 1442295372204043403}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1442295372204043434 stripped
+--- !u!61 &4530992174642984024 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3090980759218034899, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
@@ -322,36 +322,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Box Right Down
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 1442295372583073495}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 1442295372583073489}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -418,15 +388,45 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4530992173956656674}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 4530992173956656675}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!212 &1442295372583073495 stripped
+--- !u!212 &4530992173956656674 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
   m_PrefabInstance: {fileID: 1442295372583073520}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1442295372583073489 stripped
+--- !u!61 &4530992173956656675 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3090980759218034899, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
@@ -443,36 +443,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Box Left Down
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 1442295372591514762}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 1442295372591514764}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -539,15 +509,45 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4530992173948329087}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 4530992173948329086}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!212 &1442295372591514762 stripped
+--- !u!212 &4530992173948329087 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
   m_PrefabInstance: {fileID: 1442295372591514797}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1442295372591514764 stripped
+--- !u!61 &4530992173948329086 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3090980759218034899, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
@@ -564,36 +564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Box Right Up
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 1442295372710749657}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 1442295372710749663}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -660,15 +630,45 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4530992174067563820}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 4530992174067563821}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!212 &1442295372710749657 stripped
+--- !u!212 &4530992174067563820 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
   m_PrefabInstance: {fileID: 1442295372710749694}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1442295372710749663 stripped
+--- !u!61 &4530992174067563821 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3090980759218034899, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
@@ -685,36 +685,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Wall Box Center
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: damaging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 1442295372842290973}
-    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: collider
-      value: 
-      objectReference: {fileID: 1442295372842290971}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3090980759218034900, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
         type: 3}
@@ -781,15 +751,45 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: damaging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4530992174207490024}
+    - target: {fileID: 3090980759218034897, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 4530992174207490025}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3, type: 3}
---- !u!212 &1442295372842290973 stripped
+--- !u!212 &4530992174207490024 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3090980759218034898, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}
   m_PrefabInstance: {fileID: 1442295372842291002}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1442295372842290971 stripped
+--- !u!61 &4530992174207490025 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 3090980759218034899, guid: 9fb306f3b069bfe449ebd9c8d7d43ec3,
     type: 3}

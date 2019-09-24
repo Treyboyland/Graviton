@@ -130,9 +130,12 @@
      <Compile Include="Assets\Scripts\UI\ChooseLevelController.cs" />
      <Compile Include="Assets\Scripts\UI\CloseGameButton.cs" />
      <Compile Include="Assets\Scripts\UI\CreditsCanvasController.cs" />
+     <Compile Include="Assets\Scripts\UI\EditorExitTimer.cs" />
      <Compile Include="Assets\Scripts\UI\ExitEditorButton.cs" />
      <Compile Include="Assets\Scripts\UI\HighScoreController.cs" />
+     <Compile Include="Assets\Scripts\UI\HighScoreExitTimer.cs" />
      <Compile Include="Assets\Scripts\UI\HighScoreKeeper.cs" />
+     <Compile Include="Assets\Scripts\UI\IdleTimerHelper.cs" />
      <Compile Include="Assets\Scripts\UI\LoadEditorButton.cs" />
      <Compile Include="Assets\Scripts\UI\LoadGameButton.cs" />
      <Compile Include="Assets\Scripts\UI\LoadMainButton.cs" />

@@ -18,6 +18,10 @@ public class GameConfigReader : MonoBehaviour
     [SerializeField]
     GameConfig configuration;
 
+    /// <summary>
+    /// Configuration loaded for the game
+    /// </summary>
+    /// <value></value>
     public GameConfig Configuration
     {
         get

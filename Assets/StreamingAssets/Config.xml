@@ -4,4 +4,5 @@
   <AllowLevelDeletion>true</AllowLevelDeletion>
   <AllowExiting>true</AllowExiting>
   <IsArcadeCabinet>false</IsArcadeCabinet>
+  <IdleTimeout>60</IdleTimeout>
 </GameConfig>

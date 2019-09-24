@@ -36,6 +36,10 @@ public struct GameConfig
     [Tooltip("True if this game is going on an arcade cabinet")]
     public bool IsArcadeCabinet;
 
+    [XmlElement("IdleTimeout")]
+    [Tooltip("Time in seconds that we should wait on a menu screen before exiting the game, if the IsArcadeCabinet value is true")]
+    public float IdleTimeout;
+
     /// <summary>
     /// Saves this config to the given path
     /// </summary>

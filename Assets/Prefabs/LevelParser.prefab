@@ -66,8 +66,10 @@ MonoBehaviour:
     AllowLevelDeletion: 0
     AllowExiting: 0
     IsArcadeCabinet: 0
+    IdleTimeout: 0
   defaultConfig:
     AllowLevelCreation: 1
     AllowLevelDeletion: 1
     AllowExiting: 1
     IsArcadeCabinet: 0
+    IdleTimeout: 60

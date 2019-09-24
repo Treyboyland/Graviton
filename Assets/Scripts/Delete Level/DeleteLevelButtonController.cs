@@ -10,6 +10,6 @@ public class DeleteLevelButtonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deleteLevelButton.SetActive(GameConfigReader.ConfigReader != null ? GameConfigReader.ConfigReader.Configuration.AllowLevelCreation : true);
+        deleteLevelButton.SetActive(GameConfigReader.ConfigReader != null ? GameConfigReader.ConfigReader.Configuration.AllowLevelDeletion : true);
     }
 }
