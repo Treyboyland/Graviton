@@ -114,6 +114,28 @@ public class UndoController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Should be hooked to event
+    /// </summary>
+    public void TryUndo()
+    {
+        if (allowUndo)
+        {
+            Undo();
+        }
+    }
+
+    /// <summary>
+    /// Should be hooked to event
+    /// </summary>
+    public void TryRedo()
+    {
+        if (allowUndo)
+        {
+            Redo();
+        }
+    }
+
 
 
     /// <summary>
