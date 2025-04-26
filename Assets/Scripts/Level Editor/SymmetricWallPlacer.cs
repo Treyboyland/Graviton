@@ -46,6 +46,8 @@ public class SymmetricWallPlacer : MonoBehaviour
     [SerializeField]
     GameWallHolder wallHolder;
 
+    bool shouldChangeSymmetry = false;
+
     /// <summary>
     /// True if the symmetry value is allowed to change
     /// </summary>
@@ -250,10 +252,15 @@ public class SymmetricWallPlacer : MonoBehaviour
 
         return anchors;
     }
+ 
+    public void ChangeSymmetry()
+    {
+        shouldChangeSymmetry = true;
+    }
 
     private void Update()
     {
-        if (Input.GetButtonDown("ChangeSymmetry") && shouldChange)
+        if (shouldChangeSymmetry && shouldChange)
         {
             switch (wallSymmetry)
             {
@@ -277,6 +284,10 @@ public class SymmetricWallPlacer : MonoBehaviour
                     break;
             }
             OnSettingChanged.Invoke(wallSymmetry);
+        }
+        if (shouldChangeSymmetry)
+        {
+            shouldChangeSymmetry = false;
         }
     }
 }
