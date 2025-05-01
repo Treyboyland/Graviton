@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameEventGeneric<T> : ScriptableObject
+public abstract class GameEventGeneric<T> : GameEvent
 {
     public T Value;
 
-    List<GameEventListenerGeneric<T>> listeners = new List<GameEventListenerGeneric<T>>();
+    protected List<GameEventListenerGeneric<T>> listeners = new List<GameEventListenerGeneric<T>>();
 
     public void AddListener(GameEventListenerGeneric<T> listener)
     {
@@ -17,7 +17,7 @@ public abstract class GameEventGeneric<T> : ScriptableObject
         listeners.Remove(listener);
     }
 
-    public void Invoke()
+    public override void Invoke()
     {
         foreach (var listener in listeners)
         {

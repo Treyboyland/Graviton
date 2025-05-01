@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class LevelEditorMenuController : MonoBehaviour
@@ -65,18 +67,13 @@ public class LevelEditorMenuController : MonoBehaviour
         undoController.AllowUndo = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Connect to pause event
+    /// </summary>
+    public void HandlePauseAction()
     {
-        if (Input.GetButtonDown("Pause") && !menu.activeInHierarchy)
-        {
-            Input.ResetInputAxes();
-            ShowMenu();
-        }
-        else if (Input.GetButtonDown("Pause") && menu.activeInHierarchy)
-        {
-            Input.ResetInputAxes();
-            HideMenu();
-        }
+        //NOTE: There was a reset call to input axes here before. Not sure if that exists under the new system
+        Action action = menu.activeInHierarchy ? HideMenu : ShowMenu;
+        action.Invoke();
     }
 }

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameEvent", menuName = "Scriptable Objects/Events/No Params")]
+[CreateAssetMenu(fileName = "GameEvent-None-On", menuName = "Events/No Params", order = -1)]
 public class GameEvent : ScriptableObject
 {
-    List<GameEventListener> listeners = new List<GameEventListener>();
+    private List<GameEventListener> listeners = new List<GameEventListener>();
 
     public void AddListener(GameEventListener listener)
     {
@@ -16,7 +16,7 @@ public class GameEvent : ScriptableObject
         listeners.Remove(listener);
     }
 
-    public void Invoke()
+    public virtual void Invoke()
     {
         foreach (var listener in listeners)
         {

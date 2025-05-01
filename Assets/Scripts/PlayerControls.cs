@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {
     [SerializeField]
     GameEventGeneric<Vector2> onMove;
@@ -16,10 +16,10 @@ public class PlayerInput : MonoBehaviour
     GameEvent onScreenshot;
 
     [SerializeField]
-    GameEvent onSpeedUp;
+    GameEventGeneric<bool> onSpeedUp;
 
     [SerializeField]
-    GameEvent onSlowDown;
+    GameEventGeneric<bool> onSlowDown;
 
     [SerializeField]
     GameEvent onPause;
@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.performed)
         {
-
+            onMove.Invoke(context.ReadValue<Vector2>());
         }
     }
 
@@ -71,17 +71,17 @@ public class PlayerInput : MonoBehaviour
 
     public void HandleSpeedUp(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValueAsButton())
+        if (context.performed)
         {
-            onSpeedUp.Invoke();
+            onSpeedUp.Invoke(context.ReadValueAsButton());
         }
     }
 
     public void HandleSlowDown(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValueAsButton())
+        if (context.performed)
         {
-            onSlowDown.Invoke();
+            onSlowDown.Invoke(context.ReadValueAsButton());
         }
     }
 

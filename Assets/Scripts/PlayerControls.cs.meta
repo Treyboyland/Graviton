@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8c327b24e2290f14fbb82620008a82bc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - onMove: {fileID: 11400000, guid: 00d92e0e943742842a5019e173a7ebcf, type: 2}
+  - onUndo: {fileID: 11400000, guid: 00faf691c8904284581599928caf4114, type: 2}
+  - onRedo: {fileID: 11400000, guid: 0a77a256ce0bf1e41905d4e4bb519fdc, type: 2}
+  - onScreenshot: {fileID: 11400000, guid: 87c3dc73c1d331d4eb51f83ffc4d28d7, type: 2}
+  - onSpeedUp: {fileID: 11400000, guid: 747c62a74c59fa14d8def61c7af5a577, type: 2}
+  - onSlowDown: {fileID: 11400000, guid: 3c553ed9ac4994340a90585fa818c41a, type: 2}
+  - onPause: {fileID: 11400000, guid: d102afc5484bc70469cb0b39811c3f15, type: 2}
+  - onSubmit: {fileID: 11400000, guid: 0df3c1b87ff25ed4c8581bde3ff07c29, type: 2}
+  - onQuit: {fileID: 11400000, guid: 38dda0bd7b8359844bbadf83f1d45ffb, type: 2}
+  - onReset: {fileID: 11400000, guid: 23d769f4c76ec034da8129cadcd7d983, type: 2}
+  - onAnyKey: {fileID: 11400000, guid: 5b3e8481a59d59f40a45508b2071f87e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

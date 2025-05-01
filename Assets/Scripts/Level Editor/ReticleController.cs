@@ -84,6 +84,11 @@ public class ReticleController : MonoBehaviour
 
     public Events.StopFlickering OnStopFlickering;
 
+    bool moveFast = false;
+    bool moveSlow = false;
+
+    Vector2 movementVector;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,19 +106,31 @@ public class ReticleController : MonoBehaviour
         }
     }
 
+    public void HandleSpeedUpAction(bool value)
+    {
+        moveFast = value;
+    }
+
+    public void HandleSlowDownAction(bool value)
+    {
+        moveSlow = value;
+    }
+
+    public void HandleMoveAction(Vector2 move)
+    {
+        movementVector = move;
+    }
+
     /// <summary>
     /// Modifies speed of reticle movement if one of the buttons is held down
     /// </summary>
     void SetMultiplier()
     {
-        bool fast = Input.GetButton("SpeedUp");
-        bool slow = Input.GetButton("SlowDown");
-
-        if ((!fast && !slow) || (fast && slow))
+        if ((!moveFast && !moveSlow) || (moveFast && moveSlow))
         {
             multiplier = 1;
         }
-        else if (fast)
+        else if (moveFast)
         {
             multiplier = 2f;
         }
@@ -126,23 +143,8 @@ public class ReticleController : MonoBehaviour
 
     void DetermineMovement()
     {
-        bool up = false, down = false, left = false, right = false;
-        if (Input.GetButton("Up") || Input.GetAxis("UpDownJoy") > 0)
-        {
-            up = true;
-        }
-        if (Input.GetButton("Down") || Input.GetAxis("UpDownJoy") < 0)
-        {
-            down = true;
-        }
-        if (Input.GetButton("Left") || Input.GetAxis("LeftRightJoy") < 0)
-        {
-            left = true;
-        }
-        if (Input.GetButton("Right") || Input.GetAxis("LeftRightJoy") > 0)
-        {
-            right = true;
-        }
+        bool up = movementVector.y > 0, down = movementVector.y < 0, 
+            left = movementVector.x < 0, right = movementVector.x > 0;
 
         //Cancel contradictory directions
         if (up && down)

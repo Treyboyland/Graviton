@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -179,14 +180,6 @@ public class Player : MonoBehaviour
         });
     }
 
-    void Update()
-    {
-        if (acceptingInput && !isGameOver)
-        {
-            MoveCharacter();
-        }
-    }
-
     void FixedUpdate()
     {
         if (acceptingInput && !isGameOver)
@@ -228,64 +221,24 @@ public class Player : MonoBehaviour
         movingRight = false;
     }
 
-
     /// <summary>
-    /// Sets the movement booleans for the player
+    /// Should be connected to event listener. Sets bools to move player 
     /// </summary>
-    void MoveCharacter()
+    /// <param name="movementVector"></param>
+    public void MoveCharacter(Vector2 movementVector)
     {
-        //TODO: Determine if mouse or keyboard
-        if (Input.GetButtonDown("Down"))
+        if (!acceptingInput || isGameOver)
         {
-            SetBoolsDown();
+            return;
         }
-        else if (Input.GetButtonDown("Up"))
-        {
-            SetBoolsUp();
-        }
-        else if (Input.GetButtonDown("Left"))
-        {
-            SetBoolsLeft();
-        }
-        else if (Input.GetButtonDown("Right"))
-        {
-            SetBoolsRight();
-        }
-        else
-        {
-            float x = Input.GetAxis("LeftRightJoy");
-            float y = Input.GetAxis("UpDownJoy");
+        movementVector = movementVector.IsolateGreater();
 
-            if (Mathf.Abs(x) > Mathf.Abs(y))
-            {
-                y = 0;
-            }
-            else if (Mathf.Abs(y) > Mathf.Abs(x))
-            {
-                x = 0;
-            }
-            else
-            {
-                x = 0;
-                y = 0;
-            }
-
-            if (y < 0)
-            {
-                SetBoolsDown();
-            }
-            else if (y > 0)
-            {
-                SetBoolsUp();
-            }
-            else if (x < 0)
-            {
-                SetBoolsLeft();
-            }
-            else if (x > 0)
-            {
-                SetBoolsRight();
-            }
+        if (movementVector != Vector2.zero)
+        {
+            Action movementMethod = null;
+            bool leftRight = Mathf.Abs(movementVector.x) > 0;
+            movementMethod = leftRight ? (movementVector.x < 0 ? SetBoolsLeft : SetBoolsRight) :
+                (movementVector.y < 0 ? SetBoolsDown : SetBoolsUp);
         }
     }
 

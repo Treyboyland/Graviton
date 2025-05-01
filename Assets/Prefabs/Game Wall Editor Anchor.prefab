@@ -24,13 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2471756634681991640}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7922790394524887747}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4956800179026087294
 MonoBehaviour:
@@ -50,18 +51,29 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2471756634681991591}
     m_Modifications:
-    - target: {fileID: 5746054858264794141, guid: d8da6532637ac7843b6221466c1b3f77,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Wall Editor
-      objectReference: {fileID: 0}
     - target: {fileID: 5746054858264794137, guid: d8da6532637ac7843b6221466c1b3f77,
         type: 3}
       propertyPath: anchor
       value: 
       objectReference: {fileID: 4956800179026087294}
+    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,6 +88,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
         type: 3}
@@ -94,16 +111,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -117,17 +124,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
+    - target: {fileID: 5746054858264794141, guid: d8da6532637ac7843b6221466c1b3f77,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746054858264794140, guid: d8da6532637ac7843b6221466c1b3f77,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      propertyPath: m_Name
+      value: Game Wall Editor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8da6532637ac7843b6221466c1b3f77, type: 3}
 --- !u!4 &7922790394524887747 stripped
 Transform:

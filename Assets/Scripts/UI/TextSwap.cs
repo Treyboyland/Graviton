@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class TextSwap : MonoBehaviour
 {
@@ -47,16 +48,24 @@ public class TextSwap : MonoBehaviour
         }
     }
 
+    PlayerInput input;
+
     // Start is called before the first frame update
     void Start()
     {
         SetText();
+        input = GameObject.FindAnyObjectByType<PlayerInput>();
     }
 
     private void Update()
     {
         //NOTE: This doesn't take into account connected joysticks that may not be in use
-        UsingKeyboard = Input.GetJoystickNames().Length == 0;
+        bool prev = UsingKeyboard;
+        UsingKeyboard = input != null ? input.currentControlScheme == "KeyboardMouse" : true;
+        if (prev != UsingKeyboard)
+        {
+            SetText();
+        }
     }
 
     void SetText()

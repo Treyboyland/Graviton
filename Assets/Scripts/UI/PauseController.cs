@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +12,10 @@ public class PauseController : MonoBehaviour
     [SerializeField]
     Button resumeButton;
 
-    BaseGameManager manager;    
+    BaseGameManager manager;
 
     bool isGameOver = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,30 +27,27 @@ public class PauseController : MonoBehaviour
 
     void ReAddListener()
     {
-        if(manager == null)
+        if (manager == null)
         {
             manager = BaseGameManager.Manager;
         }
     }
 
-    void Update()
+    /// <summary>
+    /// Connect to pause input event 
+    /// </summary>
+    public void HandlePauseAction()
     {
-        if(Input.GetButtonDown("Pause") && !isGameOver)
+        if (!isGameOver)
         {
-            if(!pauseCanvas.activeInHierarchy)
-            {
-                PauseGame();
-            }
-            else
-            {
-                UnpauseGame();
-            }
+            Action action = pauseCanvas.activeInHierarchy ? UnpauseGame : PauseGame;
+            action.Invoke();
         }
     }
 
     void HandlePausing(bool isPaused)
     {
-        if(isPaused)
+        if (isPaused)
         {
             //Time.timeScale = 0;
             pauseCanvas.SetActive(true);
