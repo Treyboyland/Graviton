@@ -125,6 +125,10 @@ public class ChooseLevelControllerNew : MonoBehaviour
             currentMovementVector = movementVector;
             elapsedLevelMoveDelay = secondsBetweenLevelChanges;
         }
+        if (currentMovementVector != Vector2.zero)
+        {
+            ChangeLevel();
+        }
     }
 
     void ChangeLevel()
@@ -133,14 +137,14 @@ public class ChooseLevelControllerNew : MonoBehaviour
         {
             return;
         }
-        elapsedLevelMoveDelay = 0;
         if (currentMovementVector.x < 0)
         {
-
+            elapsedLevelMoveDelay = 0;
             PreviousLevel();
         }
         else if (currentMovementVector.x > 0)
         {
+            elapsedLevelMoveDelay = 0;
             NextLevel();
         }
     }

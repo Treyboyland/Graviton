@@ -239,6 +239,7 @@ public class Player : MonoBehaviour
             bool leftRight = Mathf.Abs(movementVector.x) > 0;
             movementMethod = leftRight ? (movementVector.x < 0 ? SetBoolsLeft : SetBoolsRight) :
                 (movementVector.y < 0 ? SetBoolsDown : SetBoolsUp);
+            movementMethod.Invoke();
         }
     }
 

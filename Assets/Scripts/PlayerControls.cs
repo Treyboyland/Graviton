@@ -36,12 +36,47 @@ public class PlayerControls : MonoBehaviour
     [SerializeField]
     GameEvent onAnyKey;
 
+    [SerializeField]
+    GameEvent onChangeSymmetry;
+
+    [SerializeField]
+    GameEvent onTestSpawns;
+
+    [SerializeField]
+    GameEvent onDelete;
+
+
+
 
     public void HandleMove(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
+        // if (context.performed)
+        // {
             onMove.Invoke(context.ReadValue<Vector2>());
+        // }
+    }
+
+    public void HandleChangeSymmetry(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValueAsButton())
+        {
+            onChangeSymmetry.Invoke();
+        }
+    }
+
+    public void HandleTestSpawns(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValueAsButton())
+        {
+            onTestSpawns.Invoke();
+        }
+    }
+
+    public void HandleDelete(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValueAsButton())
+        {
+            onDelete.Invoke();
         }
     }
 
