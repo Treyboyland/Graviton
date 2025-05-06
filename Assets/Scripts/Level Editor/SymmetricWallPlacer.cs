@@ -253,7 +253,7 @@ public class SymmetricWallPlacer : MonoBehaviour
         return anchors;
     }
  
-    public void ChangeSymmetry()
+    public void HandleChangeSymmetryAction()
     {
         shouldChangeSymmetry = true;
     }

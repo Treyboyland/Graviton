@@ -52,7 +52,7 @@ public class PlayerControls : MonoBehaviour
     {
         // if (context.performed)
         // {
-            onMove.Invoke(context.ReadValue<Vector2>());
+        onMove.Invoke(context.ReadValue<Vector2>());
         // }
     }
 
@@ -106,18 +106,12 @@ public class PlayerControls : MonoBehaviour
 
     public void HandleSpeedUp(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            onSpeedUp.Invoke(context.ReadValueAsButton());
-        }
+        onSpeedUp.Invoke(context.ReadValueAsButton());
     }
 
     public void HandleSlowDown(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            onSlowDown.Invoke(context.ReadValueAsButton());
-        }
+        onSlowDown.Invoke(context.ReadValueAsButton());
     }
 
     public void HandlePause(InputAction.CallbackContext context)
@@ -158,5 +152,10 @@ public class PlayerControls : MonoBehaviour
         {
             onAnyKey.Invoke();
         }
+    }
+
+    public void HandleAnyKeyEvent()
+    {
+        IdleTimerHelper.ShouldRestartTimer = true;
     }
 }

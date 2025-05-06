@@ -210,6 +210,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressController: {fileID: 1629148672}
   progressBar: {fileID: 121401003}
+--- !u!1001 &243948280
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064933144218543379, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7947624055933975871, guid: 622bcee138885e54485f892e10928889,
+        type: 3}
+      propertyPath: m_Name
+      value: ScreenshotTaker
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 622bcee138885e54485f892e10928889, type: 3}
 --- !u!1 &329551826
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,10 +311,10 @@ RectTransform:
   - {fileID: 121401002}
   m_Father: {fileID: 984393652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.06756118, y: 0.28100002}
-  m_AnchorMax: {x: 0.93200004, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -118.5}
+  m_SizeDelta: {x: 1200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329551828
 MonoBehaviour:
@@ -588,10 +656,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 984393652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.06756118, y: 0.7655823}
-  m_AnchorMax: {x: 0.93200004, y: 0.8845823}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 351.5}
+  m_SizeDelta: {x: 1659, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424764524
 MonoBehaviour:
@@ -896,3 +964,4 @@ SceneRoots:
   - {fileID: 1629148671}
   - {fileID: 357179993}
   - {fileID: 2033389345}
+  - {fileID: 243948280}

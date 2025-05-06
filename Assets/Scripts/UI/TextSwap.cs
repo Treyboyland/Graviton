@@ -61,7 +61,7 @@ public class TextSwap : MonoBehaviour
     {
         //NOTE: This doesn't take into account connected joysticks that may not be in use
         bool prev = UsingKeyboard;
-        UsingKeyboard = input != null ? input.currentControlScheme == "KeyboardMouse" : true;
+        UsingKeyboard = input != null ? input.currentControlScheme == "Keyboard&Mouse" : true;
         if (prev != UsingKeyboard)
         {
             SetText();
