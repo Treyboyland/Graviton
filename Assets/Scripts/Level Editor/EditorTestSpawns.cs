@@ -32,12 +32,6 @@ public class EditorTestSpawns : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void RemovePoints()
     {
         pointSpawner.DisableAllPoints();
@@ -71,10 +65,12 @@ public class EditorTestSpawns : MonoBehaviour
         spawnsShowing = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Should be set to the Test Spawns event
+    /// </summary>
+    public void HandleTestSpawnAction()
     {
-        if (shouldTest && Input.GetButtonDown("TestSpawns"))
+        if (shouldTest)
         {
             if (!spawnsShowing)
             {
@@ -86,6 +82,4 @@ public class EditorTestSpawns : MonoBehaviour
             }
         }
     }
-
-
 }

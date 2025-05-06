@@ -12,6 +12,10 @@ public class CloseGameButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        button.onClick.AddListener(()=> Application.Quit());    
+#if UNITY_EDITOR
+        button.onClick.AddListener(() => UnityEditor.EditorApplication.isPlaying = false);
+#elif !UNITY_WEBGL
+        button.onClick.AddListener(() => Application.Quit());
+#endif
     }
 }

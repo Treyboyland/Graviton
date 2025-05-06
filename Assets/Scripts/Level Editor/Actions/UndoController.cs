@@ -93,22 +93,23 @@ public class UndoController : MonoBehaviour
         });
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Should be hooked to event
+    /// </summary>
+    public void TryUndo()
     {
         if (allowUndo)
         {
-            HandleUndo();
+            Undo();
         }
     }
 
-    void HandleUndo()
+    /// <summary>
+    /// Should be hooked to event
+    /// </summary>
+    public void TryRedo()
     {
-        if (Input.GetButtonDown("Undo"))
-        {
-            Undo();
-        }
-        else if (Input.GetButtonDown("Redo"))
+        if (allowUndo)
         {
             Redo();
         }

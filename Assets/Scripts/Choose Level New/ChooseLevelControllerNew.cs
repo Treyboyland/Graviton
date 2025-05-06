@@ -29,6 +29,9 @@ public class ChooseLevelControllerNew : MonoBehaviour
     List<GameObject> arrows;
 
     [SerializeField]
+    float secondsBetweenLevelChanges;
+
+    [SerializeField]
     TextMeshProUGUI levelNameTextBox;
 
     [SerializeField]
@@ -40,9 +43,10 @@ public class ChooseLevelControllerNew : MonoBehaviour
 
     bool levelsParsed = false;
 
-    bool joystickEventConsumed = false;
-
     bool noLevelsComplete = false;
+
+    float elapsedLevelMoveDelay = 0;
+    Vector2 currentMovementVector;
 
     //NOTE: This class shares *a lot* of code with the delete canvas...They should probably be extensions of each other or something
 
@@ -75,15 +79,16 @@ public class ChooseLevelControllerNew : MonoBehaviour
             }
             if (EventSystem.current.currentSelectedGameObject == levelSelectButton.gameObject)
             {
+                elapsedLevelMoveDelay = Mathf.Min(elapsedLevelMoveDelay + Time.deltaTime, secondsBetweenLevelChanges);
                 EnableArrows();
-                HandleLevelMove();
+                ChangeLevel();
             }
             else
             {
                 DisableArrows();
+                elapsedLevelMoveDelay = secondsBetweenLevelChanges;
             }
         }
-
     }
 
     void DisableArrows()
@@ -102,30 +107,46 @@ public class ChooseLevelControllerNew : MonoBehaviour
         }
     }
 
-    void HandleLevelMove()
+    /// <summary>
+    /// Should listen to move event
+    /// </summary>
+    /// <param name="movementVector"></param>
+    public void HandleLevelMove(Vector2 movementVector)
     {
-        //NOTE: Arrows sort of look weird when there is only one level...but there will never be only one level
-        if (Input.GetButtonDown("Left") || (!joystickEventConsumed && Input.GetAxis("LeftRightJoy") < 0))
+        if (EventSystem.current.currentSelectedGameObject != levelSelectButton.gameObject)
         {
-            joystickEventConsumed = true;
-            PreviousLevel();
-        }
-        else if (Input.GetButtonDown("Right") || (!joystickEventConsumed && Input.GetAxis("LeftRightJoy") > 0))
-        {
-            joystickEventConsumed = true;
-            NextLevel();
+            return;
         }
 
-        if (Input.GetAxis("LeftRightJoy") == 0)
+        movementVector = movementVector.IsolateGreater();
+
+        if (currentMovementVector != movementVector)
         {
-            joystickEventConsumed = false;
+            currentMovementVector = movementVector;
+            elapsedLevelMoveDelay = secondsBetweenLevelChanges;
         }
-        // else if (Input.GetButtonDown("Submit"))
-        // {
-        //     //TODO: Load selected level
-        //     LevelParser.Parser.ChosenLevel = levels[currentIndex].Name;
-        //     SceneLoader.Loader.LoadMainGameScene();
-        // }
+        if (currentMovementVector != Vector2.zero)
+        {
+            ChangeLevel();
+        }
+    }
+
+    void ChangeLevel()
+    {
+        if (elapsedLevelMoveDelay < secondsBetweenLevelChanges)
+        {
+            return;
+        }
+        if (currentMovementVector.x < 0)
+        {
+            elapsedLevelMoveDelay = 0;
+            PreviousLevel();
+        }
+        else if (currentMovementVector.x > 0)
+        {
+            elapsedLevelMoveDelay = 0;
+            NextLevel();
+        }
     }
 
     public void LoadSelectedLevel()

@@ -55,21 +55,6 @@ public class LevelEditorController : MonoBehaviour
 
     GameWallAnchor currentAnchor;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (shouldHandleActions)
-        {
-            HandleActions();
-        }
-    }
-
     /// <summary>
     /// Returns all game walls with a collider that overlaps the given position
     /// </summary>
@@ -97,70 +82,75 @@ public class LevelEditorController : MonoBehaviour
         return toReturn;
     }
 
-
-
-    void HandleActions()
+    public void HandleSubmitAction()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (!shouldHandleActions)
         {
-            //NOTE: I want to be able to toggle damaging 
-            if (!reticle.IsFlickering)
-            {
-                List<GameWall> walls = GetGameWallsWithPoint(reticle.transform.position);
-                if (walls.Count == 0)
-                {
-                    //TODO: Place Wall
-                    GameWallAnchor anchor = wallAnchorPool.GetObject();
-                    anchor.ShouldScale = true;
-                    //anchor.ShouldTrack = false;
-                    anchor.transform.position = reticle.transform.position;
-                    anchor.LocalScale = new Vector3(0.5f, 0.5f, anchor.LocalScale.z);
-                    anchor.Reticle = reticle;
-                    anchor.WallHolder = wallHolder;
-                    currentAnchor = anchor;
-                    currentAnchor.gameObject.SetActive(true);
-                    reticle.OnFlicker.Invoke();
-                    OnWallPlaced.Invoke(null);
+            return;
+        }
 
-                    ActionPlaceWall actionPlaceWall = new ActionPlaceWall(reticle, anchor);
-                    undoController.OnActionDone.Invoke(actionPlaceWall);
-                }
-                else
-                {
-                    foreach (GameWall wall in walls)
-                    {
-                        wall.IsDamaging = !wall.IsDamaging;
-                    }
-                    ActionToggleWallDamagingState toggleWallDamagingState = new ActionToggleWallDamagingState(walls);
-                    undoController.OnActionDone.Invoke(toggleWallDamagingState);
-                }
+        //NOTE: I want to be able to toggle damaging 
+        if (!reticle.IsFlickering)
+        {
+            List<GameWall> walls = GetGameWallsWithPoint(reticle.transform.position);
+            if (walls.Count == 0)
+            {
+                //TODO: Place Wall
+                GameWallAnchor anchor = wallAnchorPool.GetObject();
+                anchor.ShouldScale = true;
+                //anchor.ShouldTrack = false;
+                anchor.transform.position = reticle.transform.position;
+                anchor.LocalScale = new Vector3(0.5f, 0.5f, anchor.LocalScale.z);
+                anchor.Reticle = reticle;
+                anchor.WallHolder = wallHolder;
+                currentAnchor = anchor;
+                currentAnchor.gameObject.SetActive(true);
+                reticle.OnFlicker.Invoke();
+                OnWallPlaced.Invoke(null);
+
+                ActionPlaceWall actionPlaceWall = new ActionPlaceWall(reticle, anchor);
+                undoController.OnActionDone.Invoke(actionPlaceWall);
             }
             else
             {
-                currentAnchor.ShouldScale = false;
-                currentAnchor.ShouldTrack = false;
-                reticle.OnStopFlickering.Invoke();
-                OnWallPlaced.Invoke(currentAnchor);
+                foreach (GameWall wall in walls)
+                {
+                    wall.IsDamaging = !wall.IsDamaging;
+                }
+                ActionToggleWallDamagingState toggleWallDamagingState = new ActionToggleWallDamagingState(walls);
+                undoController.OnActionDone.Invoke(toggleWallDamagingState);
             }
         }
-        else if (Input.GetButtonDown("Delete") && !reticle.IsFlickering)
+        else
         {
-            List<GameWallAnchor> deletedAnchors = new List<GameWallAnchor>();
-            foreach (GameWall wall in GetGameWallsWithPoint(reticle.transform.position))
-            {
-                if (wall.IsDeletable && wall.Anchor != null)
-                {
-                    wall.Anchor.gameObject.SetActive(false);
-                    deletedAnchors.Add(wall.Anchor);
-                }
-            }
+            currentAnchor.ShouldScale = false;
+            currentAnchor.ShouldTrack = false;
+            reticle.OnStopFlickering.Invoke();
+            OnWallPlaced.Invoke(currentAnchor);
+        }
+    }
 
-            if (deletedAnchors.Count != 0)
-            {
-                ActionDeleteWall actionDeleteWall = new ActionDeleteWall(deletedAnchors);
-                undoController.OnActionDone.Invoke(actionDeleteWall);
-            }
+    public void HandleDeleteAction()
+    {
+        if (!shouldHandleActions || reticle.IsFlickering)
+        {
+            return;
+        }
 
+        List<GameWallAnchor> deletedAnchors = new List<GameWallAnchor>();
+        foreach (GameWall wall in GetGameWallsWithPoint(reticle.transform.position))
+        {
+            if (wall.IsDeletable && wall.Anchor != null)
+            {
+                wall.Anchor.gameObject.SetActive(false);
+                deletedAnchors.Add(wall.Anchor);
+            }
+        }
+
+        if (deletedAnchors.Count != 0)
+        {
+            ActionDeleteWall actionDeleteWall = new ActionDeleteWall(deletedAnchors);
+            undoController.OnActionDone.Invoke(actionDeleteWall);
         }
     }
 
